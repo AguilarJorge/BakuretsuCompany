@@ -1,0 +1,204 @@
+@import "./vars";
+@import "./mixins";
+@import "./general";
+@import "./compartido";
+
+.#{$pfx}bannerSlider{
+  min-height: 100vh;
+  .#{$pfx}container{
+    @include container(100%);
+    @include flex(column, nowrap, center, flex-end, center);
+    height: 100vh;
+    position: relative;
+    .colorSlider{
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 500px;
+      height: 100%;
+      background-color: $negro;
+    }
+    .wrapperSlider{
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      .slide{
+        @include flex;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        .prodImg{
+          @include imagen($size: contain);
+          position: absolute;
+          left: 20%;
+          width: 500px;
+          height: 100%;
+        }
+        .data{
+          width: 100%;
+          padding-left: calc(500px + 20%);
+          padding-right: 5%;
+          box-sizing: border-box;
+          text-align: right;
+          p{
+            color: $negro;
+            font-size: 18px;
+          }
+          .precio{
+            font-family: 'Roboto', sans-serif;
+            margin-bottom: 10px;
+            font-size: 70px;
+            font-weight: 900;
+            &:before{
+              content: var(--currencyPrefix);
+              font-size: 40px;
+            }
+          }
+          .aFavs{
+            margin-left: auto;
+            cursor: pointer;
+          }
+          .botones{
+            @include flex($jc: flex-end);
+            margin-top: 40px;
+            .boton{
+              margin-top: 10px;
+              margin-left: 20px;
+              padding: 14px 25px;
+              color: $blanco;
+              font-size: 12px;
+              font-weight: 600;
+              border-radius: 10px;
+              letter-spacing: 1px;
+              text-transform: uppercase;
+              background-color: $primario;
+              border: 1px solid $primario;
+              transition: ease all .3s;
+              &.alCarro{
+                background-color: transparent;
+                border: 1px solid $negro;
+                color: $negro;
+              }
+              &:hover{
+                background-color: $negro;
+                border-color: $negro;
+                color: $blanco;
+              }
+            }
+          }
+          .infoExtra{
+            @include flex($jc: flex-end);
+            .ifo{
+              @include flex;
+              margin-top: 20px;
+              margin-left: 20px;
+              p{
+                font-size: 14px;
+                font-weight: 600;
+              }
+              .#{$pfx}icono{
+                width: 20px;
+                height: 20px;
+                margin-right: 10px;
+              }
+            }
+          }
+        }
+        .bigName{
+          font-family: 'Roboto', sans-serif;
+          position: absolute;
+          bottom: 0;
+          right: 0;
+          margin: 0;
+          height: 230px;
+          opacity: .2;
+          font-size: 200px;
+          overflow: hidden;
+        }
+      }
+    }
+    .manualControls{
+      .control{
+        @include flex(column, nowrap, center, center, center);
+        position: absolute;
+        top: 50%;
+        width: 50px;
+        height: 80px;
+        opacity: 0;
+        background-color: $blanco;
+        transform: translateY(-50%);
+        box-shadow: 0 0 10px 0 rgba($negro,.2);
+        transition: ease all .3s;
+        cursor: pointer;
+        &.at{
+          left: 5%;
+          transform: translateY(-50%) translateX(-100%);
+          &:before, &:after{
+            transform-origin: left;
+          }
+        }
+        &.av{
+          right: 5%;
+          transform: translateY(-50%) translateX(100%);
+          &:before, &:after{
+            transform-origin: right;
+          }
+        }
+        &.circular{
+          height: 50px;
+          border-radius: 50%;
+          &::before, &:after{
+            width: 10px;
+            height: 2px;
+          }
+        }
+        &:before, &:after{
+          content: "";
+          position: absolute;
+          width: 20px;
+          height: 1px;
+          background-color: $negro;
+          transform: rotate(-50deg);
+        }
+        &:after{
+          transform: rotate(50deg);
+        }
+      }
+    }
+    .dimerDots{
+      @include flex(row, wrap, center, center, center);
+      position: relative;
+      .dimerDot{
+        @include flex(column, nowrap, center, center, center);
+        width: 17px;
+        height: 17px;
+        margin: 10px 3px;
+        color: $blanco;
+        &.activo{
+          &:before{
+            width: 15px;
+            height: 15px;
+            background-color: currentColor;
+          }
+        }
+        &:before{
+          content: "";
+          width: 10px;
+          height: 10px;
+          border-radius: 50%;
+          background-color: #ebebeb;
+          border: 1px solid rgba($negro,.2);
+          transition: ease all .2s;
+        }
+      }
+    }
+    @include mobile{
+      .manualControls{
+        display: none;
+      }
+    }
+  }
+}

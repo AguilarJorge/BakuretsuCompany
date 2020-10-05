@@ -1,0 +1,256 @@
+@import "./vars";
+@import "./mixins";
+
+//Elementos
+.#{$pfx}encabezadoDoble{
+    @include flex(column, nowrap, flex-start, flex-start, flex-start);
+    font-family: "Roboto Condensed",sans-serif;
+    margin-bottom: 30px;
+    color: $negro;
+    font-size: 40px;
+    font-weight: 900;
+    letter-spacing: 7px;
+    text-transform: uppercase;
+    text-align: left;
+    .breakTxt{
+        font-family: "Roboto",sans-serif;
+        font-size: 60px;
+        font-weight: 900;
+        line-height: 45px;
+        letter-spacing: 0;
+    }
+}
+.#{$pfx}encabezado{
+    font-family: 'Roboto', sans-serif;
+    margin-bottom: 30px;
+    color: $negro;
+    font-size: 50px;
+    font-weight: 900;
+    text-align: center;
+    text-transform: uppercase;
+}
+.#{$pfx}underDecorado{
+    color: $primario;
+    font-weight: 900;
+    text-decoration: underline wavy;
+    &-2{
+        @extend .#{$pfx}underDecorado;
+        color: $secundario;
+    }
+}
+.#{$pfx}icono{
+    width: 35px;
+    height: 35px;
+    svg{
+        overflow: hidden;
+        path, circle{
+            fill: none;
+            stroke: $primario;
+            stroke-miterlimit: 10;
+            stroke-width: 2;
+        }
+    }
+}
+
+//Secciones
+.#{$pfx}menu{
+    &.fixed{
+        .fixedWrapper{
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            margin: auto;
+            z-index: $zmenu;
+        }
+    }
+    .fixedWrapper{
+        background-color: $negro;
+        .#{$pfx}container{
+            @include container;
+            padding: 10px 0;
+            .topBar{
+                @include flex($jc: space-between);
+                width: 100%;
+                .leftSide{
+                    @include flex;
+                    .logo{
+                        @include imagen('', contain, left);
+                        width: 120px;
+                        height: 80px;
+                        margin-right: 20px;
+                        transition: ease all .3s;
+                    }
+                    .linksArea{
+                        .menuLinks{
+                            @include flex;
+                            >.link{
+                                margin: 5px 10px;
+                            }
+                            .link{
+                                position: relative;
+                                min-width: max-content;
+                                &:hover{
+                                    >a{
+                                        &:after{
+                                            width: 100%;
+                                        }
+                                    }
+                                    >.subMenu{
+                                        opacity: 1;
+                                        visibility: visible;
+                                        transform: translateX(-50%);
+                                    }
+                                }
+                                a{
+                                    color: $blanco;
+                                    font-size: 12px;
+                                    letter-spacing: 1px;
+                                    text-transform: uppercase;
+                                    position: relative;
+                                    &:after{
+                                        content: "";
+                                        position: absolute;
+                                        bottom: 0;
+                                        left: 0;
+                                        right: 0;
+                                        margin: 0 auto;
+                                        width: 0;
+                                        height: 2px;
+                                        background-color: $primario;
+                                        transition: ease all .3s;
+                                    }
+                                }
+                                .subMenu{
+                                    position: absolute;
+                                    left: 50%;
+                                    top: 100%;
+                                    min-width: 100%;
+                                    margin-top: 10px;
+                                    background-color: #000;
+                                    transform: translateX(-50%) translateY(20px);
+                                    visibility: hidden;
+                                    opacity: 0;
+                                    z-index: $zmenu;
+                                    transition: ease all .3s;
+                                    &:hover{
+                                        >.link{
+                                            opacity: .5;
+                                        }
+                                    }
+                                    &:before{
+                                        content: "";
+                                        position: absolute;
+                                        bottom: 100%;
+                                        width: 100%;
+                                        height: 10px;
+                                        display: block;
+                                    }
+                                    >.link{
+                                        display: flex;
+                                        text-align: center;
+                                        transition: ease all .3s;
+                                        &:hover{
+                                            opacity: 1;
+                                            background-color: rgba($blanco,.05);
+                                        }
+                                    }
+                                    .link{
+                                        a{
+                                            flex-grow: 1;
+                                            padding: 10px;
+                                            &:after{
+                                                display: none;
+                                            }
+                                        }
+                                        .subMenu{
+                                            top: 0;
+                                            left: 100%;
+                                            margin-top: 0;
+                                            transform: none;
+                                            &:before{
+                                                display: none;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                .rightSide{
+                    @include flex;
+                    .buscador{
+                        margin: 0 20px;
+                        cursor: pointer;
+                        .buscadorTop{
+                            @include flex;
+                            width: 150px;
+                            position: relative;
+                            input{
+                                width: 100%;
+                                padding: 15px 40px 15px 20px;
+                                outline: none;
+                                border: 0;
+                                color: $blanco;
+                                font-size: 12px;            
+                                letter-spacing: 1px;
+                                text-transform: uppercase;
+                                position: relative;
+                                background-color: transparent;
+                                border-bottom: 1px solid $blanco;
+                                cursor: pointer;
+                                &::placeholder{
+                                    color: $blanco;
+                                    opacity: .5;
+                                }
+                                &:focus{
+                                    cursor: default;
+                                }
+                            }
+                            .icono{
+                                position: absolute;
+                                right: 0;
+                                width: 30px;
+                                height: 30px;
+                                &:before, &:after{
+                                    content: "";
+                                    position: absolute;
+                                }
+                                &:before{
+                                    width: 25px;
+                                    height: 25px;
+                                    border-radius: 50%;
+                                    border: 1px solid $blanco;
+                                }
+                                &:after{
+                                    bottom: 0;
+                                    right: 0;
+                                    width: 1px;
+                                    height: 10px;
+                                    background-color: $blanco;
+                                    transform: rotate(-45deg);
+                                    transform-origin: bottom;
+                                }
+                            }
+                        }
+                    }
+                    .icons{
+                        @include flex;
+                        .#{$pfx}icono{
+                            width: 25px;
+                            height: 25px;
+                            margin-left: 20px;
+                            cursor: pointer;
+                            svg{
+                                path, circle{
+                                    stroke: $blanco;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

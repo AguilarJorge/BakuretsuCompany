@@ -1,0 +1,10 @@
+{
+  "name": "bakuretsucompany",
+  "version": "1.0.0",
+  "description": "E-commerce para BakuretsuCompany",
+  "scripts": {
+    "compSass": "sass --watch style/sass:style/css --style=compressed --no-source-map"
+  },
+  "author": "Jorge Luis Aguilar Rodarte",
+  "license": "ISC"
+}
