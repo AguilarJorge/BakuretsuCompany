@@ -10,9 +10,10 @@
         .productosWrapper{
             @include flex(row, nowrap, flex-start, space-between);
             width: 100%;
-            .filtros{
+            .#{$pfx}filtros{
                 margin-top: 60px;
                 width: 300px;
+                user-select: none;
                 .filtrosWrapper{
                     width: 100%;
                     .filtrosHeader{
@@ -72,6 +73,7 @@
                             font-size: 14px;
                             font-weight: 600;
                             text-transform: uppercase;
+                            cursor: pointer;
                             .textHeader{
                                 @include flex;
                                 padding-left: 15px;
@@ -89,7 +91,7 @@
                                     transition: ease all .3s;
                                 }
                             }
-                            .icono{
+                            .limpiarFiltro{
                                 width: 20px;
                                 height: 20px;
                                 cursor: pointer;
@@ -111,6 +113,9 @@
                                 cursor: pointer;
                                 transition: ease all .3s;
                                 &:hover{
+                                    color: $secundario;
+                                }
+                                &.seleccionado{
                                     color: $secundario;
                                 }
                                 .nombre{

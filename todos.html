@@ -68,12 +68,12 @@
             <div class="bakuretsu_container">
                 <h1 class="bakuretsu_encabezadoDoble">Catálogo de <span class="breakTxt">productos</span></h1>
                 <div class="productosWrapper">
-                    <div class="filtros">
+                    <div class="bakuretsu_filtros">
                         <div class="filtrosWrapper">
                             <div class="filtrosHeader">
                                 <p>Filtros</p>
                                 <div class="wrapperIcon">
-                                    <div class="bakuretsu_icono" title="Borrar filtros">
+                                    <div class="bakuretsu_icono borrarFiltros" title="Borrar filtros">
                                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
                                             <path d="M54.741 28.14a23.002 23.002 0 0 1-39.088 19.124"></path>
                                             <path d="M9.065 33.62A23.008 23.008 0 0 1 31.917 8a22.934 22.934 0 0 1 16.262 6.732"></path>
@@ -86,7 +86,7 @@
                             <div class="grupo show">
                                 <div class="headerGrupo">
                                     <p class="textHeader">Categorias</p>
-                                    <div class="bakuretsu_icono icono" title="Borrar filtro">
+                                    <div class="bakuretsu_icono limpiarFiltro" title="Borrar filtro">
                                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
                                             <path d="M41.999 20.002l-22 22m22 0L20 20"></path>
                                         </svg>
@@ -122,7 +122,7 @@
                             <div class="grupo show">
                                 <div class="headerGrupo">
                                     <p class="textHeader">Marca</p>
-                                    <div class="bakuretsu_icono icono" title="Borrar filtro">
+                                    <div class="bakuretsu_icono limpiarFiltro" title="Borrar filtro">
                                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
                                             <path d="M41.999 20.002l-22 22m22 0L20 20"></path>
                                         </svg>
@@ -158,7 +158,7 @@
                             <div class="grupo squares show">
                                 <div class="headerGrupo">
                                     <p class="textHeader">Medidas (cm)</p>
-                                    <div class="bakuretsu_icono icono" title="Borrar filtro">
+                                    <div class="bakuretsu_icono limpiarFiltro" title="Borrar filtro">
                                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
                                             <path d="M41.999 20.002l-22 22m22 0L20 20"></path>
                                         </svg>
@@ -347,14 +347,7 @@
         </section>
 
         <script type="text/javascript" src="./js/jquery-3.5.1.min.js"></script>
-        <script type="text/javascript">
-            $(function(){
-                //Calcular altura del menu fixed para compensar margen del body
-                if ($('.bakuretsu_menu').length) {
-                    let alturaMenu = $('.bakuretsu_menu .fixedWrapper').outerHeight(true);
-                    $('body').css('margin-top', alturaMenu);
-                }
-            })
-        </script>
+        <script type="text/javascript" src="./js/compartido.js"></script>
+        <script type="text/javascript" src="./js/todos.js"></script>
     </body>
 </html>
