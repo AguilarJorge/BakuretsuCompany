@@ -17,4 +17,9 @@ $(function(){
     $('.bakuretsu_filtros').on('click', '.filtrosHeader .borrarFiltros', function(){
         $(this).parents('.bakuretsu_filtros').find('.filtro.seleccionado').removeClass('seleccionado');
     })
+    //Lanzar menu de filtros
+    $('.bakuretsu_catalogo .showFiltrosResponsive').click(function(){
+        $(this).parent().addClass('openFiltros');
+        $('body').addClass('movedX');
+    })
 })

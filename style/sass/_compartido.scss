@@ -69,6 +69,7 @@
         .#{$pfx}container{
             @include container;
             padding: 10px 0;
+            user-select: none;
             .topBar{
                 @include flex($jc: space-between);
                 width: 100%;
@@ -81,7 +82,13 @@
                         margin-right: 20px;
                         transition: ease all .3s;
                     }
+                    .launcherMenuResponsive{
+                        display: none;
+                    }
                     .linksArea{
+                        .closeMenuResponsive, .socialsResponsive{
+                            display: none;
+                        }
                         .menuLinks{
                             @include flex;
                             >.link{
@@ -174,18 +181,27 @@
                                         }
                                     }
                                 }
+                                .showSubmenu{
+                                    display: none;
+                                }
                             }
                         }
                     }
                 }
                 .rightSide{
-                    @include flex;
+                    @include flex($jc: flex-end);
+                    flex-grow: 1;
                     .buscador{
+                        width: 150px;
+                        max-width: 400px;
                         margin: 0 20px;
                         cursor: pointer;
+                        transition: ease all .3s;
+                        &.activ{
+                            flex-grow: 1;
+                        }
                         .buscadorTop{
                             @include flex;
-                            width: 150px;
                             position: relative;
                             input{
                                 width: 100%;
@@ -235,6 +251,9 @@
                             }
                         }
                     }
+                    .launcherBuscadorResponsive{
+                        display: none;
+                    }
                     .icons{
                         @include flex;
                         .#{$pfx}icono{
@@ -248,6 +267,274 @@
                                 }
                             }
                         }
+                    }
+                }
+            }
+            @media only screen and (min-width: 1024px){
+                .topBar{
+                    .leftSide{
+                        .linksArea{
+                            .menuLinks{
+                                .link{
+                                    .subMenu{
+                                        display: block !important;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            @include desktop{
+                .topBar{
+                    position: relative;
+                    &:after{
+                        content: "";
+                        position: fixed;
+                        top: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 100%;
+                        visibility: hidden;
+                        opacity: 0;
+                        background-color: rgba($blanco,.8);
+                        transition: ease all .3s;
+                    }
+                    &.openMenu{
+                        &:after{
+                            opacity: 1;
+                            visibility: visible;
+                        }
+                        .leftSide{
+                            .linksArea{
+                                left: 0;
+                                transition-delay: .1s;
+                            }
+                        }
+                    }
+                    .leftSide{
+                        .launcherMenuResponsive{
+                            @include flex(column);
+                            width: 40px;
+                            height: 40px;
+                            position: relative;
+                            cursor: pointer;
+                            span{
+                                position: absolute;
+                                width: 100%;
+                                height: 1px;
+                                background-color: $blanco;
+                                &:first-child{
+                                    transform: translateY(-12px);
+                                }
+                                &:last-child{
+                                    transform: translateY(12px);
+                                }
+                            }
+                        }
+                        .linksArea{
+                            @include flex(column, nowrap, center, flex-start);
+                            position: fixed;
+                            top: 0;
+                            left: -300px;
+                            width: 300px;
+                            height: 100%;
+                            background-color: $negro;
+                            transition: ease all .3s;
+                            z-index: $zmenu;
+                            .closeMenuResponsive{
+                                @include flex;
+                                width: 100%;
+                                min-height: 60px;
+                                color: $blanco;
+                                font-size: 12px;
+                                letter-spacing: 2px;
+                                text-transform: uppercase;
+                                background-color: rgba($blanco,.1);
+                                cursor: pointer;
+                                .icono{
+                                    @include flex;
+                                    width: 20px;
+                                    height: 20px;
+                                    margin-right: 10px;
+                                    position: relative;
+                                    &:before, &:after{
+                                        content: "";
+                                        position: absolute;
+                                        width: 100%;
+                                        height: 1px;
+                                        background-color: $blanco;
+                                    }
+                                    &:before{
+                                        transform: rotate(45deg);
+                                    }
+                                    &:after{
+                                        transform: rotate(-45deg);
+                                    }
+                                }
+                            }
+                            .menuLinks{
+                                flex-direction: column;
+                                flex-wrap: nowrap;
+                                justify-content: flex-start;
+                                width: 100%;
+                                height: 100%;
+                                overflow-y: auto;
+                                overflow-x: hidden;
+                                .link{
+                                    width: 100%;
+                                    min-width: 100%;
+                                    margin: 0;
+                                    padding: 20px 40px 20px 20px;
+                                    box-sizing: border-box;
+                                    transition: ease all .3s;
+                                    &:hover{
+                                        background-color: rgba($blanco,.05);
+                                    }
+                                    a{
+                                        font-size: 14px;
+                                        &:after{
+                                            display: none;
+                                        }
+                                    }
+                                    .subMenu{
+                                        display: none;
+                                        position: relative;
+                                        top: 0 !important;
+                                        left: 0 !important;
+                                        margin-top: 0;
+                                        transform: none !important;
+                                        opacity: 1 !important;
+                                        visibility: visible !important;
+                                        background-color: transparent;
+                                        transition: none !important;
+                                        &:hover{
+                                            >.link{
+                                                opacity: 1;
+                                            }
+                                        }
+                                        &:before{
+                                            display: none;
+                                        }
+                                        >.link{
+                                            display: block;
+                                            text-align: left;
+                                        }
+                                    }
+                                    .showSubmenu{
+                                        display: block;
+                                        position: absolute;
+                                        top: calc(25px / 2);
+                                        right: 0;
+                                        cursor: pointer;
+                                        transition: ease all .2s;
+                                        &.openSub{
+                                            transform: rotate(90deg);
+                                        }
+                                        svg{
+                                            path, circle{
+                                                stroke: $blanco;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                            .socialsResponsive{
+                                @include flex(column);
+                                width: 100%;
+                                padding: 10px 20px;
+                                box-sizing: border-box;
+                                .logo{
+                                    margin: 0 auto;
+                                }
+                                .social{
+                                    @include flex;
+                                    padding: 20px 0;
+                                    .icono{
+                                        width: 35px;
+                                        height: 35px;
+                                        margin: 5px;
+                                        cursor: pointer;
+                                        color: $blanco;
+                                        transition: ease all .3s;
+                                        &:hover{
+                                            color: $secundario;
+                                            transform: translateY(-5px);
+                                            svg{
+                                                transform: rotateY(360deg);
+                                            }
+                                        }
+                                        svg{
+                                            transition: ease all .3s;
+                                            path, circle{
+                                                fill: currentColor;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    .rightSide{
+                        .buscador{
+                            @include flex;
+                            position: absolute;
+                            width: 0;
+                            margin: 0;
+                            max-width: 100%;
+                            height: 100%;
+                            background-color: $negro;
+                            z-index: $zup;
+                            &.activ{
+                                width: 100%;
+                            }
+                            .buscadorTop{
+                                width: 100%;
+                                overflow: hidden;
+                            }
+                        }
+                        .launcherBuscadorResponsive{
+                            display: block;
+                            width: 30px;
+                            height: 30px;
+                            position: relative;
+                            cursor: pointer;
+                            &:before, &:after{
+                                content: "";
+                                position: absolute;
+                            }
+                            &:before{
+                                width: 25px;
+                                height: 25px;
+                                border-radius: 50%;
+                                border: 1px solid $blanco;
+                            }
+                            &:after{
+                                bottom: 0;
+                                right: 0;
+                                width: 1px;
+                                height: 10px;
+                                background-color: $blanco;
+                                transform: rotate(-45deg);
+                                transform-origin: bottom;
+                            }
+                        }
+                    }
+                }
+            }
+            @include mobile{
+                .topBar{
+                    .leftSide{
+                        width: 100%;
+                        justify-content: space-between;
+                        .logo{
+                            height: 70px;
+                        }
+                    }
+                    .rightSide{
+                        padding: 10px 0;
+                        justify-content: center;
+                        position: relative;
                     }
                 }
             }

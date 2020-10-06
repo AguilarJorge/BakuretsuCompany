@@ -3,9 +3,19 @@
 body{
     overflow-x: hidden;
     color: #666;
+    left: 0;
     padding: 0;
     margin: 0 auto;
+    position: relative;
+    transition: ease all .3s;
     --currencyPrefix: "$";
+    &.movedX{
+        left: 300px;
+        overflow: hidden;
+        @media only screen and (min-width: 1024px){
+            left: 0;
+        }
+    }
     *{
         font-family: 'Roboto Condensed', sans-serif;
         @media only screen and (max-width: 480px){
