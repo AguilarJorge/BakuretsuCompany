@@ -7,83 +7,198 @@
     .#{$pfx}container{
         @include container;
         padding: 50px 0;
-        .contenedorCards{
-            @include flex;
+        .productosWrapper{
+            @include flex(row, nowrap, flex-start, space-between);
             width: 100%;
-            .prod{
+            .filtros{
+                margin-top: 60px;
                 width: 300px;
-                .wrapper{
-                    margin: 10px;
-                    padding-top: 300px;
-                    box-sizing: border-box;
-                    position: relative;
-                    box-shadow: 0 0 20px 10px rgba($negro,.1);
-                    transition: ease all .3s;
-                    &:hover{
-                        transform: translateY(-10px);
-                        .imgProd{
-                            height: 450px;
-                        }
-                    }
-                    .colorProd{
-                        position: absolute;
-                        top: 0;
-                        left: 0;
-                        width: 100%;
-                        height: 200px;
-                        background-color: $primario;
-                    }
-                    .aFavs{
-                        position: absolute;
-                        top: 10px;
-                        right: 10px;
-                        cursor: pointer;
-                        z-index: $zup;
-                        svg{
-                            path, circle{
-                                stroke: $blanco;
-                            }
-                        }
-                    }
-                    .imgProd{
-                        @include imagen('', contain, center bottom);
-                        position: absolute;
-                        bottom: calc(100% - 300px);
-                        width: 100%;
-                        height: 300px;
-                        transition: ease all .3s;
-                    }
-                    .infoProd{
-                        padding: 20px;
+                .filtrosWrapper{
+                    width: 100%;
+                    .filtrosHeader{
+                        @include flex($jc: space-between);
+                        padding-left: 20px;
                         box-sizing: border-box;
-                        p{
-                            font-size: 14px;
-                            text-align: center;
-                        }
-                        .nombreProd{
-                            font-family: "Roboto",sans-serif;
-                            margin-bottom: 10px;
-                            font-size: 16px;
-                            font-weight: 600;
-                        }
-                        .actions{
-                            @include flex($jc: space-between);
-                            margin-top: 20px;
-                            .precioProd{
-                                font-family: "Roboto",sans-serif;
-                                color: $negro;
-                                font-size: 25px;
-                                font-weight: 600;
-                                &:before{
-                                    content: var(--currencyPrefix);
-                                    font-size: 20px;
-                                }
-                            }
+                        color: $negro;
+                        font-size: 20px;
+                        font-weight: 600;
+                        border-bottom: 1px solid rgba($negro,.1);
+                        .wrapperIcon{
+                            padding: 20px;
+                            border-left: 1px solid rgba($negro,.1);
                             .#{$pfx}icono{
                                 cursor: pointer;
                                 svg{
                                     path, circle{
                                         stroke: $negro;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    .grupo{
+                        border-bottom: 1px solid rgba($negro,.1);
+                        &:last-child{
+                            border-bottom: 0;
+                        }
+                        &.show{
+                            .headerGrupo{
+                                .textHeader{
+                                    &:before{
+                                        transform: rotate(-135deg) translateY(-2px);
+                                    }
+                                }
+                            }
+                        }
+                        &.squares{
+                            .contenidoGrupo{
+                                @include flex($jc: flex-start);
+                                .filtro{
+                                    @include flex;
+                                    width: 56px;
+                                    height: 56px;
+                                    padding: 5px;
+                                    margin: 2px;
+                                    border: 1px solid rgba($negro,.1);
+                                    text-align: center;
+                                }
+                            }
+                        }
+                        .headerGrupo{
+                            @include flex($jc: space-between);
+                            padding: 20px;
+                            box-sizing: border-box;
+                            color: $negro;
+                            font-size: 14px;
+                            font-weight: 600;
+                            text-transform: uppercase;
+                            .textHeader{
+                                @include flex;
+                                padding-left: 15px;
+                                position: relative;
+                                &:before{
+                                    content: "";
+                                    width: 5px;
+                                    height: 5px;
+                                    border: 1px solid;
+                                    position: absolute;
+                                    left: 0;
+                                    transform: rotate(45deg) translateY(-2px);
+                                    border-top: 0;
+                                    border-left: 0;
+                                    transition: ease all .3s;
+                                }
+                            }
+                            .icono{
+                                width: 20px;
+                                height: 20px;
+                                cursor: pointer;
+                                svg{
+                                    path, circle{
+                                        stroke: $negro;
+                                    }
+                                }
+                            }
+                        }
+                        .contenidoGrupo{
+                            .filtro{
+                                @include flex($jc: space-between);
+                                padding: 10px 20px;
+                                box-sizing: border-box;
+                                font-size: 14px;
+                                font-weight: 600;
+                                text-transform: uppercase;
+                                cursor: pointer;
+                                transition: ease all .3s;
+                                &:hover{
+                                    color: $secundario;
+                                }
+                                .nombre{
+                                    margin-left: 10px;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            .contenedorCards{
+                @include flex;
+                width: calc(100% - 300px);
+                .prod{
+                    width: 300px;
+                    .wrapper{
+                        margin: 60px 10px 10px 10px;
+                        padding-top: 300px;
+                        box-sizing: border-box;
+                        position: relative;
+                        box-shadow: 0 0 20px 10px rgba($negro,.1);
+                        transition: ease all .3s;
+                        &:hover{
+                            transform: translateY(-10px);
+                            .imgProd{
+                                height: 350px;
+                            }
+                        }
+                        .colorProd{
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+                            width: 100%;
+                            height: 200px;
+                            background-color: $primario;
+                        }
+                        .aFavs{
+                            position: absolute;
+                            top: 10px;
+                            right: 10px;
+                            cursor: pointer;
+                            z-index: $zup;
+                            svg{
+                                path, circle{
+                                    stroke: $blanco;
+                                }
+                            }
+                        }
+                        .imgProd{
+                            @include imagen('', contain, center bottom);
+                            position: absolute;
+                            bottom: calc(100% - 300px);
+                            width: 100%;
+                            height: 300px;
+                            transition: ease all .3s;
+                        }
+                        .infoProd{
+                            padding: 20px;
+                            box-sizing: border-box;
+                            p{
+                                font-size: 14px;
+                                text-align: center;
+                            }
+                            .nombreProd{
+                                font-family: "Roboto",sans-serif;
+                                margin-bottom: 10px;
+                                font-size: 16px;
+                                font-weight: 600;
+                            }
+                            .actions{
+                                @include flex($jc: space-between);
+                                margin-top: 20px;
+                                .precioProd{
+                                    font-family: "Roboto",sans-serif;
+                                    color: $negro;
+                                    font-size: 25px;
+                                    font-weight: 600;
+                                    &:before{
+                                        content: var(--currencyPrefix);
+                                        font-size: 20px;
+                                    }
+                                }
+                                .#{$pfx}icono{
+                                    cursor: pointer;
+                                    svg{
+                                        path, circle{
+                                            stroke: $negro;
+                                        }
                                     }
                                 }
                             }

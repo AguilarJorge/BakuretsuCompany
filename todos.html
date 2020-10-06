@@ -67,52 +67,276 @@
         <section class="bakuretsu_catalogo">
             <div class="bakuretsu_container">
                 <h1 class="bakuretsu_encabezadoDoble">Catálogo de <span class="breakTxt">productos</span></h1>
-                <div class="contenedorCards">
-                    <div class="prod">
-                        <div class="wrapper">
-                            <div class="colorProd"></div>
-                            <div class="bakuretsu_icono aFavs">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-                                    <path d="M47 5c-6.5 0-12.9 4.2-15 10-2.1-5.8-8.5-10-15-10A15 15 0 0 0 2 20c0 13 11 26 30 39 19-13 30-26 30-39A15 15 0 0 0 47 5z"></path>
-                                </svg>
-                            </div>
-                            <div class="imgProd" style="background-image: url(./img/batman.png);"></div>
-                            <div class="infoProd">
-                                <p class="nombreProd">ARTFX DC UNIVERSE Batman HUSH Renewal Package</p>
-                                <p class="extraInfo">壽屋(KOTOBUKIYA) Store</p>
-                                <div class="actions">
-                                    <p class="precioProd">9,999</p>
-                                    <div class="bakuretsu_icono">
+                <div class="productosWrapper">
+                    <div class="filtros">
+                        <div class="filtrosWrapper">
+                            <div class="filtrosHeader">
+                                <p>Filtros</p>
+                                <div class="wrapperIcon">
+                                    <div class="bakuretsu_icono" title="Borrar filtros">
                                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-                                            <path d="M2 6h10l10 40h32l8-24H16"></path>
-                                            <circle cx="23" cy="54" r="4"></circle>
-                                            <circle cx="49" cy="54" r="4"></circle>
+                                            <path d="M54.741 28.14a23.002 23.002 0 0 1-39.088 19.124"></path>
+                                            <path d="M9.065 33.62A23.008 23.008 0 0 1 31.917 8a22.934 22.934 0 0 1 16.262 6.732"></path>
+                                            <path d="M2 24l7.065 9.619L18 26"></path>
+                                            <path d="M62 38l-7.259-9.86L46 36"></path>
                                         </svg>
                                     </div>
                                 </div>
                             </div>
+                            <div class="grupo show">
+                                <div class="headerGrupo">
+                                    <p class="textHeader">Categorias</p>
+                                    <div class="bakuretsu_icono icono" title="Borrar filtro">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+                                            <path d="M41.999 20.002l-22 22m22 0L20 20"></path>
+                                        </svg>
+                                    </div>
+                                </div>
+                                <div class="contenidoGrupo">
+                                    <div class="filtro">
+                                        <p class="nombre">Lifestyle</p>
+                                        <span class="cantidad">5</span>
+                                    </div>
+                                    <div class="filtro">
+                                        <p class="nombre">Deportes</p>
+                                        <span class="cantidad">1</span>
+                                    </div>
+                                    <div class="filtro">
+                                        <p class="nombre">Tecnología</p>
+                                        <span class="cantidad">50</span>
+                                    </div>
+                                    <div class="filtro">
+                                        <p class="nombre">Celulares</p>
+                                        <span class="cantidad">3</span>
+                                    </div>
+                                    <div class="filtro">
+                                        <p class="nombre">Computadoras</p>
+                                        <span class="cantidad">28</span>
+                                    </div>
+                                    <div class="filtro">
+                                        <p class="nombre">Bebes</p>
+                                        <span class="cantidad">147</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="grupo show">
+                                <div class="headerGrupo">
+                                    <p class="textHeader">Marca</p>
+                                    <div class="bakuretsu_icono icono" title="Borrar filtro">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+                                            <path d="M41.999 20.002l-22 22m22 0L20 20"></path>
+                                        </svg>
+                                    </div>
+                                </div>
+                                <div class="contenidoGrupo">
+                                    <div class="filtro">
+                                        <p class="nombre">Adidas</p>
+                                        <span class="cantidad">5</span>
+                                    </div>
+                                    <div class="filtro">
+                                        <p class="nombre">Nike</p>
+                                        <span class="cantidad">1</span>
+                                    </div>
+                                    <div class="filtro">
+                                        <p class="nombre">Aeropostale</p>
+                                        <span class="cantidad">50</span>
+                                    </div>
+                                    <div class="filtro">
+                                        <p class="nombre">Perry Ellis</p>
+                                        <span class="cantidad">3</span>
+                                    </div>
+                                    <div class="filtro">
+                                        <p class="nombre">Cuidado con el perro</p>
+                                        <span class="cantidad">28</span>
+                                    </div>
+                                    <div class="filtro">
+                                        <p class="nombre">Samsung</p>
+                                        <span class="cantidad">147</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="grupo squares show">
+                                <div class="headerGrupo">
+                                    <p class="textHeader">Medidas (cm)</p>
+                                    <div class="bakuretsu_icono icono" title="Borrar filtro">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+                                            <path d="M41.999 20.002l-22 22m22 0L20 20"></path>
+                                        </svg>
+                                    </div>
+                                </div>
+                                <div class="contenidoGrupo">
+                                    <div class="filtro">10</div>
+                                    <div class="filtro">10.5</div>
+                                    <div class="filtro">11</div>
+                                    <div class="filtro">11.5</div>
+                                    <div class="filtro">12</div>
+                                    <div class="filtro">12.5</div>
+                                    <div class="filtro">13</div>
+                                    <div class="filtro">13.5</div>
+                                    <div class="filtro">14</div>
+                                    <div class="filtro">14.5</div>
+                                    <div class="filtro">15</div>
+                                    <div class="filtro">15.5</div>
+                                    <div class="filtro">16</div>
+                                    <div class="filtro">16.5</div>
+                                    <div class="filtro">17</div>
+                                    <div class="filtro">17.5</div>
+                                    <div class="filtro">18</div>
+                                    <div class="filtro">18.5</div>
+                                    <div class="filtro">19</div>
+                                    <div class="filtro">19.5</div>
+                                    <div class="filtro">20</div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="prod">
-                        <div class="wrapper">
-                            <div class="colorProd"></div>
-                            <div class="bakuretsu_icono aFavs">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-                                    <path d="M47 5c-6.5 0-12.9 4.2-15 10-2.1-5.8-8.5-10-15-10A15 15 0 0 0 2 20c0 13 11 26 30 39 19-13 30-26 30-39A15 15 0 0 0 47 5z"></path>
-                                </svg>
+                    <div class="contenedorCards">
+                        <div class="prod">
+                            <div class="wrapper">
+                                <div class="colorProd"></div>
+                                <div class="bakuretsu_icono aFavs">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+                                        <path d="M47 5c-6.5 0-12.9 4.2-15 10-2.1-5.8-8.5-10-15-10A15 15 0 0 0 2 20c0 13 11 26 30 39 19-13 30-26 30-39A15 15 0 0 0 47 5z"></path>
+                                    </svg>
+                                </div>
+                                <div class="imgProd" style="background-image: url(./img/batman.png);"></div>
+                                <div class="infoProd">
+                                    <p class="nombreProd">ARTFX DC UNIVERSE Batman HUSH Renewal Package</p>
+                                    <p class="extraInfo">壽屋(KOTOBUKIYA) Store</p>
+                                    <div class="actions">
+                                        <p class="precioProd">9,999</p>
+                                        <div class="bakuretsu_icono">
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+                                                <path d="M2 6h10l10 40h32l8-24H16"></path>
+                                                <circle cx="23" cy="54" r="4"></circle>
+                                                <circle cx="49" cy="54" r="4"></circle>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="imgProd" style="background-image: url(./img/batman.png);"></div>
-                            <div class="infoProd">
-                                <p class="nombreProd">ARTFX DC UNIVERSE Batman HUSH Renewal Package</p>
-                                <p class="extraInfo">壽屋(KOTOBUKIYA) Store</p>
-                                <div class="actions">
-                                    <p class="precioProd">9,999</p>
-                                    <div class="bakuretsu_icono">
-                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-                                            <path d="M2 6h10l10 40h32l8-24H16"></path>
-                                            <circle cx="23" cy="54" r="4"></circle>
-                                            <circle cx="49" cy="54" r="4"></circle>
-                                        </svg>
+                        </div>
+                        <div class="prod">
+                            <div class="wrapper">
+                                <div class="colorProd"></div>
+                                <div class="bakuretsu_icono aFavs">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+                                        <path d="M47 5c-6.5 0-12.9 4.2-15 10-2.1-5.8-8.5-10-15-10A15 15 0 0 0 2 20c0 13 11 26 30 39 19-13 30-26 30-39A15 15 0 0 0 47 5z"></path>
+                                    </svg>
+                                </div>
+                                <div class="imgProd" style="background-image: url(./img/batman.png);"></div>
+                                <div class="infoProd">
+                                    <p class="nombreProd">ARTFX DC UNIVERSE Batman HUSH Renewal Package</p>
+                                    <p class="extraInfo">壽屋(KOTOBUKIYA) Store</p>
+                                    <div class="actions">
+                                        <p class="precioProd">9,999</p>
+                                        <div class="bakuretsu_icono">
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+                                                <path d="M2 6h10l10 40h32l8-24H16"></path>
+                                                <circle cx="23" cy="54" r="4"></circle>
+                                                <circle cx="49" cy="54" r="4"></circle>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="prod">
+                            <div class="wrapper">
+                                <div class="colorProd"></div>
+                                <div class="bakuretsu_icono aFavs">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+                                        <path d="M47 5c-6.5 0-12.9 4.2-15 10-2.1-5.8-8.5-10-15-10A15 15 0 0 0 2 20c0 13 11 26 30 39 19-13 30-26 30-39A15 15 0 0 0 47 5z"></path>
+                                    </svg>
+                                </div>
+                                <div class="imgProd" style="background-image: url(./img/batman.png);"></div>
+                                <div class="infoProd">
+                                    <p class="nombreProd">ARTFX DC UNIVERSE Batman HUSH Renewal Package</p>
+                                    <p class="extraInfo">壽屋(KOTOBUKIYA) Store</p>
+                                    <div class="actions">
+                                        <p class="precioProd">9,999</p>
+                                        <div class="bakuretsu_icono">
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+                                                <path d="M2 6h10l10 40h32l8-24H16"></path>
+                                                <circle cx="23" cy="54" r="4"></circle>
+                                                <circle cx="49" cy="54" r="4"></circle>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="prod">
+                            <div class="wrapper">
+                                <div class="colorProd"></div>
+                                <div class="bakuretsu_icono aFavs">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+                                        <path d="M47 5c-6.5 0-12.9 4.2-15 10-2.1-5.8-8.5-10-15-10A15 15 0 0 0 2 20c0 13 11 26 30 39 19-13 30-26 30-39A15 15 0 0 0 47 5z"></path>
+                                    </svg>
+                                </div>
+                                <div class="imgProd" style="background-image: url(./img/batman.png);"></div>
+                                <div class="infoProd">
+                                    <p class="nombreProd">ARTFX DC UNIVERSE Batman HUSH Renewal Package</p>
+                                    <p class="extraInfo">壽屋(KOTOBUKIYA) Store</p>
+                                    <div class="actions">
+                                        <p class="precioProd">9,999</p>
+                                        <div class="bakuretsu_icono">
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+                                                <path d="M2 6h10l10 40h32l8-24H16"></path>
+                                                <circle cx="23" cy="54" r="4"></circle>
+                                                <circle cx="49" cy="54" r="4"></circle>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="prod">
+                            <div class="wrapper">
+                                <div class="colorProd"></div>
+                                <div class="bakuretsu_icono aFavs">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+                                        <path d="M47 5c-6.5 0-12.9 4.2-15 10-2.1-5.8-8.5-10-15-10A15 15 0 0 0 2 20c0 13 11 26 30 39 19-13 30-26 30-39A15 15 0 0 0 47 5z"></path>
+                                    </svg>
+                                </div>
+                                <div class="imgProd" style="background-image: url(./img/batman.png);"></div>
+                                <div class="infoProd">
+                                    <p class="nombreProd">ARTFX DC UNIVERSE Batman HUSH Renewal Package</p>
+                                    <p class="extraInfo">壽屋(KOTOBUKIYA) Store</p>
+                                    <div class="actions">
+                                        <p class="precioProd">9,999</p>
+                                        <div class="bakuretsu_icono">
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+                                                <path d="M2 6h10l10 40h32l8-24H16"></path>
+                                                <circle cx="23" cy="54" r="4"></circle>
+                                                <circle cx="49" cy="54" r="4"></circle>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="prod">
+                            <div class="wrapper">
+                                <div class="colorProd"></div>
+                                <div class="bakuretsu_icono aFavs">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+                                        <path d="M47 5c-6.5 0-12.9 4.2-15 10-2.1-5.8-8.5-10-15-10A15 15 0 0 0 2 20c0 13 11 26 30 39 19-13 30-26 30-39A15 15 0 0 0 47 5z"></path>
+                                    </svg>
+                                </div>
+                                <div class="imgProd" style="background-image: url(./img/batman.png);"></div>
+                                <div class="infoProd">
+                                    <p class="nombreProd">ARTFX DC UNIVERSE Batman HUSH Renewal Package</p>
+                                    <p class="extraInfo">壽屋(KOTOBUKIYA) Store</p>
+                                    <div class="actions">
+                                        <p class="precioProd">9,999</p>
+                                        <div class="bakuretsu_icono">
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+                                                <path d="M2 6h10l10 40h32l8-24H16"></path>
+                                                <circle cx="23" cy="54" r="4"></circle>
+                                                <circle cx="49" cy="54" r="4"></circle>
+                                            </svg>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
