@@ -48,4 +48,13 @@ $(function(){
             $(this).siblings('.buscador').find('.txtBuscador').focus();
         })
     }
+
+    //Producto a favoritos
+    $('.prod .aFavs').click(function(){
+        $(this).parents('.prod').toggleClass('esFav');
+    })
+    //Producto al carrito
+    $('.prod .alCarrito').click(function(){
+        $(this).parents('.prod').toggleClass('enCarrito');
+    })
 })

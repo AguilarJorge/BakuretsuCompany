@@ -136,6 +136,35 @@
                 .prod{
                     width: 300px;
                     transition: ease all .3s;
+                    &.esFav{
+                        .wrapper{
+                            .aFavs{
+                                transform: rotateX(360deg) scale(1.2);
+                                svg{
+                                    path, circle{
+                                        fill: #f44336;
+                                        transition-delay: .2s;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    &.enCarrito{
+                        .wrapper{
+                            .infoProd{
+                                .actions{
+                                    .alCarrito{
+                                        .inCart{
+                                            transform: scale(1);
+                                        }
+                                        .outCart{
+                                            transform: scale(0);
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
                     .wrapper{
                         margin: 60px 10px 10px 10px;
                         padding-top: 300px;
@@ -163,9 +192,12 @@
                             right: 10px;
                             cursor: pointer;
                             z-index: $zup;
+                            transition: cubic-bezier(0.68, -0.55, 0.27, 1.55) all .3s;
                             svg{
                                 path, circle{
                                     stroke: $blanco;
+                                    fill: transparent;
+                                    transition: ease all .3s;
                                 }
                             }
                         }
@@ -203,9 +235,16 @@
                                         font-size: 20px;
                                     }
                                 }
-                                .#{$pfx}icono{
+                                .alCarrito{
+                                    @include flex;
+                                    position: relative;
                                     cursor: pointer;
                                     svg{
+                                        position: absolute;
+                                        transition: cubic-bezier(0.68, -0.55, 0.27, 1.55) all .3s;
+                                        &.inCart{
+                                            transform: scale(0);
+                                        }
                                         path, circle{
                                             stroke: $negro;
                                         }
