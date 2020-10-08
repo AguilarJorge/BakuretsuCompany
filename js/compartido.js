@@ -57,4 +57,24 @@ $(function(){
     $('.bakuretsu_prod .alCarrito').click(function(){
         $(this).parents('.bakuretsu_prod').toggleClass('enCarrito');
     })
+
+
+    $('.configTheme .launcher').click(function(){
+        $(this).siblings('.dropContent').fadeToggle('fast');
+    })
+    $('.configTheme .dropContent .option').click(function(){
+        $(this).siblings('.option').removeClass('activo');
+        $(this).addClass('activo');
+        if ($(this).hasClass('transparent')) {
+            $('.bakuretsu_prod').addClass('transparent')
+        } else if ($(this).hasClass('enormal')) {
+            $('.bakuretsu_prod').removeClass('transparent')
+        } else if ($(this).hasClass('compressed')) {
+            $('.bakuretsu_prod').addClass('compressed')
+            $('.bakuretsu_filtros').addClass('compressed')
+        } else if ($(this).hasClass('tnormal')) {
+            $('.bakuretsu_prod').removeClass('compressed')
+            $('.bakuretsu_filtros').removeClass('compressed')
+        }
+    })
 })

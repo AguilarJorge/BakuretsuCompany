@@ -54,6 +54,13 @@
 .#{$pfx}prod{
     width: 300px;
     transition: ease all .3s;
+    &:not(.transparent){
+        .wrapper{
+            .imgProd{
+                background-image: url(../../img/imgX.jpg) !important;
+            }
+        }
+    }
     &.esFav{
         .wrapper{
             .infoProd{
@@ -110,9 +117,9 @@
             }
         }
         .wrapper{
+            margin: 60px 10px 10px 10px;
             padding-top: 300px;
             &:hover{
-                transform: translateY(-10px);
                 .imgProd{
                     height: 350px;
                 }
@@ -132,6 +139,7 @@
                 background-position: center bottom;
             }
             .infoProd{
+                height: 170px;
                 p{
                     font-size: 14px;
                 }
@@ -156,13 +164,45 @@
             }
         }
     }
+    &.compressed{
+        width: 250px;
+        .wrapper{
+            padding-top: 150px;
+            .imgProd{
+                bottom: calc(100% - 150px);
+                height: 150px;
+            }
+            .infoProd{
+                height: 130px;
+                padding: 10px;
+            }
+        }
+        &.transparent{
+            .wrapper{
+                &:hover{
+                    .imgProd{
+                        height: 200px;
+                    }
+                }
+                .colorProd{
+                    height: 100px;
+                }
+                .infoProd{
+                    height: 150px;
+                }
+            }
+        }
+    }
     .wrapper{
-        margin: 60px 10px 10px 10px;
+        margin: 10px;
         padding-top: 200px;
         box-sizing: border-box;
         position: relative;
         box-shadow: 0 0 20px 10px rgba($negro,.1);
         transition: ease all .3s;
+        &:hover{
+            transform: translateY(-10px);
+        }
         .colorProd{
             display: none;
         }
@@ -175,6 +215,8 @@
             transition: ease all .3s;
         }
         .infoProd{
+            @include flex(column, nowrap);
+            height: 150px;
             padding: 20px;
             box-sizing: border-box;
             p{
@@ -182,14 +224,19 @@
                 text-align: center;
             }
             .nombreProd{
+                @include ellipsisParrafo(2);
                 font-family: "Roboto",sans-serif;
                 margin-bottom: 10px;
                 font-size: 12px;
                 font-weight: 600;
             }
+            .extraInfo{
+                @include ellipsis;
+            }
             .actions{
                 @include flex($jc: space-between);
-                margin-top: 20px;
+                width: 100%;
+                margin-top: auto;
                 padding-top: 10px;
                 .preciosGrupo{
                     flex-grow: 1;
@@ -240,6 +287,98 @@
                         svg{
                             &.inCart{
                                 transform: scale(0);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    @include tablet{
+        &.compressed{
+            width: 50%;
+        }
+    }
+    @include mobile{
+        width: 100%;
+        &.transparent{
+            .wrapper{
+                margin: 20px 10px;
+                &:hover{
+                    .imgProd{
+                        height: 300px;
+                    }
+                }
+            }
+        }
+        &.compressed{
+            width: 50%;
+            .wrapper{
+                margin: 10px 5px;
+                padding-top: 120px;
+                .imgProd{
+                    height: 120px;
+                    bottom: calc(100% - 120px);
+                }
+                .infoProd{
+                    height: 150px;
+                    .actions{
+                        .preciosGrupo{
+                            .precio{
+                                font-size: 20px;
+                                &.precioOferta{
+                                    font-size: 15px;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            &:not(.transparent){
+                .wrapper{
+                    .infoProd{
+                        .actions{
+                            justify-content: center;
+                            .preciosGrupo{
+                                width: 100%;
+                                .precio{
+                                    text-align: center;
+                                    &.precioOferta{
+                                        width: 100%;
+                                    }
+                                }
+                            }
+                            .action{
+                                margin: 0 15px;
+                            }
+                        }
+                    }
+                }
+            }
+            &.transparent{
+                .wrapper{
+                    &:hover{
+                        .imgProd{
+                            height: 120px;
+                        }
+                    }
+                    .colorProd{
+                        height: 80px;
+                    }
+                    .infoProd{
+                        height: 140px;
+                        p{
+                            font-size: 12px;
+                        }
+                        .nombreProd{
+                            font-size: 14px;
+                        }
+                        .actions{
+                            .action{
+                                &.aFavs{
+                                    top: 10px;
+                                    right: 10px;
+                                }
                             }
                         }
                     }
@@ -732,6 +871,73 @@
                         padding: 10px 0;
                         justify-content: center;
                         position: relative;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+//Config
+.configTheme{
+    position: fixed;
+    left: 20px;
+    bottom: 20px;
+    z-index: 1000;
+    .icono{
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        background-color: $negro;
+        cursor: pointer;
+        svg{
+            overflow: hidden;
+            path, circle{
+                fill: none;
+                stroke: $blanco;
+                stroke-width: 2;
+                stroke-miterlimit: 10;
+            }
+        }
+    }
+    .dropContent{
+        display: none;
+        position: absolute;
+        bottom: 100%;
+        margin-bottom: 10px;
+        width: max-content;
+        min-width: 150px;
+        color: $blanco;
+        text-align: center;
+        background: $negro;
+        .grupo{
+            &:not(:last-child){
+                margin-bottom: 10px;
+            }
+            .header{
+                padding: 10px 20px;
+                letter-spacing: 1px;
+                text-transform: uppercase;
+                border-top: 1px dashed rgba($blanco,.2);
+                border-bottom: 1px dashed rgba($blanco,.2);
+                box-sizing: border-box;
+            }
+            .options{
+                .option{
+                    padding: 10px;
+                    cursor: pointer;
+                    transition: ease background-color .3s .1s;
+                    &:hover{
+                        transition-delay: 0s;
+                        background-color: rgba($blanco,.1);
+                    }
+                    &:before{
+                        content: "- ";
+                    }
+                    &.activo{
+                        font-weight: 600;
+                        color: $secundario;
                     }
                 }
             }

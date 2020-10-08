@@ -16,9 +16,11 @@
             .#{$pfx}filtros{
                 margin-top: 60px;
                 width: 300px;
+                min-width: 300px;
                 user-select: none;
                 .filtrosWrapper{
                     width: 100%;
+                    position: relative;
                     .filtrosHeader{
                         @include flex($jc: space-between);
                         padding-left: 20px;
@@ -28,10 +30,16 @@
                         font-weight: 600;
                         border-bottom: 1px solid rgba($negro,.1);
                         .wrapperIcon{
-                            padding: 20px;
                             border-left: 1px solid rgba($negro,.1);
                             .#{$pfx}icono{
+                                padding: 20px;
                                 cursor: pointer;
+                                &.cerrarFiltros{
+                                    display: none;
+                                    padding: 15px;
+                                    width: 45px;
+                                    height: 45px;
+                                }
                                 svg{
                                     path, circle{
                                         stroke: $negro;
@@ -128,10 +136,14 @@
                         }
                     }
                 }
+                &.compressed{
+                    width: 250px;
+                    min-width: 250px;
+                }
             }
             .contenedorCards{
                 @include flex;
-                width: calc(100% - 300px);
+                width: 100%;
                 transition: ease all .3s;
             }
         }
@@ -175,7 +187,7 @@
                     transform: rotate(-90deg) translateY(100%);
                     transform-origin: bottom left;
                     user-select: none;
-                    z-index: $zmenu;
+                    z-index: 99;
                     cursor: pointer;
                     .icono{
                         display: none;
@@ -190,15 +202,51 @@
                     background-color: $blanco;
                     z-index: $zmenu;
                     transition: ease all .3s;
+                    &.compressed{
+                        width: 300px;
+                        min-width: 300px;
+                    }
                     .filtrosWrapper{
                         @include flex(column, nowrap);
                         height: 100%;
+                        &:after{
+                            content: "";
+                            position: absolute;
+                            bottom: 0;
+                            left: 0;
+                            width: 100%;
+                            height: 50px;
+                            background: linear-gradient(transparent, $blanco);
+                            pointer-events: none;
+                        }
                         .filtrosHeader{
                             width: 100%;
+                            position: relative;
+                            &:after{
+                                content: "";
+                                position: absolute;
+                                top: calc(100% + 1px);
+                                left: 0;
+                                width: 100%;
+                                height: 50px;
+                                background: linear-gradient($blanco, transparent);
+                                pointer-events: none;
+                            }
+                            .wrapperIcon{
+                                .#{$pfx}icono{
+                                    &.borrarFiltros{
+                                        display: none;
+                                    }
+                                    &.cerrarFiltros{
+                                        display: block;
+                                    }
+                                }
+                            }
                         }
                         .wrapperGrupos{
                             @include scrollbars;
                             width: 100%;
+                            padding: 20px 0 50px 0;
                             margin-bottom: auto;
                             overflow-x: hidden;
                             overflow-y: auto;
@@ -211,13 +259,6 @@
                             }
                         }
 
-                    }
-                }
-                .contenedorCards{
-                    width: 100%;
-                    .prod{
-                        width: 50%;
-                        min-width: 300px;
                     }
                 }
             }
@@ -245,19 +286,6 @@
                         svg{
                             path, circle{
                                 stroke: $blanco;
-                            }
-                        }
-                    }
-                }
-                .contenedorCards{
-                    .prod{
-                        width: 100%;
-                        .wrapper{
-                            margin: 20px 10px;
-                            &:hover{
-                                .imgProd{
-                                    height: 300px;
-                                }
                             }
                         }
                     }

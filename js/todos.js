@@ -22,4 +22,9 @@ $(function(){
         $(this).parent().addClass('openFiltros');
         $('body').addClass('movedX');
     })
+    //Cerrar menu de filtros
+    $('.bakuretsu_catalogo .bakuretsu_filtros .cerrarFiltros').click(function () {
+        $(this).parents('.productosWrapper').removeClass('openFiltros');
+        $('body').removeClass('movedX');
+    })
 })
