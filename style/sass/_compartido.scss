@@ -51,6 +51,203 @@
         }
     }
 }
+.#{$pfx}prod{
+    width: 300px;
+    transition: ease all .3s;
+    &.esFav{
+        .wrapper{
+            .infoProd{
+                .actions{
+                    .action{
+                        &.aFavs{
+                            transform: rotateX(360deg) scale(1.2);
+                            svg{
+                                path, circle{
+                                    fill: $negro;
+                                    transition-delay: .2s;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    &.enCarrito{
+        .wrapper{
+            .infoProd{
+                .actions{
+                    .action{
+                        &.alCarrito{
+                            .inCart{
+                                transform: scale(1);
+                            }
+                            .outCart{
+                                transform: scale(0);
+                            }
+                        }   
+                    }
+                }
+            }
+        }
+    }
+    &.transparent{
+        &.esFav{
+            .wrapper{
+                .infoProd{
+                    .actions{
+                        .action{
+                            &.aFavs{
+                                svg{
+                                    path, circle{
+                                        fill: $blanco;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .wrapper{
+            padding-top: 300px;
+            &:hover{
+                transform: translateY(-10px);
+                .imgProd{
+                    height: 350px;
+                }
+            }
+            .colorProd{
+                display: block;
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 200px;
+                background-color: $primario;
+            }
+            .imgProd{
+                bottom: calc(100% - 300px);
+                height: 300px;
+                background-position: center bottom;
+            }
+            .infoProd{
+                p{
+                    font-size: 14px;
+                }
+                .nombreProd{
+                    font-size: 16px;
+                }
+                .actions{
+                    .action{
+                        &.aFavs{
+                            position: absolute;
+                            top: 20px;
+                            right: 20px;
+                            z-index: $zup;
+                            svg{
+                                path, circle{
+                                    stroke: $blanco;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .wrapper{
+        margin: 60px 10px 10px 10px;
+        padding-top: 200px;
+        box-sizing: border-box;
+        position: relative;
+        box-shadow: 0 0 20px 10px rgba($negro,.1);
+        transition: ease all .3s;
+        .colorProd{
+            display: none;
+        }
+        .imgProd{
+            @include imagen('', contain, center);
+            position: absolute;
+            bottom: calc(100% - 200px);
+            width: 100%;
+            height: 200px;
+            transition: ease all .3s;
+        }
+        .infoProd{
+            padding: 20px;
+            box-sizing: border-box;
+            p{
+                font-size: 11px;
+                text-align: center;
+            }
+            .nombreProd{
+                font-family: "Roboto",sans-serif;
+                margin-bottom: 10px;
+                font-size: 12px;
+                font-weight: 600;
+            }
+            .actions{
+                @include flex($jc: space-between);
+                margin-top: 20px;
+                padding-top: 10px;
+                .preciosGrupo{
+                    flex-grow: 1;
+                    position: relative;
+                    .precio{
+                        font-family: "Roboto",sans-serif;
+                        color: $negro;
+                        font-size: 25px;
+                        font-weight: 600;
+                        text-align: left;
+                        &.precioOferta{
+                            position: absolute;
+                            left: 0;
+                            top: -15px;
+                            color: red;
+                            font-size: 15px;
+                            text-decoration: line-through;
+                            &:before{
+                                font-size: 12px;
+                            }
+                        }
+                        &:before{
+                            content: var(--currencyPrefix);
+                            font-size: 20px;
+                        }
+                    }
+                }
+                .action{
+                    @include flex;
+                    margin-left: 15px;
+                    position: relative;
+                    transition: cubic-bezier(0.68, -0.55, 0.27, 1.55) all .3s;
+                    cursor: pointer;
+                    svg{
+                        position: absolute;
+                        transition: cubic-bezier(0.68, -0.55, 0.27, 1.55) all .3s;
+                        path, circle{
+                            stroke: $negro;
+                            fill: transparent;
+                            transition: ease all .3s;
+                        }
+                    }
+                    &.aFavs{
+                        width: 25px;
+                        height: 25px;
+                    }
+                    &.alCarrito{
+                        svg{
+                            &.inCart{
+                                transform: scale(0);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
 
 //Secciones
 .#{$pfx}menu{

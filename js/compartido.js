@@ -50,11 +50,11 @@ $(function(){
     }
 
     //Producto a favoritos
-    $('.prod .aFavs').click(function(){
-        $(this).parents('.prod').toggleClass('esFav');
+    $('.bakuretsu_prod .aFavs').click(function(){
+        $(this).parents('.bakuretsu_prod').toggleClass('esFav');
     })
     //Producto al carrito
-    $('.prod .alCarrito').click(function(){
-        $(this).parents('.prod').toggleClass('enCarrito');
+    $('.bakuretsu_prod .alCarrito').click(function(){
+        $(this).parents('.bakuretsu_prod').toggleClass('enCarrito');
     })
 })
