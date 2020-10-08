@@ -20,7 +20,6 @@
                 user-select: none;
                 .filtrosWrapper{
                     width: 100%;
-                    position: relative;
                     .filtrosHeader{
                         @include flex($jc: space-between);
                         padding-left: 20px;
@@ -209,29 +208,9 @@
                     .filtrosWrapper{
                         @include flex(column, nowrap);
                         height: 100%;
-                        &:after{
-                            content: "";
-                            position: absolute;
-                            bottom: 0;
-                            left: 0;
-                            width: 100%;
-                            height: 50px;
-                            background: linear-gradient(transparent, $blanco);
-                            pointer-events: none;
-                        }
                         .filtrosHeader{
                             width: 100%;
-                            position: relative;
-                            &:after{
-                                content: "";
-                                position: absolute;
-                                top: calc(100% + 1px);
-                                left: 0;
-                                width: 100%;
-                                height: 50px;
-                                background: linear-gradient($blanco, transparent);
-                                pointer-events: none;
-                            }
+                            min-height: 76px;
                             .wrapperIcon{
                                 .#{$pfx}icono{
                                     &.borrarFiltros{
@@ -246,7 +225,7 @@
                         .wrapperGrupos{
                             @include scrollbars;
                             width: 100%;
-                            padding: 20px 0 50px 0;
+                            padding-bottom: 50px;
                             margin-bottom: auto;
                             overflow-x: hidden;
                             overflow-y: auto;
