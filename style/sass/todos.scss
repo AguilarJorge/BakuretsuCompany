@@ -188,6 +188,10 @@
                     user-select: none;
                     z-index: 99;
                     cursor: pointer;
+                    transition: ease all .3s;
+                    &.oculto{
+                        transform: translateX(-100%);
+                    }
                     .icono{
                         display: none;
                     }

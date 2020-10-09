@@ -220,6 +220,7 @@
             padding: 20px;
             box-sizing: border-box;
             p{
+                width: 100%;
                 font-size: 11px;
                 text-align: center;
             }
@@ -888,6 +889,87 @@
                         justify-content: center;
                         position: relative;
                     }
+                }
+            }
+        }
+    }
+}
+.#{$pfx}footer{
+    background-color: $negro;
+    .#{$pfx}container{
+        @include container;
+        padding-top: 50px;
+        .logo{
+            @include imagen($size: contain);
+            width: 200px;
+            height: 100px;
+            margin: 0 auto;
+        }
+        .links{
+            @include flex;
+            width: 100%;
+            padding: 20px 0;
+            .link{
+                margin: 5px 30px;
+                color: $blanco;
+                transition: ease all .3s;
+                &:hover{
+                    color: $secundario;
+                }
+            }
+        }
+        .bottomBar{
+            @include flex;
+            border-top: 1px dashed rgba($blanco,.2);
+            .legend{
+                width: 50%;
+                color: $blanco;
+                text-align: right;
+            }
+            .social{
+                @include flex($jc: flex-start);
+                width: 50%;
+                padding: 10px 0;
+                .icono{
+                    width: 35px;
+                    height: 35px;
+                    margin: 5px;
+                    cursor: pointer;
+                    color: $blanco;
+                    transition: ease all .3s;
+                    &:hover{
+                        color: $secundario;
+                        transform: translateY(-5px);
+                        svg{
+                            transform: rotateY(360deg);
+                        }
+                    }
+                    svg{
+                        transition: ease all .3s;
+                        path, circle{
+                            fill: currentColor;
+                        }
+                    }
+                }
+            }
+        }
+        @include tablet{
+            .links{
+                .link{
+                    margin: 5px 10px;
+                }
+            }
+            .bottomBar{
+                flex-direction: column;
+                padding-bottom: 20px;
+                .social{
+                    width: 100%;
+                    padding: 20px 0;
+                    justify-content: center;
+                }
+                .legend{
+                    width: 100%;
+                    text-align: center;
                 }
             }
         }
