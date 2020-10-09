@@ -1,7 +1,7 @@
-@import "./vars";
-@import "./mixins";
-@import "./general";
-@import "./compartido";
+@import "./parciales/vars";
+@import "./parciales/mixins";
+@import "./parciales/general";
+@import "./parciales/compartido";
 
 .#{$pfx}bannerSlider{
   min-height: 100vh;

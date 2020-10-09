@@ -1,0 +1,174 @@
+@import "./parciales/vars";
+@import "./parciales/mixins";
+@import "./parciales/general";
+@import "./parciales/compartido";
+
+.#{$pfx}detalleProducto{
+  .#{$pfx}container{
+    @include container;
+    padding: 50px 0;
+    .detalleWrapper{
+      @include flex($ai: flex-start);
+      width: 100%;
+      .preview{
+        width: 400px;
+        border-radius: 30px;
+        border: 1px solid rgba($negro,.1);
+        box-shadow: 0 40px 20px -30px rgba($negro,.1);
+        box-sizing: border-box;
+        position: relative;
+        .aFavs{
+          position: absolute;
+          top: 20px;
+          right: 20px;
+          z-index: 50;
+          cursor: pointer;
+        }
+        .imagenesContainer{
+          width: 100%;
+          position: relative;
+          .imagenes{
+            width: 100%;
+            height: 400px;
+            border-radius: 30px;
+            position: relative;
+            overflow: hidden;
+            .imagenProd{
+              @include imagen($size: contain);
+              position: absolute;
+              top: 0;
+              left: 0;
+              width: 100%;
+              height: 100%;
+              background-color: $blanco;
+              opacity: 0;
+              transition: ease all .3s;
+              &.activa{
+                opacity: 1;
+              }
+              @for $i from -20 through -1 {
+                $child: 21 + $i;
+                $index: $i * -1;
+                &:nth-child(#{$child}){
+                  z-index: $index;
+                }
+              }
+            }
+          }
+        }
+        .controls{
+          @include flex($wrap: nowrap);
+          width: 100%;
+          margin: 10px auto;
+          .control{
+            @include flex;
+            width: 60px;
+            height: 60px;
+            min-width: 60px;
+            cursor: pointer;
+            .#{$pfx}icono{
+              width: 40px;
+              height: 40px;
+            }
+          }
+          .dots{
+            @include flex;
+            width: 100%;
+            .dot{
+              width: 15px;
+              height: 15px;
+              margin: 5px;
+              border-radius: 50%;
+              background-color: $gris;
+              cursor: pointer;
+              &.activa{
+                background-color: $primario;
+              }
+            }
+          }
+        }
+      }
+      .data{
+        width: calc(100% - 450px);
+        margin-left: 50px;
+        .nombre{
+          font-family: "Roboto",sans-serif;
+          color: $negro;
+          font-size: 40px;
+          font-weight: 900;
+          margin-bottom: 10px;
+        }
+        .fecha{
+          font-weight: 600;
+          margin-bottom: 30px;
+        }
+        .header{
+          margin-top: 20px;
+          margin-bottom: 10px;
+          font-size: 14px;
+          font-weight: 600;
+          letter-spacing: 1px;
+          text-transform: uppercase;
+        }
+        .lista{
+          padding-left: 20px;
+          li{
+            list-style-type: disc;
+          }
+        }
+        .disp{
+          margin-top: 20px;
+          font-weight: 600;
+        }
+        .extraInfo{
+          @include flex(row, nowrap, flex-start, space-between);
+          margin-top: 30px;
+          .precios{
+            text-align: right;
+            .precio{
+              font-family: "Roboto",sans-serif;
+              color: $negro;
+              font-size: 40px;
+              font-weight: 900;
+              &:before{
+                content: var(--currencyPrefix);
+                font-size: 30px;
+              }
+            }
+            .preciOferta{
+              @extend .precio;
+              color: red;
+              font-size: 25px;
+              text-decoration: line-through;
+              &:before{
+                font-size: 20px;
+              }
+            }
+            .selCantidad{
+              .controls{
+                @include flex($jc: flex-end);
+                .boton{
+                  background-color: $gris;
+                  cursor: pointer;
+                  svg{
+                    path, circle{
+                      stroke: $negro;
+                    }
+                  }
+                }
+                .num{
+                  font-family: "Roboto",sans-serif;
+                  padding: 0 10px;
+                  min-width: 40px;
+                  font-size: 20px;
+                  font-weight: 600;
+                  text-align: center;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
