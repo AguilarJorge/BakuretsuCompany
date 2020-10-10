@@ -3,6 +3,17 @@
 @import "./parciales/general";
 @import "./parciales/compartido";
 
+@keyframes aniNum {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+
 .#{$pfx}detalleProducto{
   .#{$pfx}container{
     @include container;
@@ -10,6 +21,7 @@
     .detalleWrapper{
       @include flex($ai: flex-start);
       width: 100%;
+      user-select: none;
       .preview{
         width: 400px;
         border-radius: 30px;
@@ -23,6 +35,23 @@
           right: 20px;
           z-index: 50;
           cursor: pointer;
+          transition: cubic-bezier(0.68, -0.55, 0.27, 1.55) all .3s;
+          &.esFav{
+            transform: scale(1.1);
+            svg{
+              transform: rotateY(180deg);
+              path, circle{
+                fill: $primario;
+              }
+            }
+          }
+          svg{
+            transition: cubic-bezier(0.4, 0, 0.2, 1) all .3s;
+            path, circle{
+              fill: transparent;
+              transition: ease all .3s;
+            }
+          }
         }
         .imagenesContainer{
           width: 100%;
@@ -42,9 +71,11 @@
               height: 100%;
               background-color: $blanco;
               opacity: 0;
+              transform: scale(.8);
               transition: ease all .3s;
               &.activa{
                 opacity: 1;
+                transform: scale(1);
               }
               @for $i from -20 through -1 {
                 $child: 21 + $i;
@@ -81,6 +112,7 @@
               border-radius: 50%;
               background-color: $gris;
               cursor: pointer;
+              transition: ease all .5s;
               &.activa{
                 background-color: $primario;
               }
@@ -111,19 +143,19 @@
           text-transform: uppercase;
         }
         .lista{
-          padding-left: 20px;
           li{
+            margin-left: 20px;
             list-style-type: disc;
           }
         }
         .disp{
-          margin-top: 20px;
+          margin-top: 10px;
           font-weight: 600;
         }
         .extraInfo{
           @include flex(row, nowrap, flex-start, space-between);
-          margin-top: 30px;
           .precios{
+            min-width: 250px;
             text-align: right;
             .precio{
               font-family: "Roboto",sans-serif;
@@ -137,19 +169,24 @@
             }
             .preciOferta{
               @extend .precio;
-              color: red;
-              font-size: 25px;
+              color: $primario;
+              font-size: 20px;
               text-decoration: line-through;
               &:before{
                 font-size: 20px;
               }
             }
             .selCantidad{
+              user-select: none;
               .controls{
                 @include flex($jc: flex-end);
                 .boton{
                   background-color: $gris;
                   cursor: pointer;
+                  &.disabled{
+                    opacity: .5;
+                    cursor: not-allowed;
+                  }
                   svg{
                     path, circle{
                       stroke: $negro;
@@ -163,8 +200,115 @@
                   font-size: 20px;
                   font-weight: 600;
                   text-align: center;
+                  &.animacion{
+                    animation: aniNum .2s;
+                  }
                 }
               }
+            }
+            .alCarrito{
+              display: inline-block;
+              user-select: none;
+              margin-top: 20px;
+              padding: 12px 25px;
+              color: $blanco;
+              font-size: 14px;
+              text-align: center;
+              letter-spacing: 1px;
+              text-transform: uppercase;
+              background-color: $primario;
+              cursor: pointer;
+              transition: ease all .3s;
+              &:hover{
+                transform: translateY(-5px);
+                box-shadow: 0 10px 10px 0 rgba($negro,.1);
+              }
+            }
+          }
+        }
+      }
+    }
+    @include desktop{
+      .detalleWrapper{
+        flex-direction: column;
+        position: relative;
+        .preview{
+          width: 100%;
+          max-width: 400px;
+          .imagenesContainer{
+            .imagenes{
+              height: 350px;
+            }
+          }
+        }
+        .data{
+          width: 100%;
+          margin-left: 0;
+          margin-top: 30px;
+          text-align: center;
+          .lista{
+            text-align: left;
+            ul{
+              @include flex($ai: flex-start);
+            }
+            li{
+              width: calc(50% - 20px);
+            }
+          }
+          .extraInfo{
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            .precios{
+              position: absolute;
+              right: 0;
+              top: calc(350px / 2);
+              transform: translateY(-50%);
+            }
+          }
+        }
+      }
+    }
+    @include tablet{
+      .detalleWrapper{
+        .preview{
+          margin: 0 auto;
+          .imagenesContainer{
+            .imagenes{
+              height: 300px;
+            }
+          }
+        }
+        .data{
+          .nombre{
+            font-size: 30px;
+          }
+          .extraInfo{
+            .precios{
+              top: 0;
+              margin-top: 20px;
+              transform: none;
+              text-align: center;
+              position: relative;
+              .selCantidad{
+                .controls{
+                  justify-content: center;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    @include responsivo(500px){
+      .detalleWrapper{
+        .data{
+          .nombre{
+            font-size: 20px;
+          }
+          .lista{
+            li{
+              width: 100%;
             }
           }
         }
