@@ -8,7 +8,7 @@ $(function(){
     for (let i = 1; i <= totalImgs; i++) {
       dots += `<div class="dot ${i == 1 ? 'activa':''}"></div>`;
     }
-    preview.append(`
+    $(`
       <div class="controls">
         <div class="control left">
           <div class="bakuretsu_icono">
@@ -28,7 +28,7 @@ $(function(){
           </div>
         </div>
       </div>`
-    );
+    ).insertAfter(preview.children('.imagenesContainer'));
     preview.on('click', '.control', function(){
       var imgActiva = preview.find('.imagenProd.activa');
       var indexActiva = imgActiva.index();

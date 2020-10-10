@@ -15,6 +15,66 @@
 }
 
 .#{$pfx}detalleProducto{
+  &.style2{
+    .#{$pfx}container{
+      .detalleWrapper{
+        .preview{
+          .precio{
+            font-family: "Roboto",sans-serif;
+            color: $negro;
+            font-size: 40px;
+            font-weight: 900;
+            text-align: center;
+            margin-bottom: 20px;
+            &:before{
+              content: var(--currencyPrefix);
+              font-size: 30px;
+            }
+          }
+          .preciOferta{
+            @extend .precio;
+            color: $primario;
+            font-size: 20px;
+            margin-bottom: 0;
+            text-align: center;
+            text-decoration: line-through;
+            &:before{
+              font-size: 20px;
+            }
+          }
+        }
+        .precios{
+          text-align: center;
+          margin-top: 20px;
+          .selCantidad{
+            margin-top: 10px;
+            .controls{
+              justify-content: center;
+            }
+          }
+          .alCarrito{
+            margin-bottom: 20px;
+            border-radius: 20px;
+          }
+        }
+      }
+      @include desktop{
+        .detalleWrapper{
+          .left{
+            width: 100%;
+            .preview{
+              margin: 0 auto;
+            }
+          }
+          .precios{
+            position: relative;
+            top: auto;
+            transform: none;
+          }
+        }
+      }
+    }
+  }
   .#{$pfx}container{
     @include container;
     padding: 50px 0;
@@ -154,76 +214,76 @@
         }
         .extraInfo{
           @include flex(row, nowrap, flex-start, space-between);
-          .precios{
-            min-width: 250px;
-            text-align: right;
-            .precio{
-              font-family: "Roboto",sans-serif;
-              color: $negro;
-              font-size: 40px;
-              font-weight: 900;
-              &:before{
-                content: var(--currencyPrefix);
-                font-size: 30px;
-              }
-            }
-            .preciOferta{
-              @extend .precio;
-              color: $primario;
-              font-size: 20px;
-              text-decoration: line-through;
-              &:before{
-                font-size: 20px;
-              }
-            }
-            .selCantidad{
-              user-select: none;
-              .controls{
-                @include flex($jc: flex-end);
-                .boton{
-                  background-color: $gris;
-                  cursor: pointer;
-                  &.disabled{
-                    opacity: .5;
-                    cursor: not-allowed;
-                  }
-                  svg{
-                    path, circle{
-                      stroke: $negro;
-                    }
-                  }
-                }
-                .num{
-                  font-family: "Roboto",sans-serif;
-                  padding: 0 10px;
-                  min-width: 40px;
-                  font-size: 20px;
-                  font-weight: 600;
-                  text-align: center;
-                  &.animacion{
-                    animation: aniNum .2s;
-                  }
-                }
-              }
-            }
-            .alCarrito{
-              display: inline-block;
-              user-select: none;
-              margin-top: 20px;
-              padding: 12px 25px;
-              color: $blanco;
-              font-size: 14px;
-              text-align: center;
-              letter-spacing: 1px;
-              text-transform: uppercase;
-              background-color: $primario;
+        }
+      }
+      .precios{
+        min-width: 250px;
+        text-align: right;
+        .precio{
+          font-family: "Roboto",sans-serif;
+          color: $negro;
+          font-size: 40px;
+          font-weight: 900;
+          &:before{
+            content: var(--currencyPrefix);
+            font-size: 30px;
+          }
+        }
+        .preciOferta{
+          @extend .precio;
+          color: $primario;
+          font-size: 20px;
+          text-decoration: line-through;
+          &:before{
+            font-size: 20px;
+          }
+        }
+        .selCantidad{
+          user-select: none;
+          .controls{
+            @include flex($jc: flex-end);
+            .boton{
+              background-color: $gris;
               cursor: pointer;
-              transition: ease all .3s;
-              &:hover{
-                transform: translateY(-5px);
-                box-shadow: 0 10px 10px 0 rgba($negro,.1);
+              &.disabled{
+                opacity: .5;
+                cursor: not-allowed;
+              }
+              svg{
+                path, circle{
+                  stroke: $negro;
+                }
               }
             }
+            .num{
+              font-family: "Roboto",sans-serif;
+              padding: 0 10px;
+              min-width: 40px;
+              font-size: 20px;
+              font-weight: 600;
+              text-align: center;
+              &.animacion{
+                animation: aniNum .2s;
+              }
+            }
+          }
+        }
+        .alCarrito{
+          display: inline-block;
+          user-select: none;
+          margin-top: 20px;
+          padding: 12px 25px;
+          color: $blanco;
+          font-size: 14px;
+          text-align: center;
+          letter-spacing: 1px;
+          text-transform: uppercase;
+          background-color: $primario;
+          cursor: pointer;
+          transition: ease all .3s;
+          &:hover{
+            transform: translateY(-5px);
+            box-shadow: 0 10px 10px 0 rgba($negro,.1);
           }
         }
       }
@@ -259,13 +319,13 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            .precios{
-              position: absolute;
-              right: 0;
-              top: calc(350px / 2);
-              transform: translateY(-50%);
-            }
           }
+        }
+        .precios{
+          position: absolute;
+          right: 0;
+          top: calc(350px / 2);
+          transform: translateY(-50%);
         }
       }
     }
@@ -283,18 +343,16 @@
           .nombre{
             font-size: 30px;
           }
-          .extraInfo{
-            .precios{
-              top: 0;
-              margin-top: 20px;
-              transform: none;
-              text-align: center;
-              position: relative;
-              .selCantidad{
-                .controls{
-                  justify-content: center;
-                }
-              }
+        }
+        .precios{
+          top: 0;
+          margin-top: 20px;
+          transform: none;
+          text-align: center;
+          position: relative;
+          .selCantidad{
+            .controls{
+              justify-content: center;
             }
           }
         }
