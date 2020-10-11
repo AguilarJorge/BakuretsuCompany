@@ -48,7 +48,6 @@ $(function(){
             $(this).siblings('.buscador').find('.txtBuscador').focus();
         })
     }
-
     //Producto a favoritos
     $('.bakuretsu_prod .aFavs').click(function(){
         $(this).parents('.bakuretsu_prod').toggleClass('esFav');
@@ -57,7 +56,26 @@ $(function(){
     $('.bakuretsu_prod .alCarrito').click(function(){
         $(this).parents('.bakuretsu_prod').toggleClass('enCarrito');
     })
-
+    //Animacion e incremento/decremento de la cantidad de articulos
+    if ($('.bakuretsu_numIncrements').length) {
+        $('.bakuretsu_numIncrements .botonIncDec').click(function () {
+            var numero = $(this).parents('.bakuretsu_numIncrements').find('.num');
+            if ($(this).hasClass('resta')) {
+                if (parseInt(numero.text()) == 1) return false;
+                if (parseInt(numero.text() - 1) == 1) {
+                    $(this).addClass('disabled');
+                }
+                numero.text(parseInt(numero.text()) - 1);
+            } else if ($(this).hasClass('suma')) {
+                $(this).siblings('.botonIncDec.disabled').removeClass('disabled');
+                numero.text(parseInt(numero.text()) + 1);
+            }
+            numero.addClass('animacion');
+            numero.one('animationend', function () {
+                numero.removeClass('animacion');
+            });
+        });
+    }
 
     $('.configTheme .launcher').click(function(){
         $(this).siblings('.dropContent').fadeToggle('fast');

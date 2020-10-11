@@ -3,17 +3,6 @@
 @import "./parciales/general";
 @import "./parciales/compartido";
 
-@keyframes aniNum {
-  0%, 100% {
-    transform: scale(1);
-    opacity: 1;
-  }
-  50% {
-    transform: scale(2);
-    opacity: 0;
-  }
-}
-
 .#{$pfx}detalleProducto{
   &.style2{
     .#{$pfx}container{
@@ -240,33 +229,6 @@
         }
         .selCantidad{
           user-select: none;
-          .controls{
-            @include flex($jc: flex-end);
-            .boton{
-              background-color: $gris;
-              cursor: pointer;
-              &.disabled{
-                opacity: .5;
-                cursor: not-allowed;
-              }
-              svg{
-                path, circle{
-                  stroke: $negro;
-                }
-              }
-            }
-            .num{
-              font-family: "Roboto",sans-serif;
-              padding: 0 10px;
-              min-width: 40px;
-              font-size: 20px;
-              font-weight: 600;
-              text-align: center;
-              &.animacion{
-                animation: aniNum .2s;
-              }
-            }
-          }
         }
         .alCarrito{
           display: inline-block;

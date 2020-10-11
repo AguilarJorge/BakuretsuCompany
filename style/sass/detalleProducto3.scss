@@ -1,0 +1,258 @@
+@import "./parciales/vars";
+@import "./parciales/mixins";
+@import "./parciales/general";
+@import "./parciales/compartido";
+
+.#{$pfx}detalleProducto{
+  .#{$pfx}container{
+    @include container(100%);
+    .imagenWrapper{
+      @include flex;
+      position: relative;
+      .absolutos{
+        pointer-events: none;
+        .colorProd{
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 500px;
+          height: 100%;
+          background-color: rgb(50, 56, 107);
+        }
+        .bigName{
+          font-family: "Roboto",sans-serif;
+          position: absolute;
+          bottom: 0;
+          right: 0;
+          margin: 0;
+          height: 230px;
+          opacity: .2;
+          font-size: 200px;
+          text-align: right;
+          overflow: hidden;
+        }
+      }
+      .contenido{
+        @include flex($jc: space-between);
+        @include container;
+        position: relative;
+        .prodImg{
+          @include imagen($size: contain);
+          width: 500px;
+          height: 100%;
+          min-height: 600px;
+          margin-left: 10%;
+          position: relative;
+        }
+        .data{
+          width: calc(100% - 500px - 10%);
+          box-sizing: border-box;
+          text-align: right;
+          p{
+            color: $negro;
+            font-size: 18px;
+          }
+          .precio{
+            font-family: 'Roboto', sans-serif;
+            margin-bottom: 10px;
+            font-size: 70px;
+            font-weight: 900;
+            &.oferta{
+              margin-top: 20px;
+              margin-bottom: 0;
+              font-size: 35px;
+              color: red;
+              text-decoration: line-through;
+              &:before{
+                font-size: 25px;
+              }
+            }
+            &:before{
+              content: var(--currencyPrefix);
+              font-size: 40px;
+            }
+          }
+          .aFavs{
+            margin-left: auto;
+            cursor: pointer;
+            transition: cubic-bezier(0.68, -0.55, 0.27, 1.55) all .3s;
+            &.esFav{
+              transform: scale(1.1);
+              svg{
+                transform: rotateY(180deg);
+                path, circle{
+                  fill: $primario;
+                }
+              }
+            }
+            svg{
+              transition: cubic-bezier(0.4, 0, 0.2, 1) all .3s;
+              path, circle{
+                fill: transparent;
+                transition: ease all .3s;
+              }
+            }
+          }
+
+          .botones{
+            @include flex($jc: flex-end);
+            margin-top: 40px;
+            .controls{
+              margin-top: 10px;
+            }
+            .boton{
+              margin-top: 10px;
+              margin-left: 20px;
+              padding: 14px 25px;
+              color: $negro;
+              font-size: 12px;
+              font-weight: 600;
+              border-radius: 10px;
+              letter-spacing: 1px;
+              text-transform: uppercase;
+              background-color: transparent;
+              border: 1px solid $negro;
+              transition: ease all .3s;
+              cursor: pointer;
+
+              &:hover{
+                background-color: $negro;
+                color: $blanco;
+                transform: translateY(-5px);
+                box-shadow: 0 10px 10px 0 rgba($negro,.2);
+              }
+            }
+          }
+          .infoExtra{
+            @include flex($jc: flex-end);
+            .ifo{
+              @include flex;
+              margin-top: 20px;
+              margin-left: 20px;
+              p{
+                font-size: 14px;
+                font-weight: 600;
+              }
+              .#{$pfx}icono{
+                width: 20px;
+                height: 20px;
+                margin-right: 10px;
+              }
+            }
+          }
+        }
+      }
+    }
+    .descripcionWrapper{
+      @include container;
+      padding: 50px 0;
+      text-align: center;
+      position: relative;
+      .groupText{
+        margin-bottom: 30px;
+        &:last-child{
+          margin-bottom: 0px;
+        }
+      }
+      .boldText{
+        font-weight: 600;
+        margin-bottom: 10px;
+      }
+      .headerText{
+        @extend .boldText;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+      }
+      .tabla{
+        width: 100%;
+        margin: 0 auto;
+        border: 1px solid rgba($negro,.1);
+        background-color: $blanco;
+        &.sencilla{
+          max-width: 400px;
+        }
+        .row{
+          border-bottom: 1px solid rgba($negro,.1);
+          padding: 10px;
+          &:last-child{
+            border-bottom: 0;
+          }
+        }
+      }
+    }
+    @include desktop{
+      .imagenWrapper{
+        .absolutos{
+          .colorProd{
+            width: 300px;
+          }
+          .bigName{
+            font-size: 100px;
+            height: 120px;
+          }
+        }
+        .contenido{
+          .prodImg{
+            width: 50%;
+            margin-left: 0;
+          }
+          .data{
+            width: 50%;
+          }
+        }
+      }
+    }
+    @include tablet{
+      overflow: hidden;
+      .imagenWrapper{
+        .absolutos{
+          .colorProd{
+            display: none;
+          }
+          .bigName{
+            top: 0;
+            left: 0;
+            opacity: .1;
+            right: auto;
+            bottom: auto;
+            text-align: left;
+            width: max-content;
+            transform-origin: top left;
+            transform: rotate(90deg) translateY(-100%);
+          }
+        }
+        .contenido{
+          flex-direction: column;
+          justify-content: center;
+          .prodImg{
+            width: 100%;
+            max-width: 400px;
+            height: 400px;
+            min-height: auto;
+          }
+          .data{
+            width: 100%;
+            text-align: center;
+            .botones{
+              flex-direction: column;
+              .controls{
+                margin: 20px auto;
+              }
+              .boton{
+                margin: 10px 20px;
+                color: $blanco;
+                background-color: $negro;
+              }
+            }
+            .infoExtra{
+              justify-content: center;
+              .info{
+                margin: 10px 20px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

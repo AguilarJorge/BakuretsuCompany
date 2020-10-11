@@ -1,6 +1,17 @@
 @import "./vars";
 @import "./mixins";
 
+@keyframes aniNum {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+
 //Elementos
 .#{$pfx}encabezadoDoble{
     @include flex(column, nowrap, flex-start, flex-start, flex-start);
@@ -387,6 +398,34 @@
                     }
                 }
             }
+        }
+    }
+}
+.#{$pfx}numIncrements{
+    @include flex($jc: flex-end);
+    user-select: none;
+    .botonIncDec{
+        background-color: $gris;
+        cursor: pointer;
+        &.disabled{
+            opacity: .5;
+            cursor: not-allowed;
+        }
+        svg{
+            path, circle{
+                stroke: $negro;
+            }
+        }
+    }
+    .num{
+        font-family: "Roboto",sans-serif;
+        padding: 0 10px;
+        min-width: 40px;
+        font-size: 20px;
+        font-weight: 600;
+        text-align: center;
+        &.animacion{
+            animation: aniNum .2s;
         }
     }
 }
