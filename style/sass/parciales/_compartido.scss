@@ -306,8 +306,9 @@
             .wrapper{
                 margin: 20px 10px;
                 &:hover{
+                    margin-top: 60px;
                     .imgProd{
-                        height: 300px;
+                        height: 350px;
                     }
                 }
             }
@@ -358,9 +359,10 @@
             }
             &.transparent{
                 .wrapper{
+                    margin: 40px 5px 10px 5px;
                     &:hover{
                         .imgProd{
-                            height: 120px;
+                            height: 150px;
                         }
                     }
                     .colorProd{
