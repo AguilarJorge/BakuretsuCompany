@@ -4,6 +4,86 @@
 @import "./parciales/compartido";
 
 .#{$pfx}detalleProducto{
+  &.orig{
+    .#{$pfx}container{
+      .detalleWrapper{
+        .preview{
+          .precio{
+            font-family: "Roboto", sans-serif;
+            color: $negro;
+            font-size: 40px;
+            font-weight: 900;
+            text-align: center;
+            margin-bottom: 20px;
+            &:before{
+              content: var(--currencyPrefix);
+              font-size: 30px;
+            }
+          }
+          .preciOferta{
+            @extend .precio;
+            color: $primario;
+            font-size: 20px;
+            margin-bottom: 0;
+            text-align: center;
+            text-decoration: line-through;
+            &:before{
+              font-size: 20px;
+            }
+          }
+        }
+        .precios{
+          @include flex($jc: flex-start);
+          margin-bottom: 30px;
+          text-align: center;
+          .alCarrito{
+            border-radius: 20px;
+          }
+          .pRight{
+            margin-left: 50px;
+            .selCantidad{
+              .header{
+                text-align: right;
+              }
+              .controls{
+                .botonIncDec{
+                  padding: 3px;
+                  border-radius: 50%;
+                }
+              }
+            }
+          }
+        }
+      }
+      @include desktop{
+        .detalleWrapper{
+          .precios{
+            flex-direction: column;
+            align-items: flex-end;
+            text-align: right;
+            .pRight{
+              margin-left: 0;
+            }
+          }
+        }
+      }
+      @include tablet{
+        .detalleWrapper{
+          .precios{
+            align-items: center;
+            margin-top: 0;
+            margin-bottom: 30px;
+            .selCantidad{
+              margin-top: 10px;
+            }
+            .alCarrito{
+              border-radius: 20px;
+            }
+          }
+        }
+      }
+    }
+  }
   &.style2{
     .#{$pfx}container{
       .detalleWrapper{
@@ -49,8 +129,7 @@
       }
       @include desktop{
         .detalleWrapper{
-          .left{
-            width: 100%;
+          .leftSide{
             .preview{
               margin: 0 auto;
             }
@@ -71,6 +150,50 @@
       @include flex($ai: flex-start);
       width: 100%;
       user-select: none;
+      .enviosTag{
+        @include flex($jc: flex-start);
+        margin: 30px auto;
+        font-weight: 600;
+        .icono{
+          width: 25px;
+          height: 25px;
+          margin-right: 10px;
+        }
+      }
+      .nombre {
+        font-family: "Roboto", sans-serif;
+        color: $negro;
+        font-size: 40px;
+        font-weight: 900;
+        margin-bottom: 10px;
+      }
+      .infClone{
+        margin-bottom: 20px;
+      }
+      >.infClone{
+        display: none;
+      }
+      .row{
+        @include flex($jc: flex-start);
+        .rowItem{
+          position: relative;
+          &:not(:last-child){
+            margin-right: 10px;
+            &:after{
+              content: "";
+              position: absolute;
+              right: -5px;
+              width: 1px;
+              height: 100%;
+              background-color: $negro;
+            }
+          }
+        }
+        .boldTxt{
+          font-family: "Roboto", sans-serif;
+          font-weight: 600;
+        }
+      }
       .preview{
         width: 400px;
         border-radius: 30px;
@@ -78,6 +201,9 @@
         box-shadow: 0 40px 20px -30px rgba($negro,.1);
         box-sizing: border-box;
         position: relative;
+        .toClone{
+          display: none;
+        }
         .aFavs{
           position: absolute;
           top: 20px;
@@ -171,14 +297,7 @@
       }
       .data{
         width: calc(100% - 450px);
-        margin-left: 50px;
-        .nombre{
-          font-family: "Roboto",sans-serif;
-          color: $negro;
-          font-size: 40px;
-          font-weight: 900;
-          margin-bottom: 10px;
-        }
+        margin: auto 0 auto 50px;
         .fecha{
           font-weight: 600;
           margin-bottom: 30px;
@@ -254,6 +373,12 @@
       .detalleWrapper{
         flex-direction: column;
         position: relative;
+        .row, .enviosTag{
+          justify-content: center;
+        }
+        .leftSide{
+          width: 100%;
+        }
         .preview{
           width: 100%;
           max-width: 400px;
@@ -293,8 +418,21 @@
     }
     @include tablet{
       .detalleWrapper{
+        .nombre {
+          font-size: 30px;
+        }
+        >.infClone {
+          display: block;
+          text-align: center;
+        }
+        .row{
+          justify-content: center;
+        }
         .preview{
           margin: 0 auto;
+          .toClone{
+            display: block;
+          }
           .imagenesContainer{
             .imagenes{
               height: 300px;
@@ -302,8 +440,8 @@
           }
         }
         .data{
-          .nombre{
-            font-size: 30px;
+          .infClone{
+            display: none;
           }
         }
         .precios{
@@ -312,6 +450,9 @@
           transform: none;
           text-align: center;
           position: relative;
+          .hop{
+            display: none;
+          }
           .selCantidad{
             .controls{
               justify-content: center;
@@ -322,10 +463,15 @@
     }
     @include responsivo(500px){
       .detalleWrapper{
-        .data{
-          .nombre{
-            font-size: 20px;
+        .nombre {
+          font-size: 20px;
+        }
+        .row{
+          .rowItem{
+            font-size: 14px;
           }
+        }
+        .data{
           .lista{
             li{
               width: 100%;

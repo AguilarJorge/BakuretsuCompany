@@ -71,4 +71,12 @@ $(function(){
     let altura = $('.bakuretsu_menu .fixedWrapper').outerHeight(true);
     $('.bakuretsu_detalleProducto .imagenWrapper').css('min-height', `calc(100vh - ${altura}px)`);
   }
+  //...
+  if ($('.bakuretsu_detalleProducto.orig').length) {
+    let seccion = $('.bakuretsu_detalleProducto.orig');
+    let tit = seccion.find('.infClone').clone();
+    let prc = seccion.find('.toClone').clone();
+    seccion.find('.detalleWrapper').prepend(tit);
+    seccion.find('.detalleWrapper .leftSide .preview').append(prc);
+  }
 })
