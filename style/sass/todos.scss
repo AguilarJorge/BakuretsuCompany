@@ -146,6 +146,37 @@
                 transition: ease all .3s;
             }
         }
+        .paginacion{
+          @include flex($wrap: nowrap);
+          width: 100%;
+          margin-top: 20px;
+          .arrow{
+            @include flex;
+            min-width: 18px;
+            height: 18px;
+            margin: 5px;
+            padding: 5px;
+            color: $negro;
+            font-weight: 600;
+            text-align: center;
+            border-radius: 50%;
+            background-color: $gris;
+            box-shadow: 0 5px 10px 0 rgba($negro,.3);
+          }
+          .nums{
+            @include flex;
+            margin: 0 10px;
+            .page{
+              @extend .arrow;
+              min-width: 20px;
+              height: 20px;
+              &.activo{
+                color: $blanco;
+                background-color: $primario;
+              }
+            }
+          }
+        }
         @include desktop{
             .productosWrapper{
                 &:after{
