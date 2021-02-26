@@ -12,967 +12,945 @@
   }
 }
 
+body{
+  &.darken{
+    .#{$pfx}menu{
+      .fixedWrapper{
+        .topBar{
+          .rightSide{
+            .icons{
+              .#{$pfx}icono{
+                &.themeToggle{
+                  .light{
+                    opacity: 0;
+                    transform: translateY(100%);
+                  }
+                  .dark{
+                    opacity: 1;
+                    transform: none;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
 //Elementos
 .#{$pfx}encabezadoDoble{
-    @include flex(column, nowrap, flex-start, flex-start, flex-start);
-    font-family: "Roboto Condensed",sans-serif;
-    margin-bottom: 30px;
-    color: $negro;
-    font-size: 40px;
+  @include flex(column, nowrap, flex-start, flex-start, flex-start);
+  font-family: "Roboto Condensed",sans-serif;
+  margin-bottom: 30px;
+  color: $negro;
+  font-size: 40px;
+  font-weight: 900;
+  letter-spacing: 7px;
+  text-transform: uppercase;
+  text-align: left;
+  .breakTxt{
+    font-family: "Roboto",sans-serif;
+    font-size: 60px;
     font-weight: 900;
-    letter-spacing: 7px;
-    text-transform: uppercase;
-    text-align: left;
-    .breakTxt{
-        font-family: "Roboto",sans-serif;
-        font-size: 60px;
-        font-weight: 900;
-        line-height: 45px;
-        letter-spacing: 0;
-    }
+    line-height: 45px;
+    letter-spacing: 0;
+  }
 }
 .#{$pfx}encabezado{
-    font-family: 'Roboto', sans-serif;
-    margin-bottom: 30px;
-    color: $negro;
-    font-size: 50px;
-    font-weight: 900;
-    text-align: center;
-    text-transform: uppercase;
+  font-family: 'Roboto', sans-serif;
+  margin-bottom: 30px;
+  color: $negro;
+  font-size: 50px;
+  font-weight: 900;
+  text-align: center;
+  text-transform: uppercase;
 }
 .#{$pfx}underDecorado{
-    color: $primario;
-    font-weight: 900;
-    text-decoration: underline wavy;
-    &-2{
-        @extend .#{$pfx}underDecorado;
-        color: $secundario;
-    }
+  color: $primario;
+  font-weight: 900;
+  text-decoration: underline wavy;
+  &-2{
+    @extend .#{$pfx}underDecorado;
+    color: $secundario;
+  }
 }
 .#{$pfx}icono{
-    width: 35px;
-    height: 35px;
-    color: $primario;
-    svg{
-        overflow: hidden;
-        path, circle{
-            fill: none;
-            stroke: currentColor;
-            stroke-miterlimit: 10;
-            stroke-width: 2;
-        }
+  width: 35px;
+  height: 35px;
+  color: $primario;
+  svg{
+    overflow: hidden;
+    path, circle{
+      fill: none;
+      stroke: currentColor;
+      stroke-miterlimit: 10;
+      stroke-width: 2;
     }
+  }
 }
 .#{$pfx}prod{
-    width: 300px;
-    transition: ease all .3s;
-    &:not(.transparent){
-        .wrapper{
-            .imgProd{
-                background-image: url(../../img/imgX.jpg) !important;
-            }
-        }
+  width: 300px;
+  transition: ease all .3s;
+  &:not(.transparent){
+    .wrapper{
+      .imgProd{
+        background-image: url(../../img/imgX.jpg) !important;
+      }
     }
+  }
+  &.esFav{
+    .wrapper{
+      .infoProd{
+        .actions{
+          .action{
+            &.aFavs{
+              transform: rotateX(360deg) scale(1.2);
+              svg{
+                path, circle{
+                  fill: $negro;
+                  transition-delay: .2s;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  &.enCarrito{
+    .wrapper{
+      .infoProd{
+        .actions{
+          .action{
+            &.alCarrito{
+              .inCart{
+                transform: scale(1);
+              }
+              .outCart{
+                transform: scale(0);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  &.transparent{
     &.esFav{
-        .wrapper{
-            .infoProd{
-                .actions{
-                    .action{
-                        &.aFavs{
-                            transform: rotateX(360deg) scale(1.2);
-                            svg{
-                                path, circle{
-                                    fill: $negro;
-                                    transition-delay: .2s;
-                                }
-                            }
-                        }
-                    }
+      .wrapper{
+        .infoProd{
+          .actions{
+            .action{
+              &.aFavs{
+                svg{
+                  path, circle{
+                    fill: $blanco;
+                  }
                 }
+              }
             }
+          }
         }
-    }
-    &.enCarrito{
-        .wrapper{
-            .infoProd{
-                .actions{
-                    .action{
-                        &.alCarrito{
-                            .inCart{
-                                transform: scale(1);
-                            }
-                            .outCart{
-                                transform: scale(0);
-                            }
-                        }   
-                    }
-                }
-            }
-        }
-    }
-    &.transparent{
-        &.esFav{
-            .wrapper{
-                .infoProd{
-                    .actions{
-                        .action{
-                            &.aFavs{
-                                svg{
-                                    path, circle{
-                                        fill: $blanco;
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-        .wrapper{
-            margin: 60px 10px 10px 10px;
-            padding-top: 300px;
-            &:hover{
-                .imgProd{
-                    height: 350px;
-                }
-            }
-            .colorProd{
-                display: block;
-                position: absolute;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 200px;
-                background-color: $primario;
-            }
-            .imgProd{
-                bottom: calc(100% - 300px);
-                height: 300px;
-                background-position: center bottom;
-            }
-            .infoProd{
-                height: 170px;
-                p{
-                    font-size: 14px;
-                }
-                .nombreProd{
-                    font-size: 16px;
-                }
-                .actions{
-                    .action{
-                        &.aFavs{
-                            position: absolute;
-                            top: 20px;
-                            right: 20px;
-                            z-index: $zup;
-                            svg{
-                                path, circle{
-                                    stroke: $blanco;
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
-    &.compressed{
-        width: 250px;
-        .wrapper{
-            padding-top: 150px;
-            .imgProd{
-                bottom: calc(100% - 150px);
-                height: 150px;
-            }
-            .infoProd{
-                height: 130px;
-                padding: 10px;
-            }
-        }
-        &.transparent{
-            .wrapper{
-                &:hover{
-                    .imgProd{
-                        height: 200px;
-                    }
-                }
-                .colorProd{
-                    height: 100px;
-                }
-                .infoProd{
-                    height: 150px;
-                }
-            }
-        }
+      }
     }
     .wrapper{
-        margin: 10px;
-        padding-top: 200px;
-        box-sizing: border-box;
-        position: relative;
-        box-shadow: 0 0 20px 10px rgba($negro,.1);
-        transition: ease all .3s;
+      margin: 60px 10px 10px 10px;
+      padding-top: 300px;
+      &:hover{
+        .imgProd{
+          height: 350px;
+        }
+      }
+      .colorProd{
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 200px;
+        background-color: $primario;
+      }
+      .imgProd{
+        bottom: calc(100% - 300px);
+        height: 300px;
+        background-position: center bottom;
+      }
+      .infoProd{
+        height: 170px;
+        p{
+          font-size: 14px;
+        }
+        .nombreProd{
+          font-size: 16px;
+        }
+        .actions{
+          .action{
+            &.aFavs{
+              position: absolute;
+              top: 20px;
+              right: 20px;
+              z-index: $zup;
+              svg{
+                path, circle{
+                  stroke: $blanco;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  &.compressed{
+    width: 250px;
+    .wrapper{
+      padding-top: 150px;
+      .imgProd{
+        bottom: calc(100% - 150px);
+        height: 150px;
+      }
+      .infoProd{
+        height: 130px;
+        padding: 10px;
+      }
+    }
+    &.transparent{
+      .wrapper{
         &:hover{
-            transform: translateY(-10px);
+          .imgProd{
+            height: 200px;
+          }
         }
         .colorProd{
-            display: none;
-        }
-        .imgProd{
-            @include imagen('', contain, center);
-            position: absolute;
-            bottom: calc(100% - 200px);
-            width: 100%;
-            height: 200px;
-            transition: ease all .3s;
+          height: 100px;
         }
         .infoProd{
-            @include flex(column, nowrap);
-            height: 150px;
-            padding: 20px;
-            box-sizing: border-box;
-            p{
+          height: 150px;
+        }
+      }
+    }
+  }
+  .wrapper{
+    margin: 10px;
+    padding-top: 200px;
+    box-sizing: border-box;
+    position: relative;
+    box-shadow: 0 0 20px 10px rgba($negro,.1);
+    transition: ease all .3s;
+    &:hover{
+      transform: translateY(-10px);
+    }
+    .colorProd{
+      display: none;
+    }
+    .imgProd{
+      @include imagen('', contain, center);
+      position: absolute;
+      bottom: calc(100% - 200px);
+      width: 100%;
+      height: 200px;
+      transition: ease all .3s;
+    }
+    .infoProd{
+      @include flex(column, nowrap);
+      height: 150px;
+      padding: 20px;
+      box-sizing: border-box;
+      p{
+        width: 100%;
+        font-size: 11px;
+        text-align: center;
+      }
+      .nombreProd{
+        @include ellipsisParrafo(2);
+        font-family: "Roboto",sans-serif;
+        margin-bottom: 10px;
+        font-size: 12px;
+        font-weight: 600;
+      }
+      .extraInfo{
+        @include ellipsis;
+      }
+      .actions{
+        @include flex($jc: space-between);
+        width: 100%;
+        margin-top: auto;
+        padding-top: 10px;
+        .preciosGrupo{
+          flex-grow: 1;
+          position: relative;
+          .precio{
+            font-family: "Roboto",sans-serif;
+            color: $negro;
+            font-size: 25px;
+            font-weight: 600;
+            text-align: left;
+            &.precioOferta{
+              position: absolute;
+              left: 0;
+              top: -15px;
+              color: red;
+              font-size: 15px;
+              text-decoration: line-through;
+              &:before{
+                font-size: 12px;
+              }
+            }
+            &:before{
+              content: var(--currencyPrefix);
+              font-size: 20px;
+            }
+          }
+        }
+        .action{
+          @include flex;
+          margin-left: 15px;
+          position: relative;
+          transition: cubic-bezier(0.68, -0.55, 0.27, 1.55) all .3s;
+          cursor: pointer;
+          svg{
+            position: absolute;
+            transition: cubic-bezier(0.68, -0.55, 0.27, 1.55) all .3s;
+            path, circle{
+              stroke: $negro;
+              fill: transparent;
+              transition: ease all .3s;
+            }
+          }
+          &.aFavs{
+            width: 25px;
+            height: 25px;
+          }
+          &.alCarrito{
+            svg{
+              &.inCart{
+                transform: scale(0);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  @include tablet{
+    &.compressed{
+      width: 50%;
+    }
+  }
+  @include mobile{
+    width: 100%;
+    &.transparent{
+      .wrapper{
+        margin: 20px 10px;
+        &:hover{
+          margin-top: 60px;
+          .imgProd{
+            height: 350px;
+          }
+        }
+      }
+    }
+    &.compressed{
+      width: 50%;
+      .wrapper{
+        margin: 10px 5px;
+        padding-top: 120px;
+        .imgProd{
+          height: 120px;
+          bottom: calc(100% - 120px);
+        }
+        .infoProd{
+          height: 150px;
+          .actions{
+            .preciosGrupo{
+              .precio{
+                font-size: 20px;
+                &.precioOferta{
+                  font-size: 15px;
+                }
+              }
+            }
+          }
+        }
+      }
+      &:not(.transparent){
+        .wrapper{
+          .infoProd{
+            .actions{
+              justify-content: center;
+              .preciosGrupo{
                 width: 100%;
-                font-size: 11px;
-                text-align: center;
+                .precio{
+                  text-align: center;
+                  &.precioOferta{
+                    width: 100%;
+                  }
+                }
+              }
+              .action{
+                margin: 0 15px;
+              }
+            }
+          }
+        }
+      }
+      &.transparent{
+        .wrapper{
+          margin: 40px 5px 10px 5px;
+          &:hover{
+            .imgProd{
+              height: 150px;
+            }
+          }
+          .colorProd{
+            height: 80px;
+          }
+          .infoProd{
+            height: 140px;
+            p{
+              font-size: 12px;
             }
             .nombreProd{
-                @include ellipsisParrafo(2);
-                font-family: "Roboto",sans-serif;
-                margin-bottom: 10px;
-                font-size: 12px;
-                font-weight: 600;
-            }
-            .extraInfo{
-                @include ellipsis;
+              font-size: 14px;
             }
             .actions{
-                @include flex($jc: space-between);
-                width: 100%;
-                margin-top: auto;
-                padding-top: 10px;
-                .preciosGrupo{
-                    flex-grow: 1;
-                    position: relative;
-                    .precio{
-                        font-family: "Roboto",sans-serif;
-                        color: $negro;
-                        font-size: 25px;
-                        font-weight: 600;
-                        text-align: left;
-                        &.precioOferta{
-                            position: absolute;
-                            left: 0;
-                            top: -15px;
-                            color: red;
-                            font-size: 15px;
-                            text-decoration: line-through;
-                            &:before{
-                                font-size: 12px;
-                            }
-                        }
-                        &:before{
-                            content: var(--currencyPrefix);
-                            font-size: 20px;
-                        }
-                    }
+              .action{
+                &.aFavs{
+                  top: 10px;
+                  right: 10px;
                 }
-                .action{
-                    @include flex;
-                    margin-left: 15px;
-                    position: relative;
-                    transition: cubic-bezier(0.68, -0.55, 0.27, 1.55) all .3s;
-                    cursor: pointer;
-                    svg{
-                        position: absolute;
-                        transition: cubic-bezier(0.68, -0.55, 0.27, 1.55) all .3s;
-                        path, circle{
-                            stroke: $negro;
-                            fill: transparent;
-                            transition: ease all .3s;
-                        }
-                    }
-                    &.aFavs{
-                        width: 25px;
-                        height: 25px;
-                    }
-                    &.alCarrito{
-                        svg{
-                            &.inCart{
-                                transform: scale(0);
-                            }
-                        }
-                    }
-                }
+              }
             }
+          }
         }
+      }
     }
-    @include tablet{
-        &.compressed{
-            width: 50%;
-        }
-    }
-    @include mobile{
-        width: 100%;
-        &.transparent{
-            .wrapper{
-                margin: 20px 10px;
-                &:hover{
-                    margin-top: 60px;
-                    .imgProd{
-                        height: 350px;
-                    }
-                }
-            }
-        }
-        &.compressed{
-            width: 50%;
-            .wrapper{
-                margin: 10px 5px;
-                padding-top: 120px;
-                .imgProd{
-                    height: 120px;
-                    bottom: calc(100% - 120px);
-                }
-                .infoProd{
-                    height: 150px;
-                    .actions{
-                        .preciosGrupo{
-                            .precio{
-                                font-size: 20px;
-                                &.precioOferta{
-                                    font-size: 15px;
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-            &:not(.transparent){
-                .wrapper{
-                    .infoProd{
-                        .actions{
-                            justify-content: center;
-                            .preciosGrupo{
-                                width: 100%;
-                                .precio{
-                                    text-align: center;
-                                    &.precioOferta{
-                                        width: 100%;
-                                    }
-                                }
-                            }
-                            .action{
-                                margin: 0 15px;
-                            }
-                        }
-                    }
-                }
-            }
-            &.transparent{
-                .wrapper{
-                    margin: 40px 5px 10px 5px;
-                    &:hover{
-                        .imgProd{
-                            height: 150px;
-                        }
-                    }
-                    .colorProd{
-                        height: 80px;
-                    }
-                    .infoProd{
-                        height: 140px;
-                        p{
-                            font-size: 12px;
-                        }
-                        .nombreProd{
-                            font-size: 14px;
-                        }
-                        .actions{
-                            .action{
-                                &.aFavs{
-                                    top: 10px;
-                                    right: 10px;
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
+  }
 }
 .#{$pfx}numIncrements{
-    @include flex($jc: flex-end);
-    user-select: none;
-    .botonIncDec{
-        background-color: $gris;
-        cursor: pointer;
-        &.disabled{
-            opacity: .5;
-            cursor: not-allowed;
-        }
-        svg{
-            path, circle{
-                stroke: $negro;
-            }
-        }
+  @include flex($jc: flex-end);
+  user-select: none;
+  .botonIncDec{
+    background-color: $gris;
+    cursor: pointer;
+    &.disabled{
+      opacity: .5;
+      cursor: not-allowed;
     }
-    .num{
-        font-family: "Roboto",sans-serif;
-        padding: 0 10px;
-        min-width: 40px;
-        font-size: 20px;
-        font-weight: 600;
+    svg{
+      path, circle{
+        stroke: $negro;
+      }
+    }
+  }
+  .num{
+    font-family: "Roboto",sans-serif;
+    padding: 0 10px;
+    min-width: 40px;
+    font-size: 20px;
+    font-weight: 600;
+    text-align: center;
+    &.animacion{
+      animation: aniNum .2s;
+    }
+  }
+}
+.#{$pfx}drop{
+  position: relative;
+  .dropContent{
+    @include scrollbars($foreground-color: rgba($blanco,.2));
+    display: none;
+    background-color: #242424;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    width: max-content;
+    min-width: 200px;
+    max-width: 300px;
+    max-height: 500px;
+    margin-top: 10px;
+    transform: translateX(-50%);
+    cursor: default;
+    overflow: auto;
+    .personal{
+      padding: 20px;
+      text-align: center;
+      &:after{
+        content: "";
+        display: block;
+        width: 100%;
+        height: 1px;
+        margin-top: 30px;
+        background-color: rgba($blanco,.1);
+      }
+      .avatar{
+        @include flex;
+        @include imagen;
+        width: 70px;
+        height: 70px;
+        border-radius: 50%;
+        margin: 10px auto 20px auto;
+        background-color: $negro;
+        box-shadow: 0 0 10px 0 rgba($blanco,.2);
+        position: relative;
+        &:after{
+          content: "";
+          position: absolute;
+          width: calc(100% + 10px);
+          height: calc(100% + 10px);
+          border-radius: 50%;
+          border: 1px solid $secundario;
+          border-top-color: transparent;
+          border-bottom-color: transparent;
+          transform: rotate(45deg);
+          pointer-events: none;
+        }
+      }
+      .nombre{
+        font-family: 'Roboto', sans-serif;
+        font-size: 18px;
+      }
+      .user{
+        margin-top: 5px;
+        text-decoration: underline wavy $primario;
+        text-underline-position: under;
+      }
+    }
+    .link{
+      a{
+        display: block;
+        padding: 10px;
+        color: $blanco;
         text-align: center;
-        &.animacion{
-            animation: aniNum .2s;
+        transition: ease all .3s;
+        &:hover{
+          background-color: $negro;
         }
+      }
     }
+  }
 }
 
 //Secciones
 .#{$pfx}menu{
-    &.fixed{
-        .fixedWrapper{
+  &.fixed{
+    .fixedWrapper{
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      margin: auto;
+      z-index: $zmenu;
+    }
+  }
+  .fixedWrapper{
+    background-color: $negro;
+    .#{$pfx}container{
+      @include container;
+      padding: 10px 0;
+      user-select: none;
+      .topBar{
+        @include flex($jc: space-between);
+        width: 100%;
+        .leftSide{
+          @include flex;
+          .logo{
+            @include imagen('', contain, left);
+            width: 120px;
+            height: 80px;
+            margin-right: 20px;
+            transition: ease all .3s;
+          }
+          .launcherMenuResponsive{
+            display: none;
+          }
+          .linksArea{
+            .closeMenuResponsive, .socialsResponsive{
+              display: none;
+            }
+            .menuLinks{
+              @include flex;
+              >.link{
+                margin: 5px 10px;
+              }
+              .link{
+                position: relative;
+                min-width: max-content;
+                &:hover{
+                  >a{
+                    &:after{
+                      width: 100%;
+                    }
+                  }
+                  >.subMenu{
+                    opacity: 1;
+                    visibility: visible;
+                    transform: translateX(-50%);
+                  }
+                }
+                a{
+                  color: $blanco;
+                  font-size: 12px;
+                  letter-spacing: 1px;
+                  text-transform: uppercase;
+                  position: relative;
+                  &:after{
+                    content: "";
+                    position: absolute;
+                    bottom: 0;
+                    left: 0;
+                    right: 0;
+                    margin: 0 auto;
+                    width: 0;
+                    height: 2px;
+                    background-color: $primario;
+                    transition: ease all .3s;
+                  }
+                }
+                .subMenu{
+                  position: absolute;
+                  left: 50%;
+                  top: 100%;
+                  min-width: 100%;
+                  margin-top: 10px;
+                  background-color: #000;
+                  transform: translateX(-50%) translateY(20px);
+                  visibility: hidden;
+                  opacity: 0;
+                  z-index: $zmenu;
+                  transition: ease all .3s;
+                  &:hover{
+                    >.link{
+                      opacity: .5;
+                    }
+                  }
+                  &:before{
+                    content: "";
+                    position: absolute;
+                    bottom: 100%;
+                    width: 100%;
+                    height: 10px;
+                    display: block;
+                  }
+                  >.link{
+                    display: flex;
+                    text-align: center;
+                    transition: ease all .3s;
+                    &:hover{
+                      opacity: 1;
+                      background-color: rgba($blanco,.05);
+                    }
+                  }
+                  .link{
+                    a{
+                      flex-grow: 1;
+                      padding: 10px;
+                      &:after{
+                        display: none;
+                      }
+                    }
+                    .subMenu{
+                      top: 0;
+                      left: 100%;
+                      margin-top: 0;
+                      transform: none;
+                      &:before{
+                        display: none;
+                      }
+                    }
+                  }
+                }
+                .showSubmenu{
+                  display: none;
+                }
+              }
+            }
+          }
+        }
+        .rightSide{
+          @include flex($jc: flex-end);
+          flex-grow: 1;
+          .buscador{
+            width: 150px;
+            max-width: 400px;
+            margin: 0 20px;
+            cursor: pointer;
+            transition: ease all .3s;
+            &.activ{
+              flex-grow: 1;
+            }
+            .buscadorTop{
+              @include flex;
+              position: relative;
+              input{
+                width: 100%;
+                padding: 15px 40px 15px 20px;
+                outline: none;
+                border: 0;
+                color: $blanco;
+                font-size: 12px;            
+                letter-spacing: 1px;
+                text-transform: uppercase;
+                position: relative;
+                background-color: transparent;
+                border-bottom: 1px solid $blanco;
+                cursor: pointer;
+                &::placeholder{
+                  color: $blanco;
+                  opacity: .5;
+                }
+                &:focus{
+                  cursor: default;
+                }
+              }
+              .icono{
+                position: absolute;
+                right: 0;
+                width: 30px;
+                height: 30px;
+                &:before, &:after{
+                  content: "";
+                  position: absolute;
+                }
+                &:before{
+                  width: 25px;
+                  height: 25px;
+                  border-radius: 50%;
+                  border: 1px solid $blanco;
+                }
+                &:after{
+                  bottom: 0;
+                  right: 0;
+                  width: 1px;
+                  height: 10px;
+                  background-color: $blanco;
+                  transform: rotate(-45deg);
+                  transform-origin: bottom;
+                }
+              }
+            }
+          }
+          .launcherBuscadorResponsive{
+            display: none;
+          }
+          .icons{
+            @include flex;
+            .#{$pfx}icono{
+              width: 25px;
+              height: 25px;
+              margin-left: 20px;
+              color: $blanco;
+              cursor: pointer;
+              &.themeToggle{
+                position: relative;
+                overflow: hidden;
+                .light, .dark{
+                  position: absolute;
+                  transition: ease all .3s;
+                  circle, path{
+                    fill: currentColor;
+                  }
+                }
+                .light{
+                  color: yellow;
+                }
+                .dark{
+                  color: #9158ff;
+                  opacity: 0;
+                  transform: translateY(100%);
+                }
+              }
+            }
+          }
+        }
+      }
+      @media only screen and (min-width: 1024px){
+        .topBar{
+          .leftSide{
+            .linksArea{
+              .menuLinks{
+                .link{
+                  .subMenu{
+                    display: block !important;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+      @include desktop{
+        .topBar{
+          position: relative;
+          &:after{
+            content: "";
             position: fixed;
             top: 0;
             left: 0;
-            right: 0;
-            margin: auto;
-            z-index: $zmenu;
-        }
-    }
-    .fixedWrapper{
-        background-color: $negro;
-        .#{$pfx}container{
-            @include container;
-            padding: 10px 0;
-            user-select: none;
-            .topBar{
-                @include flex($jc: space-between);
-                width: 100%;
-                .leftSide{
-                    @include flex;
-                    .logo{
-                        @include imagen('', contain, left);
-                        width: 120px;
-                        height: 80px;
-                        margin-right: 20px;
-                        transition: ease all .3s;
-                    }
-                    .launcherMenuResponsive{
-                        display: none;
-                    }
-                    .linksArea{
-                        .closeMenuResponsive, .socialsResponsive{
-                            display: none;
-                        }
-                        .menuLinks{
-                            @include flex;
-                            >.link{
-                                margin: 5px 10px;
-                            }
-                            .link{
-                                position: relative;
-                                min-width: max-content;
-                                &:hover{
-                                    >a{
-                                        &:after{
-                                            width: 100%;
-                                        }
-                                    }
-                                    >.subMenu{
-                                        opacity: 1;
-                                        visibility: visible;
-                                        transform: translateX(-50%);
-                                    }
-                                }
-                                a{
-                                    color: $blanco;
-                                    font-size: 12px;
-                                    letter-spacing: 1px;
-                                    text-transform: uppercase;
-                                    position: relative;
-                                    &:after{
-                                        content: "";
-                                        position: absolute;
-                                        bottom: 0;
-                                        left: 0;
-                                        right: 0;
-                                        margin: 0 auto;
-                                        width: 0;
-                                        height: 2px;
-                                        background-color: $primario;
-                                        transition: ease all .3s;
-                                    }
-                                }
-                                .subMenu{
-                                    position: absolute;
-                                    left: 50%;
-                                    top: 100%;
-                                    min-width: 100%;
-                                    margin-top: 10px;
-                                    background-color: #000;
-                                    transform: translateX(-50%) translateY(20px);
-                                    visibility: hidden;
-                                    opacity: 0;
-                                    z-index: $zmenu;
-                                    transition: ease all .3s;
-                                    &:hover{
-                                        >.link{
-                                            opacity: .5;
-                                        }
-                                    }
-                                    &:before{
-                                        content: "";
-                                        position: absolute;
-                                        bottom: 100%;
-                                        width: 100%;
-                                        height: 10px;
-                                        display: block;
-                                    }
-                                    >.link{
-                                        display: flex;
-                                        text-align: center;
-                                        transition: ease all .3s;
-                                        &:hover{
-                                            opacity: 1;
-                                            background-color: rgba($blanco,.05);
-                                        }
-                                    }
-                                    .link{
-                                        a{
-                                            flex-grow: 1;
-                                            padding: 10px;
-                                            &:after{
-                                                display: none;
-                                            }
-                                        }
-                                        .subMenu{
-                                            top: 0;
-                                            left: 100%;
-                                            margin-top: 0;
-                                            transform: none;
-                                            &:before{
-                                                display: none;
-                                            }
-                                        }
-                                    }
-                                }
-                                .showSubmenu{
-                                    display: none;
-                                }
-                            }
-                        }
-                    }
-                }
-                .rightSide{
-                    @include flex($jc: flex-end);
-                    flex-grow: 1;
-                    .buscador{
-                        width: 150px;
-                        max-width: 400px;
-                        margin: 0 20px;
-                        cursor: pointer;
-                        transition: ease all .3s;
-                        &.activ{
-                            flex-grow: 1;
-                        }
-                        .buscadorTop{
-                            @include flex;
-                            position: relative;
-                            input{
-                                width: 100%;
-                                padding: 15px 40px 15px 20px;
-                                outline: none;
-                                border: 0;
-                                color: $blanco;
-                                font-size: 12px;            
-                                letter-spacing: 1px;
-                                text-transform: uppercase;
-                                position: relative;
-                                background-color: transparent;
-                                border-bottom: 1px solid $blanco;
-                                cursor: pointer;
-                                &::placeholder{
-                                    color: $blanco;
-                                    opacity: .5;
-                                }
-                                &:focus{
-                                    cursor: default;
-                                }
-                            }
-                            .icono{
-                                position: absolute;
-                                right: 0;
-                                width: 30px;
-                                height: 30px;
-                                &:before, &:after{
-                                    content: "";
-                                    position: absolute;
-                                }
-                                &:before{
-                                    width: 25px;
-                                    height: 25px;
-                                    border-radius: 50%;
-                                    border: 1px solid $blanco;
-                                }
-                                &:after{
-                                    bottom: 0;
-                                    right: 0;
-                                    width: 1px;
-                                    height: 10px;
-                                    background-color: $blanco;
-                                    transform: rotate(-45deg);
-                                    transform-origin: bottom;
-                                }
-                            }
-                        }
-                    }
-                    .launcherBuscadorResponsive{
-                        display: none;
-                    }
-                    .icons{
-                        @include flex;
-                        .#{$pfx}icono{
-                            width: 25px;
-                            height: 25px;
-                            margin-left: 20px;
-                            cursor: pointer;
-                            svg{
-                                path, circle{
-                                    stroke: $blanco;
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-            @media only screen and (min-width: 1024px){
-                .topBar{
-                    .leftSide{
-                        .linksArea{
-                            .menuLinks{
-                                .link{
-                                    .subMenu{
-                                        display: block !important;
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-            @include desktop{
-                .topBar{
-                    position: relative;
-                    &:after{
-                        content: "";
-                        position: fixed;
-                        top: 0;
-                        left: 0;
-                        width: 100%;
-                        height: 100%;
-                        visibility: hidden;
-                        opacity: 0;
-                        background-color: rgba($blanco,.8);
-                        transition: ease all .3s;
-                    }
-                    &.openMenu{
-                        &:after{
-                            opacity: 1;
-                            visibility: visible;
-                        }
-                        .leftSide{
-                            .linksArea{
-                                left: 0;
-                                transition-delay: .1s;
-                            }
-                        }
-                    }
-                    .leftSide{
-                        .launcherMenuResponsive{
-                            @include flex(column);
-                            width: 40px;
-                            height: 40px;
-                            position: relative;
-                            cursor: pointer;
-                            span{
-                                position: absolute;
-                                width: 100%;
-                                height: 1px;
-                                background-color: $blanco;
-                                &:first-child{
-                                    transform: translateY(-12px);
-                                }
-                                &:last-child{
-                                    transform: translateY(12px);
-                                }
-                            }
-                        }
-                        .linksArea{
-                            @include flex(column, nowrap, center, flex-start);
-                            position: fixed;
-                            top: 0;
-                            left: -300px;
-                            width: 300px;
-                            height: 100%;
-                            background-color: $negro;
-                            transition: ease all .3s;
-                            z-index: $zmenu;
-                            .closeMenuResponsive{
-                                @include flex;
-                                width: 100%;
-                                min-height: 60px;
-                                color: $blanco;
-                                font-size: 12px;
-                                letter-spacing: 2px;
-                                text-transform: uppercase;
-                                background-color: rgba($blanco,.1);
-                                cursor: pointer;
-                                .icono{
-                                    @include flex;
-                                    width: 20px;
-                                    height: 20px;
-                                    margin-right: 10px;
-                                    position: relative;
-                                    &:before, &:after{
-                                        content: "";
-                                        position: absolute;
-                                        width: 100%;
-                                        height: 1px;
-                                        background-color: $blanco;
-                                    }
-                                    &:before{
-                                        transform: rotate(45deg);
-                                    }
-                                    &:after{
-                                        transform: rotate(-45deg);
-                                    }
-                                }
-                            }
-                            .menuLinks{
-                                flex-direction: column;
-                                flex-wrap: nowrap;
-                                justify-content: flex-start;
-                                width: 100%;
-                                height: 100%;
-                                overflow-y: auto;
-                                overflow-x: hidden;
-                                .link{
-                                    width: 100%;
-                                    min-width: 100%;
-                                    margin: 0;
-                                    padding: 20px 40px 20px 20px;
-                                    box-sizing: border-box;
-                                    transition: ease all .3s;
-                                    &:hover{
-                                        background-color: rgba($blanco,.05);
-                                    }
-                                    a{
-                                        font-size: 14px;
-                                        &:after{
-                                            display: none;
-                                        }
-                                    }
-                                    .subMenu{
-                                        display: none;
-                                        position: relative;
-                                        top: 0 !important;
-                                        left: 0 !important;
-                                        margin-top: 0;
-                                        transform: none !important;
-                                        opacity: 1 !important;
-                                        visibility: visible !important;
-                                        background-color: transparent;
-                                        transition: none !important;
-                                        &:hover{
-                                            >.link{
-                                                opacity: 1;
-                                            }
-                                        }
-                                        &:before{
-                                            display: none;
-                                        }
-                                        >.link{
-                                            display: block;
-                                            text-align: left;
-                                        }
-                                    }
-                                    .showSubmenu{
-                                        display: block;
-                                        position: absolute;
-                                        top: calc(25px / 2);
-                                        right: 0;
-                                        cursor: pointer;
-                                        transition: ease all .2s;
-                                        &.openSub{
-                                            transform: rotate(90deg);
-                                        }
-                                        svg{
-                                            path, circle{
-                                                stroke: $blanco;
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                            .socialsResponsive{
-                                display: block;
-                                width: 100%;
-                                padding: 10px 20px;
-                                box-sizing: border-box;
-                                .logoSocial{
-                                    @include imagen($size: contain);
-                                    margin: 0 auto;
-                                    width: 120px;
-                                    height: 80px;
-                                }
-                                .social{
-                                    @include flex;
-                                    width: 100%;
-                                    padding: 20px 0;
-                                    .icono{
-                                        width: 35px;
-                                        height: 35px;
-                                        margin: 5px;
-                                        cursor: pointer;
-                                        color: $blanco;
-                                        transition: ease all .3s;
-                                        &:hover{
-                                            color: $secundario;
-                                            transform: translateY(-5px);
-                                            svg{
-                                                transform: rotateY(360deg);
-                                            }
-                                        }
-                                        svg{
-                                            transition: ease all .3s;
-                                            path, circle{
-                                                fill: currentColor;
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                    .rightSide{
-                        .buscador{
-                            @include flex;
-                            position: absolute;
-                            width: 0;
-                            margin: 0;
-                            max-width: 100%;
-                            height: 100%;
-                            background-color: $negro;
-                            z-index: $zup;
-                            &.activ{
-                                width: 100%;
-                            }
-                            .buscadorTop{
-                                width: 100%;
-                                overflow: hidden;
-                            }
-                        }
-                        .launcherBuscadorResponsive{
-                            display: block;
-                            width: 30px;
-                            height: 30px;
-                            position: relative;
-                            cursor: pointer;
-                            &:before, &:after{
-                                content: "";
-                                position: absolute;
-                            }
-                            &:before{
-                                width: 25px;
-                                height: 25px;
-                                border-radius: 50%;
-                                border: 1px solid $blanco;
-                            }
-                            &:after{
-                                bottom: 0;
-                                right: 0;
-                                width: 1px;
-                                height: 10px;
-                                background-color: $blanco;
-                                transform: rotate(-45deg);
-                                transform-origin: bottom;
-                            }
-                        }
-                    }
-                }
-            }
-            @include mobile{
-                .topBar{
-                    .leftSide{
-                        width: 100%;
-                        justify-content: space-between;
-                        .logo{
-                            height: 50px;
-                        }
-                        .launcherMenuResponsive{
-                            width: 30px;
-                            height: 30px;
-                        }
-                        .linksArea{
-                            .socialsResponsive{
-                                .logoSocial{
-                                    height: 60px;
-                                    min-height: 60px;
-                                }
-                            }
-                        }
-                    }
-                    .rightSide{
-                        padding: 10px 0;
-                        justify-content: center;
-                        position: relative;
-                    }
-                }
-            }
-        }
-    }
-}
-.#{$pfx}footer{
-    background-color: $negro;
-    .#{$pfx}container{
-        @include container;
-        padding-top: 50px;
-        .logo{
-            @include imagen($size: contain);
-            width: 200px;
-            height: 100px;
-            margin: 0 auto;
-        }
-        .links{
-            @include flex;
             width: 100%;
-            padding: 20px 0;
-            .link{
-                margin: 5px 30px;
-                color: $blanco;
-                transition: ease all .3s;
-                &:hover{
-                    color: $secundario;
+            height: 100%;
+            visibility: hidden;
+            opacity: 0;
+            background-color: rgba($blanco,.8);
+            transition: ease all .3s;
+          }
+          &.openMenu{
+            &:after{
+              opacity: 1;
+              visibility: visible;
+            }
+            .leftSide{
+              .linksArea{
+                left: 0;
+                transition-delay: .1s;
+              }
+            }
+          }
+          .leftSide{
+            .launcherMenuResponsive{
+              @include flex(column);
+              width: 40px;
+              height: 40px;
+              position: relative;
+              cursor: pointer;
+              span{
+                position: absolute;
+                width: 100%;
+                height: 1px;
+                background-color: $blanco;
+                &:first-child{
+                  transform: translateY(-12px);
                 }
+                &:last-child{
+                  transform: translateY(12px);
+                }
+              }
             }
-        }
-        .bottomBar{
-            @include flex;
-            border-top: 1px dashed rgba($blanco,.2);
-            .legend{
-                width: 50%;
+            .linksArea{
+              @include flex(column, nowrap, center, flex-start);
+              position: fixed;
+              top: 0;
+              left: -300px;
+              width: 300px;
+              height: 100%;
+              background-color: $negro;
+              transition: ease all .3s;
+              z-index: $zmenu;
+              .closeMenuResponsive{
+                @include flex;
+                width: 100%;
+                min-height: 60px;
                 color: $blanco;
-                text-align: right;
-            }
-            .social{
-                @include flex($jc: flex-start);
-                width: 50%;
-                padding: 10px 0;
+                font-size: 12px;
+                letter-spacing: 2px;
+                text-transform: uppercase;
+                background-color: rgba($blanco,.1);
+                cursor: pointer;
                 .icono{
+                  @include flex;
+                  width: 20px;
+                  height: 20px;
+                  margin-right: 10px;
+                  position: relative;
+                  &:before, &:after{
+                    content: "";
+                    position: absolute;
+                    width: 100%;
+                    height: 1px;
+                    background-color: $blanco;
+                  }
+                  &:before{
+                    transform: rotate(45deg);
+                  }
+                  &:after{
+                    transform: rotate(-45deg);
+                  }
+                }
+              }
+              .menuLinks{
+                flex-direction: column;
+                flex-wrap: nowrap;
+                justify-content: flex-start;
+                width: 100%;
+                height: 100%;
+                overflow-y: auto;
+                overflow-x: hidden;
+                .link{
+                  width: 100%;
+                  min-width: 100%;
+                  margin: 0;
+                  padding: 20px 40px 20px 20px;
+                  box-sizing: border-box;
+                  transition: ease all .3s;
+                  &:hover{
+                    background-color: rgba($blanco,.05);
+                  }
+                  a{
+                    font-size: 14px;
+                    &:after{
+                      display: none;
+                    }
+                  }
+                  .subMenu{
+                    display: none;
+                    position: relative;
+                    top: 0 !important;
+                    left: 0 !important;
+                    margin-top: 0;
+                    transform: none !important;
+                    opacity: 1 !important;
+                    visibility: visible !important;
+                    background-color: transparent;
+                    transition: none !important;
+                    &:hover{
+                      >.link{
+                        opacity: 1;
+                      }
+                    }
+                    &:before{
+                      display: none;
+                    }
+                    >.link{
+                      display: block;
+                      text-align: left;
+                    }
+                  }
+                  .showSubmenu{
+                    display: block;
+                    position: absolute;
+                    top: calc(25px / 2);
+                    right: 0;
+                    cursor: pointer;
+                    transition: ease all .2s;
+                    &.openSub{
+                      transform: rotate(90deg);
+                    }
+                    svg{
+                      path, circle{
+                        stroke: $blanco;
+                      }
+                    }
+                  }
+                }
+              }
+              .socialsResponsive{
+                display: block;
+                width: 100%;
+                padding: 10px 20px;
+                box-sizing: border-box;
+                .logoSocial{
+                  @include imagen($size: contain);
+                  margin: 0 auto;
+                  width: 120px;
+                  height: 80px;
+                }
+                .social{
+                  @include flex;
+                  width: 100%;
+                  padding: 20px 0;
+                  .icono{
                     width: 35px;
                     height: 35px;
                     margin: 5px;
@@ -980,107 +958,179 @@
                     color: $blanco;
                     transition: ease all .3s;
                     &:hover{
-                        color: $secundario;
-                        transform: translateY(-5px);
-                        svg{
-                            transform: rotateY(360deg);
-                        }
+                      color: $secundario;
+                      transform: translateY(-5px);
+                      svg{
+                        transform: rotateY(360deg);
+                      }
                     }
                     svg{
-                        transition: ease all .3s;
-                        path, circle{
-                            fill: currentColor;
-                        }
+                      transition: ease all .3s;
+                      path, circle{
+                        fill: currentColor;
+                      }
                     }
+                  }
                 }
+              }
             }
+          }
+          .rightSide{
+            .buscador{
+              @include flex;
+              position: absolute;
+              width: 0;
+              margin: 0;
+              max-width: 100%;
+              height: 100%;
+              background-color: $negro;
+              z-index: $zup;
+              &.activ{
+                width: 100%;
+              }
+              .buscadorTop{
+                width: 100%;
+                overflow: hidden;
+              }
+            }
+            .launcherBuscadorResponsive{
+              display: block;
+              width: 30px;
+              height: 30px;
+              position: relative;
+              cursor: pointer;
+              &:before, &:after{
+                content: "";
+                position: absolute;
+              }
+              &:before{
+                width: 25px;
+                height: 25px;
+                border-radius: 50%;
+                border: 1px solid $blanco;
+              }
+              &:after{
+                bottom: 0;
+                right: 0;
+                width: 1px;
+                height: 10px;
+                background-color: $blanco;
+                transform: rotate(-45deg);
+                transform-origin: bottom;
+              }
+            }
+          }
         }
-        @include tablet{
-            .links{
-                .link{
-                    margin: 5px 10px;
-                }
+      }
+      @include mobile{
+        .topBar{
+          .leftSide{
+            width: 100%;
+            justify-content: space-between;
+            .logo{
+              height: 50px;
             }
-            .bottomBar{
-                flex-direction: column;
-                padding-bottom: 20px;
-                .social{
-                    width: 100%;
-                    padding: 20px 0;
-                    justify-content: center;
-                }
-                .legend{
-                    width: 100%;
-                    text-align: center;
-                }
+            .launcherMenuResponsive{
+              width: 30px;
+              height: 30px;
             }
+            .linksArea{
+              .socialsResponsive{
+                .logoSocial{
+                  height: 60px;
+                  min-height: 60px;
+                }
+              }
+            }
+          }
+          .rightSide{
+            padding: 10px 0;
+            justify-content: center;
+            position: relative;
+          }
         }
+      }
     }
+  }
 }
-
-
-//Config
-.configTheme{
-    position: fixed;
-    left: 20px;
-    bottom: 20px;
-    z-index: 1000;
-    .icono{
-        width: 60px;
-        height: 60px;
-        border-radius: 50%;
-        background-color: $negro;
-        cursor: pointer;
-        svg{
-            overflow: hidden;
-            path, circle{
-                fill: none;
-                stroke: $blanco;
-                stroke-width: 2;
-                stroke-miterlimit: 10;
-            }
-        }
+.#{$pfx}footer{
+  background-color: $negro;
+  .#{$pfx}container{
+    @include container;
+    padding-top: 50px;
+    .logo{
+      @include imagen($size: contain);
+      width: 200px;
+      height: 100px;
+      margin: 0 auto;
     }
-    .dropContent{
-        display: none;
-        position: absolute;
-        bottom: 100%;
-        margin-bottom: 10px;
-        width: max-content;
-        min-width: 150px;
+    .links{
+      @include flex;
+      width: 100%;
+      padding: 20px 0;
+      .link{
+        margin: 5px 30px;
         color: $blanco;
-        text-align: center;
-        background: $negro;
-        .grupo{
-            &:not(:last-child){
-                margin-bottom: 10px;
-            }
-            .header{
-                padding: 10px 20px;
-                letter-spacing: 1px;
-                text-transform: uppercase;
-                border-top: 1px dashed rgba($blanco,.2);
-                border-bottom: 1px dashed rgba($blanco,.2);
-                box-sizing: border-box;
-            }
-            .options{
-                .option{
-                    padding: 10px;
-                    cursor: pointer;
-                    transition: ease background-color .3s .1s;
-                    &:hover{
-                        transition-delay: 0s;
-                        background-color: rgba($blanco,.1);
-                    }
-                    &:before{
-                        content: "- ";
-                    }
-                    &.activo{
-                        font-weight: 600;
-                        color: $secundario;
-                    }
-                }
-            }
+        transition: ease all .3s;
+        &:hover{
+          color: $secundario;
         }
+      }
     }
+    .bottomBar{
+      @include flex;
+      border-top: 1px dashed rgba($blanco,.2);
+      .legend{
+        width: 50%;
+        color: $blanco;
+        text-align: right;
+      }
+      .social{
+        @include flex($jc: flex-start);
+        width: 50%;
+        padding: 10px 0;
+        .icono{
+          width: 35px;
+          height: 35px;
+          margin: 5px;
+          cursor: pointer;
+          color: $blanco;
+          transition: ease all .3s;
+          &:hover{
+            color: $secundario;
+            transform: translateY(-5px);
+            svg{
+              transform: rotateY(360deg);
+            }
+          }
+          svg{
+            transition: ease all .3s;
+            path, circle{
+              fill: currentColor;
+            }
+          }
+        }
+      }
+    }
+    @include tablet{
+      .links{
+        .link{
+          margin: 5px 10px;
+        }
+      }
+      .bottomBar{
+        flex-direction: column;
+        padding-bottom: 20px;
+        .social{
+          width: 100%;
+          padding: 20px 0;
+          justify-content: center;
+        }
+        .legend{
+          width: 100%;
+          text-align: center;
+        }
+      }
+    }
+  }
 }

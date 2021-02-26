@@ -1,7 +1,16 @@
 $(function(){
+  //Checar storage para ver si activo el dark theme
+  if (localStorage.getItem('theme') === 'dark') {
+    $('body').addClass('darken');
+  }
   //Dark Theme
   $('.themeToggle').click(function(){
     $('body').toggleClass('darken');
+    if ($('body').hasClass('darken')) {
+      localStorage.setItem('theme', 'dark');
+    } else {
+      localStorage.removeItem('theme');
+    }
   })
   //Si existe el menu agregamos sus eventos
   if ($('.bakuretsu_menu').length) {
@@ -77,5 +86,11 @@ $(function(){
         numero.removeClass('animacion');
       });
     });
+  }
+  //Dropdowns
+  if ($('.bakuretsu_drop').length) {
+    $('.bakuretsu_drop').click(function(){
+      $(this).find('.dropContent').slideToggle('fast');
+    })
   }
 })
