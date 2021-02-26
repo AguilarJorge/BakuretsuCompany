@@ -3,6 +3,54 @@
 @import "./parciales/general";
 @import "./parciales/compartido";
 
+body{
+  &.darken{
+    .#{$pfx}detalleProducto{
+      .#{$pfx}container{
+        .detalleWrapper{
+          .enviosTag{
+            color: $blanco;
+            .icono{
+              color: $blanco;
+            }
+          }
+          .preview{
+            background-color: $negro;
+            .aFavs{
+              color: $blanco;
+              &.esFav{
+                color: $primario;
+              }
+            }
+            .imagenesContainer{
+              .imagenes{
+                .imagenProd{
+                  background-color: $negro;
+                }
+              }
+            }
+            .controls{
+              .control{
+                .#{$pfx}icono{
+                  color: $blanco;
+                }
+              }
+              .dots{
+                .dot{
+                  background-color: rgba($blanco,.2);
+                  &.activa{
+                    background-color: $blanco;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
 .#{$pfx}detalleProducto{
   &.orig{
     .#{$pfx}container{
@@ -10,13 +58,13 @@
         .preview{
           .precio{
             font-family: "Roboto", sans-serif;
-            color: $negro;
+            color: var(--color-text);
             font-size: 40px;
             font-weight: 900;
             text-align: center;
             margin-bottom: 20px;
             &:before{
-              content: var(--currencyPrefix);
+              content: var(--currency-prefix);
               font-size: 30px;
             }
           }
@@ -98,13 +146,13 @@
         .preview{
           .precio{
             font-family: "Roboto",sans-serif;
-            color: $negro;
+            color: var(--color-text);
             font-size: 40px;
             font-weight: 900;
             text-align: center;
             margin-bottom: 20px;
             &:before{
-              content: var(--currencyPrefix);
+              content: var(--currency-prefix);
               font-size: 30px;
             }
           }
@@ -170,7 +218,7 @@
       }
       .nombre {
         font-family: "Roboto", sans-serif;
-        color: $negro;
+        color: var(--color-text);
         font-size: 40px;
         font-weight: 900;
         margin-bottom: 10px;
@@ -193,7 +241,7 @@
               right: -5px;
               width: 1px;
               height: 100%;
-              background-color: $negro;
+              background-color: var(--color-text);
             }
           }
         }
@@ -218,7 +266,7 @@
           right: 20px;
           z-index: 50;
           cursor: pointer;
-          transition: cubic-bezier(0.68, -0.55, 0.27, 1.55) all .3s;
+          transition: cubic-bezier(0.68, -0.55, 0.27, 1.55) transform .3s;
           &.esFav{
             transform: scale(1.1);
             svg{
@@ -337,11 +385,11 @@
         text-align: right;
         .precio{
           font-family: "Roboto",sans-serif;
-          color: $negro;
+          color: var(--color-text);
           font-size: 40px;
           font-weight: 900;
           &:before{
-            content: var(--currencyPrefix);
+            content: var(--currency-prefix);
             font-size: 30px;
           }
         }

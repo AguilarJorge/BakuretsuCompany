@@ -52,11 +52,12 @@
 .#{$pfx}icono{
     width: 35px;
     height: 35px;
+    color: $primario;
     svg{
         overflow: hidden;
         path, circle{
             fill: none;
-            stroke: $primario;
+            stroke: currentColor;
             stroke-miterlimit: 10;
             stroke-width: 2;
         }

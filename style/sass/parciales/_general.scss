@@ -1,51 +1,59 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300&family=Roboto:wght@300;400;900&display=swap');
-
+:root{
+  --currency-prefix: "$";
+  --color-theme: #fff;
+  --color-text: #1d1d1d;
+}
 body{
-    overflow-x: hidden;
+  overflow-x: hidden;
+  color: #666;
+  left: 0;
+  padding: 0;
+  margin: 0 auto;
+  position: relative;
+  transition: ease all .3s;
+  background-color: var(--color-theme);
+  &.darken{
+    --color-theme: #000;
+    --color-text: #e4e4e4;
+  }
+  &.movedX{
+    overflow: hidden;
+    @media only screen and (min-width: 769px){
+      left: 300px;
+    }
+    @media only screen and (min-width: 1024px){
+      left: 0;
+      overflow-y: auto;
+    }
+  }
+  *{
+    font-family: 'Roboto Condensed', sans-serif;
+    @media only screen and (max-width: 480px){
+      cursor: default !important;
+    }
+  }
+  p, h1, h2, h3, h4, h5, h6{
+    margin: 0;
+  }
+  a {
     color: #666;
-    left: 0;
+    text-decoration: none;
+  }
+  ul, li{
     padding: 0;
-    margin: 0 auto;
-    position: relative;
-    transition: ease all .3s;
-    --currencyPrefix: "$";
-    &.movedX{
-        overflow: hidden;
-        @media only screen and (min-width: 769px){
-            left: 300px;
-        }
-        @media only screen and (min-width: 1024px){
-            left: 0;
-            overflow-y: auto;
-        }
-    }
-    *{
-        font-family: 'Roboto Condensed', sans-serif;
-        @media only screen and (max-width: 480px){
-            cursor: default !important;
-        }
-    }
-    p, h1, h2, h3, h4, h5, h6{
-        margin: 0;
-    }
-    a {
-        color: #666;
-        text-decoration: none;
-    }
-    ul, li{
-        padding: 0;
-        margin: 0;
-        list-style-type: none;
-    }
+    margin: 0;
+    list-style-type: none;
+  }
 }
 
 ::-webkit-scrollbar {
-    width: 10px;
-    background: #dcdcdc;
+  width: 10px;
+  background: #dcdcdc;
 }
 ::-webkit-scrollbar-thumb {
-    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-    background: -webkit-linear-gradient(-45deg, #dcdcdc 10%, #bfbebe 91%);
-    background: linear-gradient(135deg, #dcdcdc 10%, #bfbebe 91%);
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  background: -webkit-linear-gradient(-45deg, #dcdcdc 10%, #bfbebe 91%);
+  background: linear-gradient(135deg, #dcdcdc 10%, #bfbebe 91%);
 }
