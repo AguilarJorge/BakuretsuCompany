@@ -14,6 +14,14 @@
 
 body{
   &.darken{
+    .#{$pfx}prod{
+      .wrapper{
+        background-color: $darkenLight;
+        .infoProd{
+          color: var(--color-text);
+        }
+      }
+    }
     .#{$pfx}menu{
       .fixedWrapper{
         .topBar{
@@ -44,7 +52,7 @@ body{
   @include flex(column, nowrap, flex-start, flex-start, flex-start);
   font-family: "Roboto Condensed",sans-serif;
   margin-bottom: 30px;
-  color: $negro;
+  color: var(--color-text);
   font-size: 40px;
   font-weight: 900;
   letter-spacing: 7px;
@@ -93,13 +101,6 @@ body{
 .#{$pfx}prod{
   width: 300px;
   transition: ease all .3s;
-  &:not(.transparent){
-    .wrapper{
-      .imgProd{
-        background-image: url(../../img/imgX.jpg) !important;
-      }
-    }
-  }
   &.esFav{
     .wrapper{
       .infoProd{
@@ -283,7 +284,7 @@ body{
           position: relative;
           .precio{
             font-family: "Roboto",sans-serif;
-            color: $negro;
+            color: var(--color-text);
             font-size: 25px;
             font-weight: 600;
             text-align: left;
@@ -314,7 +315,7 @@ body{
             position: absolute;
             transition: cubic-bezier(0.68, -0.55, 0.27, 1.55) all .3s;
             path, circle{
-              stroke: $negro;
+              stroke: var(--color-text);
               fill: transparent;
               transition: ease all .3s;
             }
@@ -431,7 +432,7 @@ body{
 }
 .#{$pfx}numIncrements{
   @include flex($jc: flex-end);
-  user-select: none;
+  @include vendorPrefix((user-select: none));
   .botonIncDec{
     background-color: $gris;
     cursor: pointer;
@@ -460,20 +461,16 @@ body{
 .#{$pfx}drop{
   position: relative;
   .dropContent{
-    @include scrollbars($foreground-color: rgba($blanco,.2));
     display: none;
-    background-color: rgba(#000,.9);
     position: absolute;
     top: 100%;
     left: 50%;
     width: max-content;
     min-width: 200px;
     max-width: 300px;
-    max-height: 500px;
     margin-top: 10px;
     transform: translateX(-50%);
     cursor: default;
-    overflow: auto;
     &.leftAlign{
       left: -20px;
       transform: none;
@@ -482,6 +479,13 @@ body{
       left: auto;
       right: -20px;
       transform: none;
+    }
+    .wrapper{
+      @include scrollbars($foreground-color: rgba($blanco,.2));
+      //background-color: rgba(#000,.9);
+      background-color: $darkenLight;
+      max-height: 500px;
+      overflow: auto;
     }
     .headerText{
       font-family: 'Roboto', sans-serif;
@@ -538,6 +542,16 @@ body{
           background-color: $negro;
         }
       }
+    }
+    .floatedButton{
+      display: block;
+      padding: 20px 10px;
+      color: $negro;
+      font-weight: 600;
+      text-align: center;
+      //background-color: rgba(#000,.9);
+      background-color: $secundario;
+      transition: ease all .3s;
     }
   }
 }
@@ -603,8 +617,8 @@ body{
     background-color: $negro;
     .#{$pfx}container{
       @include container;
+      @include vendorPrefix((user-select: none));
       padding: 10px 0;
-      user-select: none;
       .topBar{
         @include flex($jc: space-between);
         width: 100%;

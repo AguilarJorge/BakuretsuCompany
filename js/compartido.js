@@ -89,9 +89,16 @@ $(function(){
   }
   //Dropdowns
   if ($('.bakuretsu_drop').length) {
-    $('.bakuretsu_drop').click(function(){
+    $('.bakuretsu_drop').click(function(e){
+      e.stopPropagation();
+      $('.bakuretsu_drop.activo').not($(this)).find('.dropContent').slideUp('fast');
+      $('.bakuretsu_drop.activo').not($(this)).removeClass('activo');
       $(this).toggleClass('activo');
       $(this).find('.dropContent').slideToggle('fast');
     })
   }
+  $('body').click(function(){
+    $('.bakuretsu_drop.activo').find('.dropContent').slideUp('fast');
+    $('.bakuretsu_drop.activo').removeClass('activo');
+  })
 })

@@ -3,308 +3,356 @@
 @import "./parciales/general";
 @import "./parciales/compartido";
 
-.#{$pfx}catalogo{
-    .#{$pfx}container{
-        @include container;
-        padding: 50px 0;
+body{
+  &.darken{
+    .#{$pfx}catalogo{
+      .#{$pfx}container{
         .productosWrapper{
-            @include flex(row, nowrap, flex-start, space-between);
-            width: 100%;
-            .showFiltrosResponsive{
-                display: none;
-            }
-            .#{$pfx}filtros{
-                margin-top: 60px;
-                width: 300px;
-                min-width: 300px;
-                user-select: none;
-                .filtrosWrapper{
-                    width: 100%;
-                    .filtrosHeader{
-                        @include flex($jc: space-between);
-                        padding-left: 20px;
-                        box-sizing: border-box;
-                        color: $negro;
-                        font-size: 20px;
-                        font-weight: 600;
-                        border-bottom: 1px solid rgba($negro,.1);
-                        .wrapperIcon{
-                            border-left: 1px solid rgba($negro,.1);
-                            .#{$pfx}icono{
-                                padding: 20px;
-                                cursor: pointer;
-                                &.cerrarFiltros{
-                                    display: none;
-                                    padding: 15px;
-                                    width: 45px;
-                                    height: 45px;
-                                }
-                                svg{
-                                    path, circle{
-                                        stroke: $negro;
-                                    }
-                                }
-                            }
-                        }
-                    }
-                    .grupo{
-                        border-bottom: 1px solid rgba($negro,.1);
-                        &:last-child{
-                            border-bottom: 0;
-                        }
-                        &.show{
-                            .headerGrupo{
-                                .textHeader{
-                                    &:before{
-                                        transform: rotate(-135deg) translateY(-2px);
-                                    }
-                                }
-                            }
-                        }
-                        &.squares{
-                            .contenidoGrupo{
-                                @include flex($jc: flex-start);
-                                .filtro{
-                                    @include flex;
-                                    width: 56px;
-                                    height: 56px;
-                                    padding: 5px;
-                                    margin: 2px;
-                                    border: 1px solid rgba($negro,.1);
-                                    text-align: center;
-                                }
-                            }
-                        }
-                        .headerGrupo{
-                            @include flex($jc: space-between);
-                            padding: 20px;
-                            box-sizing: border-box;
-                            color: $negro;
-                            font-size: 14px;
-                            font-weight: 600;
-                            text-transform: uppercase;
-                            cursor: pointer;
-                            .textHeader{
-                                @include flex;
-                                padding-left: 15px;
-                                position: relative;
-                                &:before{
-                                    content: "";
-                                    width: 5px;
-                                    height: 5px;
-                                    border: 1px solid;
-                                    position: absolute;
-                                    left: 0;
-                                    transform: rotate(45deg) translateY(-2px);
-                                    border-top: 0;
-                                    border-left: 0;
-                                    transition: ease all .3s;
-                                }
-                            }
-                            .limpiarFiltro{
-                                width: 20px;
-                                height: 20px;
-                                cursor: pointer;
-                                svg{
-                                    path, circle{
-                                        stroke: $negro;
-                                    }
-                                }
-                            }
-                        }
-                        .contenidoGrupo{
-                            .filtro{
-                                @include flex($jc: space-between);
-                                padding: 10px 20px;
-                                box-sizing: border-box;
-                                font-size: 14px;
-                                font-weight: 600;
-                                text-transform: uppercase;
-                                cursor: pointer;
-                                transition: ease all .3s;
-                                &:hover{
-                                    color: $secundario;
-                                }
-                                &.seleccionado{
-                                    color: $secundario;
-                                }
-                                .nombre{
-                                    margin-left: 10px;
-                                }
-                            }
-                        }
-                    }
+          .#{$pfx}filtros{
+            background-color: $darkenLight;
+            .filtrosWrapper{
+              .filtrosHeader{
+                border-bottom-color: rgba($blanco,.1);
+                .wrapperIcon{
+                  border-left-color: rgba($blanco,.1);
                 }
-                &.compressed{
-                    width: 250px;
-                    min-width: 250px;
+              }
+              .grupo{
+                border-bottom-color: rgba($blanco,.1);
+                &.squares{
+                  .contenidoGrupo{
+                    .filtro{
+                      border-color: rgba($blanco,.1);
+                    }
+                  }
                 }
-            }
-            .contenedorCards{
-                @include flex;
-                width: 100%;
-                transition: ease all .3s;
-            }
-        }
-        .paginacion{
-          @include flex($wrap: nowrap);
-          width: 100%;
-          margin-top: 20px;
-          .arrow{
-            @include flex;
-            min-width: 18px;
-            height: 18px;
-            margin: 5px;
-            padding: 5px;
-            color: $negro;
-            font-weight: 600;
-            text-align: center;
-            border-radius: 50%;
-            background-color: $gris;
-            box-shadow: 0 5px 10px 0 rgba($negro,.3);
-          }
-          .nums{
-            @include flex;
-            margin: 0 10px;
-            .page{
-              @extend .arrow;
-              min-width: 20px;
-              height: 20px;
-              &.activo{
-                color: $blanco;
-                background-color: $primario;
               }
             }
           }
         }
         @include desktop{
-            .productosWrapper{
-                &:after{
-                    content: "";
-                    position: fixed;
-                    top: 0;
-                    left: 0;
-                    width: 100%;
-                    height: 100%;
-                    visibility: hidden;
-                    opacity: 0;
-                    background-color: rgba($negro,.8);
-                    transition: ease all .3s;
-                    z-index: $zup;
-                }
-                &.openFiltros{
-                    &:after{
-                        opacity: 1;
-                        visibility: visible;
-                    }
-                    .#{$pfx}filtros{
-                        left: 0;
-                    }
-                }
-                .showFiltrosResponsive{
-                    @include flex;
-                    position: fixed;
-                    bottom: 20px;
-                    left: 0;
-                    width: 50px;
-                    min-width: fit-content;
-                    padding: 10px 25px;
-                    color: $blanco;
-                    font-size: 14px;
-                    letter-spacing: 1px;
-                    text-transform: uppercase;
-                    background-color: #000;
-                    transform: rotate(-90deg) translateY(100%);
-                    transform-origin: bottom left;
-                    user-select: none;
-                    z-index: 99;
-                    cursor: pointer;
-                    transition: ease all .3s;
-                    &.oculto{
-                        transform: translateX(-100%);
-                    }
-                    .icono{
-                        display: none;
-                    }
-                }
-                .#{$pfx}filtros{
-                    position: fixed;
-                    top: 0;
-                    left: -300px;
-                    height: 100%;
-                    margin-top: 0;
-                    background-color: $blanco;
-                    z-index: $zmenu;
-                    transition: ease all .3s;
-                    &.compressed{
-                        width: 300px;
-                        min-width: 300px;
-                    }
-                    .filtrosWrapper{
-                        @include flex(column, nowrap);
-                        height: 100%;
-                        .filtrosHeader{
-                            width: 100%;
-                            min-height: 76px;
-                            .wrapperIcon{
-                                .#{$pfx}icono{
-                                    &.borrarFiltros{
-                                        display: none;
-                                    }
-                                    &.cerrarFiltros{
-                                        display: block;
-                                    }
-                                }
-                            }
-                        }
-                        .wrapperGrupos{
-                            @include scrollbars;
-                            width: 100%;
-                            padding-bottom: 50px;
-                            margin-bottom: auto;
-                            overflow-x: hidden;
-                            overflow-y: auto;
-                            .grupo{
-                                &.squares{
-                                    .contenidoGrupo{
-                                        justify-content: center;
-                                    }
-                                }
-                            }
-                        }
-
-                    }
-                }
+          .productosWrapper{
+            &:after{
+              background-color: rgba($blanco,.8);
             }
+            .showFiltrosResponsive{
+              background-color: var(--color-text);
+            }
+            .#{$pfx}filtros{
+              .filtrosWrapper{
+                .wrapperGrupos{
+                  @include scrollbars($foreground-color: rgba($blanco,.2));
+                }
+              }
+            }
+          }
         }
-        @include mobile{
-            .#{$pfx}encabezadoDoble{
-                @include flex(column);
-                font-size: 30px;
-                .breakTxt{
-                    font-size: 45px;
-                }
-            }
-            .productosWrapper{
-                .showFiltrosResponsive{
-                    bottom: 0;
-                    width: 100%;
-                    padding: 20px 25px;
-                    transform: none;
-                    box-sizing: border-box;
-                    .icono{
-                        display: block;
-                        width: 20px;
-                        height: 20px;
-                        margin-right: 10px;
-                        svg{
-                            path, circle{
-                                stroke: $blanco;
-                            }
-                        }
-                    }
-                }
-            }
-        }
+      }
     }
+  }
+}
+
+.#{$pfx}catalogo{
+  .#{$pfx}container{
+    @include container;
+    padding: 50px 0;
+    .productosWrapper{
+      @include flex(row, nowrap, flex-start, space-between);
+      width: 100%;
+      .showFiltrosResponsive{
+        display: none;
+      }
+      .#{$pfx}filtros{
+        @include vendorPrefix((user-select: none));
+        margin-top: 60px;
+        width: 300px;
+        min-width: 300px;
+        .filtrosWrapper{
+          width: 100%;
+          .filtrosHeader{
+            @include flex($jc: space-between);
+            padding-left: 20px;
+            box-sizing: border-box;
+            color: var(--color-text);
+            font-size: 20px;
+            font-weight: 600;
+            border-bottom: 1px solid rgba($negro,.1);
+            .wrapperIcon{
+              border-left: 1px solid rgba($negro,.1);
+              .#{$pfx}icono{
+                padding: 20px;
+                cursor: pointer;
+                &.cerrarFiltros{
+                  display: none;
+                  padding: 15px;
+                  width: 45px;
+                  height: 45px;
+                }
+                svg{
+                  path, circle{
+                    stroke: var(--color-text);
+                  }
+                }
+              }
+            }
+          }
+          .grupo{
+            border-bottom: 1px solid rgba($negro,.1);
+            &:last-child{
+              border-bottom: 0;
+            }
+            &.show{
+              .headerGrupo{
+                .textHeader{
+                  &:before{
+                    transform: rotate(-135deg) translateY(-2px);
+                  }
+                }
+              }
+            }
+            &.squares{
+              .contenidoGrupo{
+                @include flex($jc: flex-start);
+                .filtro{
+                  @include flex;
+                  width: 56px;
+                  height: 56px;
+                  padding: 5px;
+                  margin: 2px;
+                  border: 1px solid rgba($negro,.1);
+                  text-align: center;
+                }
+              }
+            }
+            .headerGrupo{
+              @include flex($jc: space-between);
+              padding: 20px;
+              box-sizing: border-box;
+              color: var(--color-text);
+              font-size: 14px;
+              font-weight: 600;
+              text-transform: uppercase;
+              cursor: pointer;
+              .textHeader{
+                @include flex;
+                padding-left: 15px;
+                position: relative;
+                &:before{
+                  content: "";
+                  width: 5px;
+                  height: 5px;
+                  border: 1px solid;
+                  position: absolute;
+                  left: 0;
+                  transform: rotate(45deg) translateY(-2px);
+                  border-top: 0;
+                  border-left: 0;
+                  transition: ease all .3s;
+                }
+              }
+              .limpiarFiltro{
+                width: 20px;
+                height: 20px;
+                cursor: pointer;
+                svg{
+                  path, circle{
+                    stroke: var(--color-text);
+                  }
+                }
+              }
+            }
+            .contenidoGrupo{
+              .filtro{
+                @include flex($jc: space-between);
+                padding: 10px 20px;
+                box-sizing: border-box;
+                font-size: 14px;
+                font-weight: 600;
+                text-transform: uppercase;
+                cursor: pointer;
+                transition: ease all .3s;
+                &:hover{
+                  color: $secundario;
+                }
+                &.seleccionado{
+                  color: $secundario;
+                }
+                .nombre{
+                  margin-left: 10px;
+                }
+              }
+            }
+          }
+        }
+        &.compressed{
+          width: 250px;
+          min-width: 250px;
+        }
+      }
+      .contenedorCards{
+        @include flex;
+        width: 100%;
+        transition: ease all .3s;
+      }
+    }
+    .paginacion{
+      @include flex($wrap: nowrap);
+      width: 100%;
+      margin-top: 20px;
+      .arrow{
+        @include flex;
+        min-width: 18px;
+        height: 18px;
+        margin: 5px;
+        padding: 5px;
+        color: $negro;
+        font-weight: 600;
+        text-align: center;
+        border-radius: 50%;
+        background-color: $gris;
+        box-shadow: 0 5px 10px 0 rgba($negro,.3);
+      }
+      .nums{
+        @include flex;
+        margin: 0 10px;
+        .page{
+          @extend .arrow;
+          min-width: 20px;
+          height: 20px;
+          &.activo{
+            color: $blanco;
+            background-color: $primario;
+          }
+        }
+      }
+    }
+    @include desktop{
+      .productosWrapper{
+        &:after{
+          content: "";
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          visibility: hidden;
+          opacity: 0;
+          background-color: rgba($negro,.8);
+          transition: ease all .3s;
+          z-index: $zup;
+        }
+        &.openFiltros{
+          &:after{
+            opacity: 1;
+            visibility: visible;
+          }
+          .#{$pfx}filtros{
+            left: 0;
+          }
+        }
+        .showFiltrosResponsive{
+          @include flex;
+          @include vendorPrefix((user-select: none));
+          position: fixed;
+          bottom: 20px;
+          left: 0;
+          width: 50px;
+          min-width: fit-content;
+          padding: 10px 25px;
+          color: var(--color-theme);
+          font-size: 14px;
+          letter-spacing: 1px;
+          text-transform: uppercase;
+          background-color: #000;
+          transform: rotate(-90deg) translateY(100%);
+          transform-origin: bottom left;
+          z-index: 99;
+          cursor: pointer;
+          transition: ease all .3s;
+          &.oculto{
+            transform: translateX(-100%);
+          }
+          .icono{
+            display: none;
+          }
+        }
+        .#{$pfx}filtros{
+          position: fixed;
+          top: 0;
+          left: -300px;
+          height: 100%;
+          margin-top: 0;
+          background-color: $blanco;
+          z-index: $zmenu;
+          transition: ease all .3s;
+          &.compressed{
+            width: 300px;
+            min-width: 300px;
+          }
+          .filtrosWrapper{
+            @include flex(column, nowrap);
+            height: 100%;
+            .filtrosHeader{
+              width: 100%;
+              min-height: 76px;
+              .wrapperIcon{
+                .#{$pfx}icono{
+                  &.borrarFiltros{
+                    display: none;
+                  }
+                  &.cerrarFiltros{
+                    display: block;
+                  }
+                }
+              }
+            }
+            .wrapperGrupos{
+              @include scrollbars;
+              width: 100%;
+              padding-bottom: 50px;
+              margin-bottom: auto;
+              overflow-x: hidden;
+              overflow-y: auto;
+              .grupo{
+                &.squares{
+                  .contenidoGrupo{
+                    justify-content: center;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    @include mobile{
+      .#{$pfx}encabezadoDoble{
+        @include flex(column);
+        font-size: 30px;
+        .breakTxt{
+          font-size: 45px;
+        }
+      }
+      .productosWrapper{
+        .showFiltrosResponsive{
+          bottom: 0;
+          width: 100%;
+          padding: 20px 25px;
+          transform: none;
+          box-sizing: border-box;
+          .icono{
+            display: block;
+            width: 20px;
+            height: 20px;
+            margin-right: 10px;
+            svg{
+              path, circle{
+                stroke: var(--color-theme);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
 }
