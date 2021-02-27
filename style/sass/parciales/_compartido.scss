@@ -462,7 +462,7 @@ body{
   .dropContent{
     @include scrollbars($foreground-color: rgba($blanco,.2));
     display: none;
-    background-color: #242424;
+    background-color: rgba(#000,.9);
     position: absolute;
     top: 100%;
     left: 50%;
@@ -474,6 +474,15 @@ body{
     transform: translateX(-50%);
     cursor: default;
     overflow: auto;
+    &.leftAlign{
+      left: -20px;
+      transform: none;
+    }
+    &.rightAlign{
+      left: auto;
+      right: -20px;
+      transform: none;
+    }
     .headerText{
       font-family: 'Roboto', sans-serif;
       font-size: 18px;
@@ -491,7 +500,7 @@ body{
         display: block;
         width: 100%;
         height: 1px;
-        margin-top: 30px;
+        margin-top: 20px;
         background-color: rgba($blanco,.1);
       }
       .avatar{
@@ -530,6 +539,51 @@ body{
         }
       }
     }
+  }
+}
+.#{$pfx}productList{
+  @include flex($wrap: nowrap, $jc: flex-start);
+  padding: 10px 20px;
+  color: $blanco;
+  transition: ease all .3s;
+  &:hover{
+    background-color: $negro;
+  }
+  &.inStock{
+    .stock{
+      color: $secundario;
+    }
+  }
+  .thumb{
+    @include imagen($size: contain);
+    width: 50px;
+    height: 50px;
+    min-width: 50px;
+    margin-right: 10px;
+    border-radius: 10px;
+    background-color: $blanco;
+  }
+  .rows{
+    @include flex($wrap: nowrap, $jc: space-between);
+    margin-top: 10px;
+    >:first-child{
+      margin-right: 20px;
+    }
+  }
+  .name{
+    @include ellipsisParrafo(2);
+  }
+  .price, .stock, .qty{
+    font-size: 14px;
+    font-weight: 600;
+  }
+  .price{
+    &:before{
+      content: var(--currency-prefix);
+    }
+  }
+  .stock{
+    color: $primario;
   }
 }
 
