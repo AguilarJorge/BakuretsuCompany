@@ -47,6 +47,14 @@
         background: $background-color;
     }
 }
+@mixin vendorPrefix($decs, $prefixs: (webkit moz)){
+  @each $prop, $value in $decs {
+    @each $prefix in $prefixs {
+      #{'-' + $prefix + '-' + $prop}: $value;
+    }
+    #{$prop}: $value;
+  }
+}
 
 // Media Queries
 @mixin desktop {

@@ -90,6 +90,7 @@ $(function(){
   //Dropdowns
   if ($('.bakuretsu_drop').length) {
     $('.bakuretsu_drop').click(function(){
+      $(this).toggleClass('activo');
       $(this).find('.dropContent').slideToggle('fast');
     })
   }

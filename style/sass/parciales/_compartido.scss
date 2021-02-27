@@ -474,7 +474,16 @@ body{
     transform: translateX(-50%);
     cursor: default;
     overflow: auto;
-    .personal{
+    .headerText{
+      font-family: 'Roboto', sans-serif;
+      font-size: 18px;
+    }
+    .decoText{
+      @include vendorPrefix((text-decoration: underline wavy $primario));
+      margin-top: 5px;
+      text-underline-position: under;
+    }
+    .headerWrapper{
       padding: 20px;
       text-align: center;
       &:after{
@@ -507,15 +516,6 @@ body{
           transform: rotate(45deg);
           pointer-events: none;
         }
-      }
-      .nombre{
-        font-family: 'Roboto', sans-serif;
-        font-size: 18px;
-      }
-      .user{
-        margin-top: 5px;
-        text-decoration: underline wavy $primario;
-        text-underline-position: under;
       }
     }
     .link{
@@ -743,6 +743,11 @@ body{
               margin-left: 20px;
               color: $blanco;
               cursor: pointer;
+              &.activo{
+                svg{
+                  color: $secundario;
+                }
+              }
               &.themeToggle{
                 position: relative;
                 overflow: hidden;

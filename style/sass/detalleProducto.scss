@@ -204,8 +204,8 @@ body{
     padding: 50px 0;
     .detalleWrapper{
       @include flex($ai: flex-start);
+      @include vendorPrefix((user-select: none));
       width: 100%;
-      user-select: none;
       .enviosTag{
         @include flex($jc: flex-start);
         margin: 30px auto;
@@ -403,11 +403,11 @@ body{
           }
         }
         .selCantidad{
-          user-select: none;
+          @include vendorPrefix((user-select: none));
         }
         .alCarrito{
+          @include vendorPrefix((user-select: none));
           display: inline-block;
-          user-select: none;
           margin-top: 20px;
           padding: 12px 25px;
           color: $blanco;
