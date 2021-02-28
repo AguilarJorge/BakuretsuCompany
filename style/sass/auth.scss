@@ -1,0 +1,78 @@
+@import "./parciales/vars";
+@import "./parciales/mixins";
+@import "./parciales/general";
+@import "./parciales/compartido";
+
+body{
+  &.darken{
+    .#{$pfx}auth{
+      background: #000;
+    }
+  }
+}
+
+.#{$pfx}auth{
+  background: linear-gradient($secundario, $primario);
+  position: relative;
+  &:before{
+    @include imagen('../../img/authBanner.jpg');
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: .2;
+    pointer-events: none;
+  }
+  .#{$pfx}container{
+    @include container;
+    @include flex;
+    min-height: 500px;
+    padding: 50px 0;
+    position: relative;
+    .info{
+      @include flex(column);
+      min-height: 300px;
+      padding-right: 50px;
+      border-right: 1px solid $blanco;
+      font-size: 20px;
+      font-weight: 600;
+      color: $blanco;
+      .name{
+        position: relative;
+        margin-bottom: 50px;
+        font-size: 30px;
+        &:after{
+          content: "";
+          position: absolute;
+          top: 50%;
+          right: -10px;
+          width: 70px;
+          height: 70px;
+          border-radius: 50%;
+          border: 1px dashed $blanco;
+          transform: translateY(-50%);
+        }
+      }
+    }
+    .forms{
+      margin-left: 50px;
+      .headerForm{
+        color: $blanco;
+        font-weight: 600;
+        font-size: 25px;
+      }
+      input{
+        display: block;
+        min-width: 250px;
+        padding: 10px 20px;
+        box-sizing: border-box;
+        margin: 20px 0;
+        font-size: 20px;
+        border: 0;
+        border-radius: 30px;
+      }
+    }
+  }
+}
