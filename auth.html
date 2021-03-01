@@ -224,13 +224,52 @@
       <div class="bakuretsu_container">
         <div class="info">
           <p class="name">Bakuretsu Company</p>
-          <p>Registrarme</p>
+          <p class="toggleForm loginShow"></p>
         </div>
         <div class="forms">
-          <form id="loginForm">
+          <form id="formRegistro" class="animForm hidden">
+            <p class="headerForm">Registrarme</p>
+            <div class="field required" data-msj-error="Este campo es obligatorio">
+              <label for="nombresRegistro">Nombre(s)</label>
+              <input id="nombresRegistro" type="text" name="nombresRegistro">
+            </div>
+            <div class="field w50 required" data-msj-error="Este campo es obligatorio">
+              <label for="paternoRegistro">Apellido paterno</label>
+              <input id="paternoRegistro" type="text" name="paternoRegistro">
+            </div>
+            <div class="field w50 required" data-msj-error="Este campo es obligatorio">
+              <label for="maternoRegistro">Apellido materno</label>
+              <input id="maternoRegistro" type="text" name="maternoRegistro">
+            </div>
+            <div class="field required" data-msj-error="Este campo es obligatorio">
+              <label for="usuarioRegistro">Usuario</label>
+              <input id="usuarioRegistro" type="text" name="usuarioRegistro">
+            </div>
+            <div class="field required" data-msj-error="Este campo es obligatorio">
+              <label for="correoRegistro">Correo electronico</label>
+              <input id="correoRegistro" type="email" name="correoRegistro">
+            </div>
+            <div class="field w50 required" data-msj-error="Este campo es obligatorio">
+              <label for="passwordRegistro">Contraseña</label>
+              <input id="passwordRegistro" type="password" name="passwordRegistro">
+            </div>
+            <div class="field w50 required" data-msj-error="Este campo es obligatorio">
+              <label for="confirmarPasswordRegistro">Confirmar contraseña</label>
+              <input id="confirmarPasswordRegistro" type="password" name="confirmarPasswordRegistro">
+            </div>
+            <div class="button registro">Registrarme</div>
+          </form>
+          <form id="formLogin" class="animForm">
             <p class="headerForm">Iniciar Sesión</p>
-            <input type="text" placeholder="Usuario">
-            <input type="text" placeholder="Contraseña">
+            <div class="field required" data-msj-error="Este campo es obligatorio">
+              <label for="usuarioLogin">Usuario</label>
+              <input id="usuarioLogin" type="text" name="usuarioLogin">
+            </div>
+            <div class="field required" data-msj-error="Este campo es obligatorio">
+              <label for="passwordLogin">Contraseña</label>
+              <input id="passwordLogin" type="password" name="passwordLogin">
+            </div>
+            <div class="button login">Iniciar Sesión</div>
           </form>
         </div>
       </div>
