@@ -69,7 +69,7 @@ body{
 .#{$pfx}encabezado{
   font-family: 'Roboto', sans-serif;
   margin-bottom: 30px;
-  color: $negro;
+  color: var(--color-text);
   font-size: 50px;
   font-weight: 900;
   text-align: center;

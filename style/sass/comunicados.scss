@@ -1,0 +1,52 @@
+@import "./parciales/vars";
+@import "./parciales/mixins";
+@import "./parciales/general";
+@import "./parciales/compartido";
+
+body{
+  &.darken{
+    .#{$pfx}auth{
+      background: #000;
+    }
+  }
+}
+
+.#{$pfx}comunicados{
+  .#{$pfx}container{
+    @include container;
+    padding: 50px 0;
+    .comsWrapper{
+      width: 100%;
+      .comunicado{
+        &:not(:last-child){
+          margin-bottom: 50px;
+        }
+        &.importante{
+          .headerComunicado{
+            .date{
+              &:after{
+                content: "Importante";
+                margin-left: auto;
+                padding: 5px 10px;
+                color: $blanco;
+                font-size: 12px;
+                border-radius: 20px;
+                background-color: $primario;
+              }
+            }
+          }
+        }
+        .headerComunicado{
+          font-size: 30px;
+          font-weight: 600;
+          margin-bottom: 10px;
+          color: var(--color-text);
+          .date{
+            @include flex($jc: flex-start);
+            font-size: 14px;
+          }
+        }
+      }
+    }
+  }
+}

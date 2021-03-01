@@ -232,5 +232,28 @@ body{
         margin-left: 0;
       }
     }
+    @include mobile{
+      min-height: auto;
+      .info{
+        margin-bottom: 50px;
+        align-items: center;
+        text-align: center;
+      }
+      .forms{
+        align-items: flex-start;
+        form{
+          .field{
+            &.w50{
+              width: 100%;
+            }
+          }
+        }
+      }
+      #formRegistro{
+        &.hidden{
+          height: 300px;
+        }
+      }
+    }
   }
 }
