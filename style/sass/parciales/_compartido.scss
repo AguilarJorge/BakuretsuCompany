@@ -600,6 +600,158 @@ body{
     color: $primario;
   }
 }
+.#{$pfx}galeria{
+  @include flex;
+  width: 100%;
+  margin-top: 20px;
+  &.hasMany{
+    .galeriaThumb{
+      &:nth-child(3){
+        position: relative;
+        &:after{
+          @include flex;
+          content: "+ Ver más";
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          color: $blanco;
+          font-size: 25px;
+          background-color: rgba($negro,.8);
+        }
+      }
+    }
+  }
+  .galeriaThumb{
+    width: calc((100% / 3) - 4px);
+    flex-grow: 1;
+    height: 300px;
+    margin: 2px;
+    overflow: hidden;
+    cursor: pointer;
+    &:nth-child(n + 4){
+      display: none;
+    }
+    &:hover{
+      .galeriaImagen{
+        transform: scale(1.1);
+      }
+    }
+    .galeriaImagen{
+      object-fit: cover;
+      object-position: center;
+      width: 100%;
+      height: 100%;
+      transition: ease all .3s;
+    }
+  }
+  @include tablet{
+    position: relative;
+    flex-direction: column;
+    align-content: flex-end;
+    .galeriaThumb{
+      width: calc(50% - 4px);
+      height: 150px;
+      &:first-child{
+        position: absolute;
+        left: 0;
+        height: calc(100% - 4px);
+      }
+    }
+  }
+}
+.#{$pfx}galeriaPreview{
+  @include flex;
+  @include vendorPrefix((user-select: none));
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba($negro,.9);
+  z-index: $zmodal;
+  overflow: hidden;
+  &.anim{
+    .previwImg{
+      opacity: 0;
+      transform: scale(1.1);
+    }
+  }
+  .#{$pfx}galeriaPreviewClose{
+    @include flex;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: $blanco;
+    cursor: pointer;
+    &:before, &:after{
+      content: "";
+      position: absolute;
+      width: 50%;
+      height: 2px;
+      border-radius: 20px;
+      background-color: $negro;
+      transform: rotate(45deg);
+    }
+    &:after{
+      transform: rotate(-45deg);
+    }
+  }
+  .previwImg{
+    object-fit: contain;
+    object-position: center;
+    max-width: 80%;
+    max-height: 80%;
+    min-width: 200px;
+    min-height: 200px;
+    background-color: $blanco;
+    border: 5px solid $blanco;
+    transition: ease all .2s;
+  }
+  .#{$pfx}control{
+    @include flex;
+    position: absolute;
+    left: 20px;
+    bottom: 20px;
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+    border-radius: 50%;
+    color: $negro;
+    background-color: $blanco;
+    cursor: pointer;
+    &:before{
+      content: "";
+      position: absolute;
+      width: 15px;
+      height: 15px;
+      margin-left: 5px;
+      border: 2px solid $negro;
+      border-top: 0;
+      border-right: 0;
+      transform: rotate(45deg);
+    }
+    &.siguiente{
+      left: 70px;
+      transform: rotate(180deg);
+    }
+  }
+  .labelDetalle{
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    min-width: 100px;
+    padding: 3px 10px;
+    color: $negro;
+    text-align: center;
+    background-color: $blanco;
+  }
+}
 
 //Secciones
 .#{$pfx}menu{

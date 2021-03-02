@@ -3,14 +3,6 @@
 @import "./parciales/general";
 @import "./parciales/compartido";
 
-body{
-  &.darken{
-    .#{$pfx}auth{
-      background: #000;
-    }
-  }
-}
-
 .#{$pfx}comunicados{
   .#{$pfx}container{
     @include container;
@@ -44,6 +36,22 @@ body{
           .date{
             @include flex($jc: flex-start);
             font-size: 14px;
+          }
+        }
+      }
+    }
+    @include mobile{
+      .#{$pfx}encabezado{
+        font-size: 40px;
+      }
+      .comsWrapper{
+        .comunicado{
+          .headerComunicado{
+            font-size: 25px;
+            text-align: center;
+            .date{
+              justify-content: center;
+            }
           }
         }
       }
