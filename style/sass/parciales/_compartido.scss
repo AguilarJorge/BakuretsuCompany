@@ -44,6 +44,11 @@ body{
         }
       }
     }
+    .#{$pfx}slidable{
+      .slidableTitle, .slidableContent{
+        background-color: $negro;
+      }
+    }
   }
 }
 
@@ -101,6 +106,13 @@ body{
 .#{$pfx}prod{
   width: 300px;
   transition: ease all .3s;
+  &.#{$pfx}censored{
+    .wrapper{
+      .imgProd{
+        filter: blur(8px);
+      }
+    }
+  }
   &.esFav{
     .wrapper{
       .infoProd{
@@ -750,6 +762,159 @@ body{
     color: $negro;
     text-align: center;
     background-color: $blanco;
+  }
+}
+.#{$pfx}alertaModal{
+  @include flex;
+  @include vendorPrefix((user-select: none));
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba($negro,.9);
+  z-index: 100;
+  .closable{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+  }
+  .contenedor{
+    @include flex(column, nowrap);
+    width: 90%;
+    max-width: 500px;
+    min-height: 200px;
+    padding: 20px;
+    background-color: $blanco;
+    box-sizing: border-box;
+    z-index: 1;
+    &.rounded{
+      border-radius: 20px;
+      .acciones{
+        .accion{
+          border-radius: 20px;
+        }
+      }
+    }
+    &.warning{
+      .icono{
+        color: #f8be6c;
+      }
+    }
+    &.exito{
+      .icono{
+        color: #6cc16c;
+      }
+    }
+    &.error{
+      .icono{
+        color: #F44336;
+      }
+    }
+    .icono{
+      width: 70px;
+      height: 70px;
+      overflow: hidden;
+      path, circle{
+        fill: none;
+        stroke: currentColor;
+        stroke-miterlimit: 10;
+        stroke-width: 2;
+      }
+    }
+    p{
+      text-align: center;
+    }
+    .encabezado{
+      margin: 10px auto;
+      font-size: 20px;
+      font-weight: 600;
+    }
+    .acciones{
+      @include flex(row, wrap, center, flex-end, center);
+      width: 100%;
+      &:not(:empty){
+        margin-top: 30px;
+      }
+      .accion{
+        margin: 10px 0 0 10px;
+        padding: 7px 10px;
+        color: $negro;
+        font-size: 13px;
+        font-weight: 600;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        cursor: pointer;
+        transition: ease all .3s;
+        &:hover{
+          color: $blanco;
+          &.aprov{
+            background-color: #6cc16c;
+          }
+          &.cancel{
+            background-color: #F44336;
+          }
+        }
+      }
+    }
+  }
+}
+.#{$pfx}slidable{
+  @include vendorPrefix((user-select: none));
+  &:not(:last-child){
+    margin-bottom: 20px;
+  }
+  &.active{
+    .slidableTitle{
+      &:after{
+        transform: rotate(-135deg);
+      }
+    }
+  }
+  &.importante{
+    .slidableTitle{
+      &:before{
+        content: "Importante";
+        margin-right: 10px;
+        padding: 2px 10px;
+        font-size: 12px;
+        font-weight: 600;
+        color: $blanco;
+        background-color: $primario;
+      }
+    }
+  }
+  .slidableTitle{
+    @include flex($jc: flex-start);
+    padding: 15px 35px 15px 20px;
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--color-text);
+    background-color: $gris;
+    position: relative;
+    cursor: pointer;
+    &:after{
+      content: "";
+      position: absolute;
+      right: 10px;
+      width: 12px;
+      height: 12px;
+      border: 1px solid;
+      border-top: 0;
+      border-left: 0;
+      transform: rotate(45deg);
+      transition: ease all .3s;
+    }
+  }
+  .slidableContent{
+    display: none;
+    margin-top: 2px;
+    padding: 20px;
+    background-color: $gris;
   }
 }
 

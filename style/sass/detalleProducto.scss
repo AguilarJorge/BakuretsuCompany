@@ -210,6 +210,10 @@ body{
         @include flex($jc: flex-start);
         margin: 30px auto;
         font-weight: 600;
+        .grupo{
+          @include flex;
+          margin: 0 10px;
+        }
         .icono{
           width: 25px;
           height: 25px;
@@ -257,6 +261,11 @@ body{
         box-shadow: 0 40px 20px -30px rgba($negro,.1);
         box-sizing: border-box;
         position: relative;
+        &.#{$pfx}censored{
+          .imagenesContainer{
+            filter: blur(8px);
+          }
+        }
         .toClone{
           display: none;
         }

@@ -3,120 +3,55 @@
 @import "./parciales/general";
 @import "./parciales/compartido";
 
-.#{$pfx}bannerSlider{
-  min-height: 100vh;
+body{
+  &.darken{
+    .#{$pfx}infoCards{
+      .#{$pfx}container{
+        .card{
+          background-color: $negro;
+          .#{$pfx}icono{
+            color: $secundario;
+          }
+        }
+      }
+    }
+  }
+}
+
+.#{$pfx}mainSlider{
+  background-color: #000;
   .#{$pfx}container{
     @include container(100%);
     @include flex(column, nowrap, center, flex-end, center);
-    height: 100vh;
+    height: 500px;
     position: relative;
-    .colorSlider{
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 500px;
-      height: 100%;
-      background-color: $negro;
+    &:hover{
+      .manualControls{
+        .control{
+          opacity: 1;
+          &.at, &.av{
+            transform: translateY(-50%);
+          }
+        }
+      }
     }
     .wrapperSlider{
       position: absolute;
       width: 100%;
       height: 100%;
       overflow: hidden;
-      .slide{
-        @include flex;
+      .imgSlider{
+        @include imagen;
         position: absolute;
         top: 0;
-        left: 0;
+        left: -100%;
         width: 100%;
         height: 100%;
-        .prodImg{
-          @include imagen($size: contain);
-          position: absolute;
-          left: 20%;
-          width: 500px;
-          height: 100%;
-        }
-        .data{
-          width: 100%;
-          padding-left: calc(500px + 20%);
-          padding-right: 5%;
-          box-sizing: border-box;
-          text-align: right;
-          p{
-            color: $negro;
-            font-size: 18px;
-          }
-          .precio{
-            font-family: 'Roboto', sans-serif;
-            margin-bottom: 10px;
-            font-size: 70px;
-            font-weight: 900;
-            &:before{
-              content: var(--currencyPrefix);
-              font-size: 40px;
-            }
-          }
-          .aFavs{
-            margin-left: auto;
-            cursor: pointer;
-          }
-          .botones{
-            @include flex($jc: flex-end);
-            margin-top: 40px;
-            .boton{
-              margin-top: 10px;
-              margin-left: 20px;
-              padding: 14px 25px;
-              color: $blanco;
-              font-size: 12px;
-              font-weight: 600;
-              border-radius: 10px;
-              letter-spacing: 1px;
-              text-transform: uppercase;
-              background-color: $primario;
-              border: 1px solid $primario;
-              transition: ease all .3s;
-              &.alCarro{
-                background-color: transparent;
-                border: 1px solid $negro;
-                color: $negro;
-              }
-              &:hover{
-                background-color: $negro;
-                border-color: $negro;
-                color: $blanco;
-              }
-            }
-          }
-          .infoExtra{
-            @include flex($jc: flex-end);
-            .ifo{
-              @include flex;
-              margin-top: 20px;
-              margin-left: 20px;
-              p{
-                font-size: 14px;
-                font-weight: 600;
-              }
-              .#{$pfx}icono{
-                width: 20px;
-                height: 20px;
-                margin-right: 10px;
-              }
-            }
-          }
-        }
-        .bigName{
-          font-family: 'Roboto', sans-serif;
-          position: absolute;
-          bottom: 0;
-          right: 0;
-          margin: 0;
-          height: 230px;
-          opacity: .2;
-          font-size: 200px;
-          overflow: hidden;
+        transition: ease all .5s;
+        &.activo{
+          left: 100%;
+          transform: translateX(-100%);
+          transition-property: transform;
         }
       }
     }
@@ -168,15 +103,16 @@
         }
       }
     }
-    .dimerDots{
+    .#{$pfx}dots{
       @include flex(row, wrap, center, center, center);
       position: relative;
-      .dimerDot{
+      .#{$pfx}dot{
         @include flex(column, nowrap, center, center, center);
         width: 17px;
         height: 17px;
         margin: 10px 3px;
         color: $blanco;
+        cursor: pointer;
         &.activo{
           &:before{
             width: 15px;
@@ -199,6 +135,57 @@
       .manualControls{
         display: none;
       }
+    }
+  }
+}
+.#{$pfx}infoCards{
+  .#{$pfx}container{
+    @include container;
+    @include flex($ai: stretch);
+    padding: 50px 0;
+    .card{
+      @include flex($wrap: nowrap);
+      width: calc((100% / 3) - 40px);
+      min-width: 250px;
+      flex-grow: 1;
+      margin: 20px;
+      padding: 20px;
+      font-size: 20px;
+      font-weight: 600;
+      text-align: center;
+      color: var(--color-text);
+      background-color: $gris;
+      box-sizing: border-box;
+      .#{$pfx}icono{
+        width: 50px;
+        height: 50px;
+        min-width: 50px;
+        min-height: 50px;
+        margin-right: 10px;
+      }
+    }
+    @include responsivo(850px){
+      .card{
+        flex-direction: column;
+        .#{$pfx}icono{
+          margin-right: 0;
+          margin-bottom: 10px;
+        }
+      }
+    }
+    @include responsivo(500px){
+      .card{
+        margin: 20px 0;
+      }
+    }
+  }
+}
+.#{$pfx}actualizaciones{
+  .#{$pfx}container{
+    @include container;
+    padding: 50px 0;
+    .contenedorActualizaciones{
+      width: 100%;
     }
   }
 }
