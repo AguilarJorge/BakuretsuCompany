@@ -917,6 +917,69 @@ body{
     background-color: $gris;
   }
 }
+.#{$pfx}hasTooltip{
+  position: relative;
+  &:hover{
+    &[data-tooltip-posicion="left"], &[data-tooltip-posicion="right"]{
+      &:after{
+        transform: translateX(0) translateY(-50%);
+      }
+    }
+    &[data-tooltip-posicion="top"], &[data-tooltip-posicion="bottom"]{
+      &:after{
+        transform: translateX(-50%) translateY(0);
+      }
+    }
+    &:after{
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+  }
+  &[data-tooltip-posicion="left"]{
+    &:after{
+      top: 50%;
+      left: auto;
+      right: 100%;
+      margin: 0 5px 0 0;
+      transform: translateX(20px) translateY(-50%);
+    }
+  }
+  &[data-tooltip-posicion="right"]{
+    &:after{
+      top: 50%;
+      left: 100%;
+      margin: 0 0 0 5px;
+      transform: translateX(-20px) translateY(-50%);
+    }
+  }
+  &[data-tooltip-posicion="top"]{
+    &:after{
+      top: auto;
+      bottom: 100%;
+      margin: 0 0 5px 0;
+      transform: translateX(-50%) translateY(20px);
+    }
+  }
+  &:after{
+    @include vendorPrefix((user-select: none));
+    content: attr(data-tooltip);
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin: 5px 0 0 0;
+    width: max-content;
+    max-width: 200px;
+    padding: 5px 10px;
+    font-size: 14px;
+    opacity: 0;
+    color: var(--color-theme);
+    transform: translateX(-50%) translateY(-20px);
+    background-color: var(--color-text);
+    box-sizing: border-box;
+    pointer-events: none;
+    transition: ease all .3s;
+  }
+}
 
 //Secciones
 .#{$pfx}menu{

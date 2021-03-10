@@ -1,0 +1,306 @@
+@import "./parciales/vars";
+@import "./parciales/mixins";
+@import "./parciales/general";
+@import "./parciales/compartido";
+
+body{
+  &.darken{
+    .#{$pfx}infoCards{
+      .#{$pfx}container{
+        .card{
+          background-color: $negro;
+          .#{$pfx}icono{
+            color: $secundario;
+          }
+        }
+      }
+    }
+    .#{$pfx}categoryGroup{
+      .#{$pfx}container{
+        .products{
+          .prod{
+            background-color: $negro;
+            &:before{
+              background: linear-gradient(transparent, rgba($blanco,.3));
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.#{$pfx}profileArea{
+    .#{$pfx}container{
+    @include container;
+    padding: 50px 0;
+    .header{
+      font-size: 40px;
+      text-align: center;
+      color: var(--color-text);
+    }
+    .button{
+      margin: 20px auto 0 auto;
+      padding: 10px 30px;
+      color: $blanco;
+      font-size: 20px;
+      text-align: center;
+      border-radius: 50px;
+      background-color: $secundario;
+      box-sizing: border-box;
+      cursor: pointer;
+      transition: ease all .3s;
+      &:hover{
+        transform: translateY(-5px);
+        box-shadow: 0 10px 10px 0 rgba($negro,.2);
+      }
+    }
+    .personal{
+      width: 100%;
+      margin-bottom: 50px;
+      text-align: center;
+      .avatar{
+        @include imagen;
+        width: 120px;
+        height: 120px;
+        margin: 20px auto;
+        border-radius: 50%;
+        background-color: var(--color-text);
+        box-shadow: 0 10px 10px 0 rgba($negro,.2);
+        position: relative;
+        .changeAvatar{
+          position: absolute;
+          bottom: 0;
+          right: 10px;
+          width: 25px;
+          height: 25px;
+          padding: 5px;
+          border-radius: 50%;
+          background-color: $secundario;
+          box-sizing: border-box;
+          .#{$pfx}icono{
+            width: 100%;
+            height: 100%;
+            color: $blanco;
+          }
+          input{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            font-size: 0;
+            cursor: pointer;
+          }
+        }
+      }
+      .name{
+        font-size: 35px;
+      }
+      .date{
+        font-size: 14px;
+        b{
+          @include vendorPrefix((text-decoration: underline wavy));
+          text-underline-position: under;
+        }
+      }
+    }
+    .datos{
+      width: 100%;
+      form{
+        @include flex($jc: space-between);
+        width: 100%;
+        max-width: 600px;
+        margin: 0 auto;
+        .field{
+          width: 100%;
+          position: relative;
+          &.w50{
+            width: 48%;
+          }
+          &.focused{
+            label{
+              top: 0;
+              transform: none;
+              font-size: 12px;
+              border-radius: 20px;
+            }
+          }
+          &.required{
+            label{
+              &:after{
+                content: "*";
+                margin-left: 2px;
+                font-size: 14px;
+                color: red;
+              }
+            }
+          }
+          &.error{
+            color: red;
+            &:after{
+              content: attr(data-msj-error);
+              position: absolute;
+              bottom: 5px;
+              right: 0;
+              padding: 2px 10px;
+              border-radius: 20px;
+              color: $blanco;
+              background-color: red;
+            }
+            label, input{
+              color: red;
+            }
+            input{
+              text-decoration: line-through;
+            }
+          }
+          &.disabled{
+            input{
+              cursor: not-allowed;
+            }
+          }
+          input{
+            width: 100%;
+            margin: 20px 0;
+            padding: 10px 20px;
+            border: 0;
+            font-size: 20px;
+            border-radius: 30px;
+            background-color: $gris;
+            outline: none;
+            box-sizing: border-box;
+            &::placeholder{
+              font-size: 18px;
+            }
+          }
+          label{
+            position: absolute;
+            top: 50%;
+            left: 20px;
+            color: gray;
+            font-size: 18px;
+            transform: translateY(-50%);
+            transition: ease all .3s;
+          }
+        }
+        .button{
+          min-width: 48%;
+          position: relative;
+          overflow: hidden;
+          &.guardar{
+            .editLabel{
+              opacity: 0;
+              transform: translateY(-50%);
+              transition-delay: 0s;
+            }
+            .guardarLabel{
+              transform: none;
+              transition-delay: .1s;
+            }
+          }
+          &.louder{
+            .editLabel{
+              opacity: 0;
+              transform: translateY(-50%);
+            }
+            &:after{
+              opacity: 1;
+            }
+          }
+          &:after{
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            margin: auto;
+            width: 25px;
+            height: 25px;
+            border: 2px solid;
+            border-left-color: transparent;
+            border-right-color: transparent;
+            border-radius: 50%;
+            opacity: 0;
+            box-sizing: border-box;
+            transition: ease all .3s;
+            animation: .5s linear infinite rotate;
+            pointer-events: none;
+          }
+          .editLabel{
+            display: block;
+            transition: ease all .3s .1s;
+          }
+          .guardarLabel{
+            @include flex;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            transform: translateY(100%);
+            transition: ease all .3s;
+          }
+        }
+      }
+    }
+    .direcciones{
+      @include flex(column);
+      width: 100%;
+      margin-top: 100px;
+      .listaDirecciones{
+        @include flex($ai: stretch);
+        gap: 20px;
+        width: 100%;
+        // max-width: 600px;
+        margin: 0 auto;
+        .direccion{
+          width: calc((100% / 3) - 20px);
+          min-width: 300px;
+          margin: 10px;
+          padding: 25px 20px;
+          box-sizing: border-box;
+          box-shadow: 0 0 10px 0 rgba($negro,.1);
+          &.predeterminada{
+            position: relative;
+            &:before{
+              content: "Predeterminada";
+              position: absolute;
+              top: 10px;
+              right: 20px;
+              color: $primario;
+              font-weight: 600;
+              font-size: 14px;
+            }
+          }
+          .grupo{
+            &:not(:last-child){
+              margin-bottom: 20px;
+            }
+          }
+          .alias{
+            @include vendorPrefix((text-decoration: underline wavy));
+            text-underline-position: under;
+            font-size: 18px;
+          }
+          .hBold{
+            margin-bottom: 5px;
+            font-weight: 600;
+            color: var(--color-text);
+          }
+        }
+      }
+    }
+  }
+}

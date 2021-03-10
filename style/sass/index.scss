@@ -15,6 +15,18 @@ body{
         }
       }
     }
+    .#{$pfx}categoryGroup{
+      .#{$pfx}container{
+        .products{
+          .prod{
+            background-color: $negro;
+            &:before{
+              background: linear-gradient(transparent, rgba($blanco,.3));
+            }
+          }
+        }
+      }
+    }
   }
 }
 
@@ -186,6 +198,365 @@ body{
     padding: 50px 0;
     .contenedorActualizaciones{
       width: 100%;
+    }
+    @include tablet{
+      .#{$pfx}encabezadoDoble{
+        align-items: center;
+        text-align: center;
+        font-size: 30px;
+        .breakTxt{
+          font-size: 40px;
+        }
+      }
+    }
+    @include mobile{
+      .#{$pfx}encabezadoDoble{
+        .breakTxt{
+          font-size: 35px;
+        }
+      }
+    }
+  }
+}
+.#{$pfx}categoriasDestacadas{
+  .#{$pfx}container{
+    @include container;
+    padding: 50px 0;
+    .#{$pfx}encabezadoDoble{
+      align-items: flex-end;
+      text-align: right;
+    }
+    .contenedorCards{
+      @include flex($ai: stretch);
+      .card{
+        @include flex($wrap: nowrap, $ai: flex-end);
+        @include imagen;
+        background-blend-mode: soft-light;
+        width: calc((100% / 3) - 20px);
+        min-width: 250px;
+        min-height: 350px;
+        flex-grow: 1;
+        margin: 10px;
+        transition: ease all .3s;
+        &:hover{
+          background-color: $negro;
+          .texto{
+            color: $blanco;
+            background-color: $secundario;
+            transform: translateY(-100%);
+          }
+        }
+        .texto{
+          width: 100%;
+          padding: 20px;
+          background-color: $blanco;
+          box-sizing: border-box;
+          transition: ease all .3s;
+          p{
+            @include ellipsisParrafo();
+            font-family: "Roboto",sans-serif;
+            text-align: center;
+            font-weight: 600;
+            font-size: 20px;
+            text-transform: uppercase;
+          }
+        }
+      }
+    }
+    @include tablet{
+      .#{$pfx}encabezadoDoble{
+        align-items: center;
+        text-align: center;
+        font-size: 30px;
+        .breakTxt{
+          font-size: 40px;
+        }
+      }
+    }
+    @include mobile{
+      .contenedorCards{
+        .card{
+          margin: 10px 0;
+        }
+      }
+    }
+  }
+}
+.#{$pfx}topCards{
+  .#{$pfx}container{
+    @include container;
+    padding: 50px 0;
+    .contenedorCards{
+      @include flex($ai: stretch, $jc: space-around);
+      width: 100%;
+      .rotativeCard{
+        @include imagen('', cover);
+        width: 350px;
+        min-height: 450px;
+        margin: 10px;
+        perspective: 1000px;
+        transform: scale(.8);
+        &:hover{
+          .wrapper{
+            transform: rotateY(-70deg) translateZ(20px);
+            .cover{
+              background-color: rgba($blanco,.7);
+            }
+          }
+        }
+        .wrapper{
+          width: 100%;
+          height: 100%;
+          transform: translateZ(-150px);
+          transform-style: preserve-3d;
+          transition: ease all .3s;
+          .cover{
+            @include flex(column, nowrap, $jc: space-between);
+            @include imagen;
+            background-blend-mode: soft-light;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            padding: 20px;
+            box-sizing: border-box;
+            transform: translateZ(175px);
+            backface-visibility: hidden;
+            transition: ease all .3s;
+            p{
+              width: 100%;
+              font-size: 25px;
+              text-align: center;
+            }
+            .ranking{
+              font-family: "Roboto",sans-serif;
+              font-size: 80px;
+              font-weight: 600;
+              text-align: right;
+              color: $secundario;
+              text-shadow: -4px 2px 0 $primario;
+            }
+          }
+          .info{
+            @include flex(column, nowrap);
+            width: 100%;
+            height: 100%;
+            padding: 20px;
+            background-color: $negro;
+            transform: rotateY(90deg) translateZ(175px);
+            box-sizing: border-box;
+            backface-visibility: hidden;
+            p{
+              font-size: 18px;
+              text-align: center;
+              &.titulo{
+                color: $blanco;
+                font-size: 22px;
+                font-weight: 600;
+                padding-bottom: 10px;
+              }
+            }
+            .precio{
+              font-size: 35px;
+              font-weight: 600;
+              color: $primario;
+              &.antes{
+                font-size: 25px;
+                text-decoration: line-through;
+              }
+              &:before{
+                content: var(--currency-prefix);
+              }
+            }
+            .boton{
+              margin-top: 50px;
+              padding: 10px 20px;
+              color: $blanco;
+              font-weight: 600;
+              background-color: $secundario;
+              transition: ease all .3s;
+              &:hover{
+                transform: translateY(-5px);
+                box-shadow: -3px 3px 0 0 $blanco;
+              }
+            }
+          }
+        }
+      }
+    }
+    @include tablet{
+      .#{$pfx}encabezadoDoble{
+        align-items: center;
+        text-align: center;
+      }
+    }
+    @include mobile{
+      .#{$pfx}encabezadoDoble{
+        font-size: 30px;
+        .breakTxt{
+          font-size: 40px;
+        }
+      }
+    }
+    @include responsivo(450px){
+      .contenedorCards{
+        .rotativeCard{
+          width: 300px;
+          min-height: 400px;
+          .wrapper{
+            .cover{
+              transform: translateZ(150px);
+            }
+            .info{
+              transform: rotateY(90deg) translateZ(150px);
+            }
+          }
+        }
+      }
+    }
+    @include responsivo(370px){
+      .contenedorCards{
+        .rotativeCard{
+          &:hover{
+            .wrapper{
+              transform: rotateY(-75deg) translateZ(20px);
+            }
+          }
+          .wrapper{
+            .cover{
+              transform: translateZ(135px);
+            }
+          }
+        }
+      }
+    }
+  }
+}
+.#{$pfx}categoryGroup{
+    .#{$pfx}container{
+    @include container;
+    padding: 50px 0;
+    .headerSection{
+      font-family: "Roboto",sans-serif;
+      margin-bottom: 30px;
+      color: var(--color-text);
+      font-size: 40px;
+      font-weight: 900;
+      text-transform: uppercase;
+      text-align: left;
+      position: relative;
+      overflow: hidden;
+      &:after{
+        content: "";
+        position: absolute;
+        top: 50%;
+        width: 100%;
+        height: 3px;
+        margin-left: 20px;
+        transform: translateY(-50%);
+        background-color: currentColor;
+      }
+    }
+    .products{
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      gap: 20px;
+      grid-template-areas:
+      "a a . ."
+      "a a . .";
+      .prod{
+        @include flex;
+        padding: 20px;
+        border-radius: 20px;
+        box-shadow: 0 5px 10px 0 rgba($negro,.2);
+        position: relative;
+        overflow: hidden;
+        &:hover{
+          &:before{
+            opacity: 1;
+            transform: none;
+          }
+          .nombre{
+            transform: none;
+            transition-delay: .1s;
+          }
+        }
+        &:before{
+          content: "";
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          border-radius: 20px;
+          opacity: 0;
+          background: linear-gradient(transparent, $negro);
+          transform: translateY(100%);
+          transition: ease all .3s;
+        }
+        &:first-child{
+          grid-area: a;
+          .img{
+            height: 100%;
+          }
+          .nombre{
+            font-size: 30px;
+          }
+        }
+        .img{
+          @include imagen($size: contain);
+          width: 100%;
+          min-height: 200px;
+        }
+        .nombre{
+          position: absolute;
+          bottom: 0;
+          width: 100%;
+          padding: 20px;
+          color: $blanco;
+          font-weight: 600;
+          box-sizing: border-box;
+          transform: translateY(100%);
+          transition: ease all .3s;
+        }
+      }
+    }
+    @include responsivo(900px){
+      .products{
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-areas:
+        "a a ."
+        "a a .";
+      }
+    }
+    @include responsivo(600px){
+      .headerSection{
+        text-align: center;
+        &:after{
+          display: none;
+        }
+      }
+      .products{
+        grid-template-columns: 1fr 1fr;
+        grid-template-areas: "a .";
+        .prod{
+          &:first-child{
+            .nombre{
+              font-size: 16px;
+            }
+          }
+        }
+      }
+    }
+    @include mobile{
+      .products{
+        grid-template-columns: 1fr;
+        grid-template-areas: "a";
+        .prod{
+          .nombre{
+            text-align: center;
+          }
+        }
+      }
     }
   }
 }

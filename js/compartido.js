@@ -1,102 +1,114 @@
-$(function(){
-  //Alerta tipo modal
-  const alertaModal = function (config) {
-    config = jQuery.extend({
-      acciones: {
-        aprov: 'Aceptar',
-        cancel: 'Cancelar'
-      },
-      closable: false,
-      closeOnActions: true,
-      redondeado: true,
-      encabezado: 'Encabezado de la modal',
-      mensaje: 'Mensaje de la modal...',
-      ocultar: false,
-      tipo: 'warning',
-      // onAprov, onCancel //Callbacks
-    }, config);
-    var acciones = '';
-    if (config.acciones) {
-      $.each(config.acciones, function (k, v) {
-        acciones += '<div class="accion ' + k + '">' + v + '</div>';
-      })
-    } else {
-      config.autoclose = '3000';
-    }
-    if (config.ocultar) {
-      $(document).off('click', '.bakuretsu_alertaModal .accion');
-      $('.bakuretsu_alertaModal').fadeOut(function () { $(this).remove() });
-      return false;
-    }
-    var svgIcon;
-    switch (config.tipo) {
-      case 'error':
-        svgIcon = `<svg class="icono" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><circle cx="32.001" cy="32" r="30" transform="rotate(-45 32.001 32)"></circle><path d="M42.999 21.001l-22 22m22 0L21 21"></path></svg>`;
-        break;
-      case 'exito':
-        svgIcon = `<svg class="icono" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><circle cx="32" cy="32" r="30" transform="rotate(-45 32 32)"></circle><path d="M20.998 32.015l8.992 8.992 16.011-16.011"></path></svg>`;
-        break;
-      case 'warning':
-        svgIcon = `<svg class="icono" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><circle cx="32" cy="32" r="30"></circle><path d="M32 15v24"></path><circle cx="32" cy="47" r="2"></circle></svg>`;
-        break;
-    }
-    if ($('.bakuretsu_alertaModal').length == 0) {
-      $('body').append(`
-      <div class="bakuretsu_alertaModal">
-        <div class="contenedor ${config.tipo} ${config.redondeado && 'rounded'}">
-          ${svgIcon || ''}
-          <p class="encabezado">${config.encabezado}</p>
-          <p class="mensaje">${config.mensaje}</p>
-          <div class="acciones">${acciones}</div>
-        </div>
-      </div>
-    `);
-      if (config.closable) $('.bakuretsu_alertaModal').prepend('<div class="closable"></div>');
-      $('.bakuretsu_alertaModal').fadeIn().css('display', 'flex');
-      $(document).on('click', '.bakuretsu_alertaModal .accion', function (e) {
-        if ($(this).hasClass('aprov') && config.onAprov) {
-          config.onAprov(e);
-        } else if ($(this).hasClass('cancel') && config.onCancel) {
-          config.onCancel(e);
-        }
-        if (config.closeOnActions) {
-          $(document).off('click', '.bakuretsu_alertaModal .accion');
-          $('.bakuretsu_alertaModal').fadeOut(function () { $(this).remove() });
-        }
-      })
-      if (config.hasOwnProperty('autoclose')) {
-        setTimeout(function () {
-          $(document).off('click', '.bakuretsu_alertaModal .accion');
-          $('.bakuretsu_alertaModal').fadeOut(function () { $(this).remove() });
-        }, config.autoclose)
-      }
-    } else {
-      $(document).off('click', '.bakuretsu_alertaModal .accion');
-    }
-    $(document).on('click', '.bakuretsu_alertaModal .closable', function () {
-      $(document).off('click', '.bakuretsu_alertaModal .accion');
-      $('.bakuretsu_alertaModal').fadeOut(function () { $(this).remove() });
+//Alerta tipo modal
+const alertaModal = function (config) {
+  config = jQuery.extend({
+    acciones: {
+      aprov: 'Aceptar',
+      cancel: 'Cancelar'
+    },
+    closable: false,
+    closeOnActions: true,
+    redondeado: true,
+    encabezado: 'Encabezado de la modal',
+    mensaje: 'Mensaje de la modal...',
+    ocultar: false,
+    tipo: 'warning',
+    // onAprov, onCancel //Callbacks
+  }, config);
+  var acciones = '';
+  if (config.acciones) {
+    $.each(config.acciones, function (k, v) {
+      acciones += '<div class="accion ' + k + '">' + v + '</div>';
     })
+  } else {
+    config.autoclose = '3000';
   }
-  const responsivImg = function (img, convFac) {
-    var a = img.width() / convFac;
-    img.css('height', a);
+  if (config.ocultar) {
+    $(document).off('click', '.bakuretsu_alertaModal .accion');
+    $('.bakuretsu_alertaModal').fadeOut(function () { $(this).remove() });
+    return false;
   }
-  const autoSlider = function (slider, totalSlides, indicadores, avanzar = true) {
-    var posicion = slider.find('.bakuretsu_slide.activo').index();
-    if (avanzar) {
-      posicion == (totalSlides - 1) ? posicion = 0 : posicion++;
-    } else {
-      posicion == 0 ? posicion = (totalSlides - 1) : posicion--;
+  var svgIcon;
+  switch (config.tipo) {
+    case 'error':
+      svgIcon = `<svg class="icono" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><circle cx="32.001" cy="32" r="30" transform="rotate(-45 32.001 32)"></circle><path d="M42.999 21.001l-22 22m22 0L21 21"></path></svg>`;
+      break;
+    case 'exito':
+      svgIcon = `<svg class="icono" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><circle cx="32" cy="32" r="30" transform="rotate(-45 32 32)"></circle><path d="M20.998 32.015l8.992 8.992 16.011-16.011"></path></svg>`;
+      break;
+    case 'warning':
+      svgIcon = `<svg class="icono" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><circle cx="32" cy="32" r="30"></circle><path d="M32 15v24"></path><circle cx="32" cy="47" r="2"></circle></svg>`;
+      break;
+  }
+  if ($('.bakuretsu_alertaModal').length == 0) {
+    $('body').append(`
+    <div class="bakuretsu_alertaModal">
+      <div class="contenedor ${config.tipo} ${config.redondeado && 'rounded'}">
+        ${svgIcon || ''}
+        <p class="encabezado">${config.encabezado}</p>
+        <p class="mensaje">${config.mensaje}</p>
+        <div class="acciones">${acciones}</div>
+      </div>
+    </div>
+  `);
+    if (config.closable) $('.bakuretsu_alertaModal').prepend('<div class="closable"></div>');
+    $('.bakuretsu_alertaModal').fadeIn().css('display', 'flex');
+    $(document).on('click', '.bakuretsu_alertaModal .accion', function (e) {
+      if ($(this).hasClass('aprov') && config.onAprov) {
+        config.onAprov(e);
+      } else if ($(this).hasClass('cancel') && config.onCancel) {
+        config.onCancel(e);
+      }
+      if (config.closeOnActions) {
+        $(document).off('click', '.bakuretsu_alertaModal .accion');
+        $('.bakuretsu_alertaModal').fadeOut(function () { $(this).remove() });
+      }
+    })
+    if (config.hasOwnProperty('autoclose')) {
+      setTimeout(function () {
+        $(document).off('click', '.bakuretsu_alertaModal .accion');
+        $('.bakuretsu_alertaModal').fadeOut(function () { $(this).remove() });
+      }, config.autoclose)
     }
-    slider.find('.bakuretsu_slide.activo').removeClass('activo');
-    slider.find('.bakuretsu_slide').eq(posicion).addClass('activo');
-    if (indicadores) {
-      slider.find('.bakuretsu_dot.activo').removeClass('activo');
-      slider.find('.bakuretsu_dot').eq(posicion).addClass('activo');
-    }
+  } else {
+    $(document).off('click', '.bakuretsu_alertaModal .accion');
   }
+  $(document).on('click', '.bakuretsu_alertaModal .closable', function () {
+    $(document).off('click', '.bakuretsu_alertaModal .accion');
+    $('.bakuretsu_alertaModal').fadeOut(function () { $(this).remove() });
+  })
+}
+const responsivImg = function (img, convFac) {
+  var a = img.width() / convFac;
+  img.css('height', a);
+}
+const autoSlider = function (slider, totalSlides, indicadores, avanzar = true) {
+  var posicion = slider.find('.bakuretsu_slide.activo').index();
+  if (avanzar) {
+    posicion == (totalSlides - 1) ? posicion = 0 : posicion++;
+  } else {
+    posicion == 0 ? posicion = (totalSlides - 1) : posicion--;
+  }
+  slider.find('.bakuretsu_slide.activo').removeClass('activo');
+  slider.find('.bakuretsu_slide').eq(posicion).addClass('activo');
+  if (indicadores) {
+    slider.find('.bakuretsu_dot.activo').removeClass('activo');
+    slider.find('.bakuretsu_dot').eq(posicion).addClass('activo');
+  }
+}
+const toTopSmoth = (offset, callback) => {
+  const fixedOffset = offset.toFixed();
+  const onScroll = function () {
+    if (window.pageYOffset.toFixed() === fixedOffset) {
+      window.removeEventListener('scroll', onScroll);
+      if (typeof callback === 'function') callback();
+    };
+  };
+  window.addEventListener('scroll', onScroll);
+  onScroll();
+  window.scrollTo({ top: offset, behavior: 'smooth' });
+}
 
+$(function(){
   //Modal para confirmar la edad
   if ($('.bakuretsu_censored').length) {
     if (localStorage.getItem('edadStatus') !== 'uncensored') {
@@ -331,4 +343,15 @@ $(function(){
     $(this).parent().siblings().find('.slidableContent:visible').slideUp('fast');
     $(this).siblings('.slidableContent').slideToggle('fast');
   })
+  //Animar inputs
+  $('.animForm .field input').focusin(function () {
+    if ($(this).val().length <= 0) {
+      $(this).parent().addClass('focused');
+    }
+  });
+  $('.animForm .field input').focusout(function () {
+    if ($(this).val().length <= 0) {
+      $(this).parent().removeClass('focused');
+    }
+  });
 })
