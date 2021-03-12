@@ -95,7 +95,7 @@ const autoSlider = function (slider, totalSlides, indicadores, avanzar = true) {
     slider.find('.bakuretsu_dot').eq(posicion).addClass('activo');
   }
 }
-const toTopSmoth = (offset, callback) => {
+const scrollSmoth = (offset, callback) => {
   const fixedOffset = offset.toFixed();
   const onScroll = function () {
     if (window.pageYOffset.toFixed() === fixedOffset) {
@@ -224,10 +224,6 @@ $(function(){
       $(this).find('.dropContent').slideToggle('fast');
     })
   }
-  $('body').click(function(){
-    $('.bakuretsu_drop.activo').find('.dropContent').slideUp('fast');
-    $('.bakuretsu_drop.activo').removeClass('activo');
-  })
   //Galeria preview
   $('.bakuretsu_galeria').each(function(i, galeria){
     if ($(galeria).find('.galeriaThumb').length > 3) {
@@ -344,14 +340,35 @@ $(function(){
     $(this).siblings('.slidableContent').slideToggle('fast');
   })
   //Animar inputs
-  $('.animForm .field input').focusin(function () {
+  $('.animForm .field.animable input').focusin(function () {
     if ($(this).val().length <= 0) {
       $(this).parent().addClass('focused');
     }
   });
-  $('.animForm .field input').focusout(function () {
+  $('.animForm .field.animable input').focusout(function () {
     if ($(this).val().length <= 0) {
       $(this).parent().removeClass('focused');
     }
   });
+  $('.formDrop').click(function(e){
+    e.stopPropagation();
+    $('.formDrop.activo').not($(this)).find('.dropContent').slideUp('fast');
+    $('.formDrop.activo').not($(this)).removeClass('activo');
+    $(this).toggleClass('activo');
+    $(this).find('.dropContent').slideToggle('fast');
+  })
+  $('.formDrop .dropContent .dropOpc').click(function () {
+    const drop = $(this).parents('.formDrop');
+    drop.find('input').val($(this).data('val'));
+    if (drop.find('input').val().length > 0) {
+      drop.addClass('focused');
+    }
+  })
+
+  $('body').click(function () {
+    $('.bakuretsu_drop.activo').find('.dropContent').slideUp('fast');
+    $('.bakuretsu_drop.activo').removeClass('activo');
+    $('.formDrop.activo').find('.dropContent').slideUp('fast');
+    $('.formDrop.activo').removeClass('activo');
+  })
 })

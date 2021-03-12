@@ -1,0 +1,352 @@
+@import "./parciales/vars";
+@import "./parciales/mixins";
+@import "./parciales/general";
+@import "./parciales/compartido";
+
+body{
+  &.darken{
+    .#{$pfx}cart{
+      .#{$pfx}container{
+        .cartWrapper{
+          .aClone{
+            .info{
+              color: $blanco;
+            }
+          }
+          .cartArea{
+            .cartProduct{
+              &:not(:hover){
+                border-color: $negro;
+              }
+              .thumb{
+                background-color: $negro;
+                border: none;
+              }
+            }
+          }
+          .infoPago{
+            background-color: $negro;
+          }
+        }
+      }
+    }
+  }
+}
+
+.#{$pfx}cart{
+  .#{$pfx}container{
+    @include container;
+    padding: 50px 0;
+    .#{$pfx}encabezado{
+      text-align: left;
+    }
+    .cartWrapper{
+      @include flex($wrap: nowrap, $ai: flex-start);
+      width: 100%;
+      .aClone{
+        display: none;
+      }
+      .cartArea{
+        width: calc(100% - 450px);
+        flex-grow: 1;
+        .cartProduct{
+          @include flex($wrap: nowrap, $jc: flex-start);
+          padding: 20px;
+          border-bottom: 1px solid $gris;
+          transition: ease all .3s;
+          position: relative;
+          &:hover{
+            border-color: $secundario;
+            .removeItem{
+              opacity: 1;
+            }
+          }
+          &.sinStock, &.preventa{
+            .stock{
+              display: inline-block;
+              padding: 2px 15px;
+              color: $blanco;
+              font-size: 14px;
+              font-weight: 600;
+              border-radius: 20px;
+              background-color: $primario;
+            }
+          }
+          &.sinStock{
+            cursor: not-allowed;
+            .thumb, .name, .bolded:not(.stock){
+              opacity: .5;
+            }
+            .#{$pfx}numIncrements, .costo{
+              display: none;
+            }
+          }
+          &.preventa{
+            .stock{
+              background-color: $secundario;
+            }
+          }
+          .thumb{
+            @include imagen($size: contain);
+            border: 1px solid $gris;
+            width: 100px;
+            height: 100px;
+            min-width: 100px;
+            margin-right: 20px;
+            border-radius: 10px;
+            box-sizing: border-box
+          }
+          .txt{
+            width: calc(100% - 120px);
+          }
+          .name{
+            @include ellipsisParrafo(2);
+            font-size: 20px;
+            font-weight: 600;
+            margin-right: 20px;
+            color: var(--color-text);
+          }
+          .bolded{
+            font-weight: 600;
+            color: var(--color-text);
+          }
+          .numero{
+            font-family: 'Roboto', sans-serif;
+            font-size: 18px;
+            &:before{
+              content: var(--currency-prefix);
+            }
+            b{
+              font-family: 'Roboto';
+              margin-left: 2px;
+              font-weight: 600;
+              font-size: 14px;
+            }
+          }
+          .costo{
+            margin-left: auto;
+            font-size: 22px;
+          }
+          .rows{
+            @include flex($ai: flex-end, $jc: space-between);
+            margin-top: 10px;
+          }
+          .removeItem{
+            position: absolute;
+            top: 20px;
+            right: 0;
+            width: 25px;
+            height: 25px;
+            color: var(--color-text);
+            opacity: .2;
+            cursor: pointer;
+            transition: ease all .3s;
+          }
+          .#{$pfx}numIncrements{
+            margin-left: auto;
+            .botonIncDec{
+              border-radius: 50%;
+              &.disabled{
+                &:after{
+                  display: none;
+                }
+              }
+            }
+          }
+        }
+      }
+      .infoPago{
+        position: sticky;
+        top: 150px;
+        width: 400px;
+        margin-left: 50px;
+        border-radius: 20px;
+        background-color: $blanco;
+        box-shadow: 0 0 10px 0 rgba($negro,.2);
+        box-sizing: border-box;
+        .wrapper{
+          padding: 30px;
+          text-align: center;
+          .grupo{
+            @include flex;
+            font-size: 30px;
+            font-weight: 600;
+            text-align: center;
+            color: var(--color-text);
+            &:not(:last-child){
+              margin-bottom: 20px;
+            }
+            .cantidad{
+              font-family: 'Roboto', sans-serif;
+              width: 100%;
+              font-size: 40px;
+              &:before{
+                content: var(--currency-prefix);
+              }
+              b{
+                font-family: 'Roboto';
+                margin-left: 2px;
+                font-weight: 600;
+                font-size: 20px;
+              }
+            }
+          }
+          .tClone{
+            width: 100%;
+          }
+          .info{
+            margin: 20px 0;
+          }
+          .button{
+            margin: 20px auto 0 auto;
+            padding: 10px 30px;
+            color: $blanco;
+            font-size: 20px;
+            text-align: center;
+            border-radius: 50px;
+            background-color: $secundario;
+            box-sizing: border-box;
+            cursor: pointer;
+            transition: ease all .3s;
+            &:hover{
+              transform: translateY(-5px);
+              box-shadow: 0 10px 10px 0 rgba($negro,.2);
+            }
+          }
+        }
+      }
+    }
+    @include desktop{
+      .cartWrapper{
+        .cartArea{
+          .cartProduct{
+            .#{$pfx}numIncrements{
+              margin-left: 0;
+            }
+          }
+        }
+        .infoPago{
+          width: 300px;
+        }
+      }
+    }
+    @include responsivo(900px){
+      .cartWrapper{
+        flex-wrap: wrap;
+        .aClone{
+          display: block;
+          width: 100%;
+          max-width: 600px;
+          margin: 0 auto 50px auto;
+          padding: 20px 50px;
+          border: 1px dotted;
+          text-align: center;
+          box-sizing: border-box;
+          .info{
+            margin-bottom: 5px;
+          }
+        }
+        .cartArea, .infoPago{
+          width: 100%;
+        }
+        .infoPago{
+          top: auto;
+          bottom: 0;
+          margin: 50px 0 0 0;
+          .wrapper{
+            @include flex;
+            padding: 20px;
+            .tClone{
+              display: none;
+            }
+            .grupo{
+              width: 50%;
+              margin-bottom: 10px;
+              font-size: 25px;
+              &:not(:last-child){
+                margin-bottom: 10px;
+              }
+              .cantidad{
+                font-size: 35px;
+              }
+            }
+            .info{
+              width: 100%;
+              margin: 0;
+            }
+          }
+        }
+      }
+    }
+    @include responsivo(600px){
+      .#{$pfx}encabezado{
+        font-size: 35px;
+        text-align: center;
+      }
+      .cartWrapper{
+        flex-direction: column-reverse;
+        .aClone{
+          order: 1;
+        }
+        .infoPago{
+          position: relative;
+          margin: 0 0 50px 0;
+          .wrapper{
+            .grupo{
+              width: 100%;
+            }
+          }
+        }
+      }
+    }
+    @include mobile{
+      .cartWrapper{
+        .aClone{
+          padding: 20px;
+        }
+        .infoPago{
+          .wrapper{
+            .button{
+              width: 100%;
+            }
+          }
+        }
+        .cartArea{
+          .cartProduct{
+            flex-direction: column;
+            justify-content: center;
+            text-align: center;
+            border: 1px solid $gris;
+            &:not(:last-child){
+              margin-bottom: 20px;
+            }
+            .thumb{
+              margin: 0 auto 10px auto;
+            }
+            .txt{
+              width: 100%;
+            }
+            .name{
+              margin-right: 0;
+            }
+            .costo{
+              margin: 0 auto;
+            }
+            .rows, .cols{
+              width: 100%;
+            }
+            .removeItem{
+              right: 20px;
+              opacity: 1;
+            }
+            .#{$pfx}numIncrements{
+              justify-content: center;
+              width: 100%;
+              margin: 20px auto;
+            }
+          }
+        }
+      }
+    }
+  }
+}

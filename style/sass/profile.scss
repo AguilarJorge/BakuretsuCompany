@@ -5,23 +5,39 @@
 
 body{
   &.darken{
-    .#{$pfx}infoCards{
+    .#{$pfx}profileArea{
       .#{$pfx}container{
-        .card{
-          background-color: $negro;
-          .#{$pfx}icono{
-            color: $secundario;
+        form{
+          .field{
+            label, input{
+              color: var(--color-text);
+            }
+            input{
+              background-color: $negro;
+            }
+          }
+          .formDrop{
+            .dropContent{
+              background-color: $negro;
+              color: var(--color-text);
+              box-shadow: 0 5px 10px 0 rgba($blanco,.2);
+              .wrapper{
+                .dropOpc{
+                  &:hover{
+                    background-color: rgba($blanco,.1);
+                  }
+                }
+              }
+            }
           }
         }
-      }
-    }
-    .#{$pfx}categoryGroup{
-      .#{$pfx}container{
-        .products{
-          .prod{
-            background-color: $negro;
-            &:before{
-              background: linear-gradient(transparent, rgba($blanco,.3));
+        .direcciones{
+          .listaDirecciones{
+            .direccion{
+              background-color: $negro;
+              .menux{
+                background-color: #0f0f0f;
+              }
             }
           }
         }
@@ -40,7 +56,7 @@ body{
 }
 
 .#{$pfx}profileArea{
-    .#{$pfx}container{
+  .#{$pfx}container{
     @include container;
     padding: 50px 0;
     .header{
@@ -68,6 +84,7 @@ body{
       width: 100%;
       margin-bottom: 50px;
       text-align: center;
+      color: var(--color-text);
       .avatar{
         @include imagen;
         width: 120px;
@@ -115,102 +132,142 @@ body{
         }
       }
     }
-    .datos{
+    form{
+      @include flex($jc: space-between);
       width: 100%;
-      form{
-        @include flex($jc: space-between);
+      max-width: 600px;
+      margin: 0 auto;
+      .formTitle{
         width: 100%;
-        max-width: 600px;
-        margin: 0 auto;
-        .field{
-          width: 100%;
-          position: relative;
-          &.w50{
-            width: 48%;
+        margin: 10px 0;
+        font-size: 25px;
+        font-weight: 600;
+        color: var(--color-text);
+      }
+      .field{
+        width: 100%;
+        position: relative;
+        &.w50{
+          width: 48%;
+        }
+        &.w30{
+          width: 30%;
+        }
+        &.focused{
+          label{
+            top: 0;
+            transform: none;
+            font-size: 12px;
+            border-radius: 20px;
           }
-          &.focused{
-            label{
-              top: 0;
-              transform: none;
-              font-size: 12px;
-              border-radius: 20px;
+        }
+        &.required{
+          label{
+            &:after{
+              content: "*";
+              margin-left: 2px;
+              font-size: 14px;
+              color: red;
             }
           }
-          &.required{
-            label{
-              &:after{
-                content: "*";
-                margin-left: 2px;
-                font-size: 14px;
-                color: red;
+        }
+        &.error{
+          color: red;
+          &:after{
+            content: attr(data-msj-error);
+            position: absolute;
+            bottom: 5px;
+            right: 0;
+            padding: 2px 10px;
+            border-radius: 20px;
+            color: $blanco;
+            background-color: red;
+          }
+          label, input{
+            color: red;
+          }
+          input{
+            text-decoration: line-through;
+          }
+        }
+        &.disabled{
+          cursor: not-allowed;
+          label, input{
+            pointer-events: none;
+          }
+        }
+        input{
+          width: 100%;
+          margin: 20px 0;
+          padding: 10px 20px;
+          border: 0;
+          font-size: 20px;
+          border-radius: 30px;
+          background-color: $gris;
+          outline: none;
+          box-sizing: border-box;
+          &::placeholder{
+            font-size: 18px;
+          }
+        }
+        label{
+          position: absolute;
+          top: 50%;
+          left: 20px;
+          color: gray;
+          font-size: 18px;
+          transform: translateY(-50%);
+          transition: ease all .3s;
+        }
+      }
+      .formDrop{
+        position: relative;
+        .dropContent{
+          display: none;
+          position: absolute;
+          top: calc(100% - 15px);
+          left: 0;
+          width: 100%;
+          padding: 20px;
+          border-radius: 20px;
+          background-color: $gris;
+          box-shadow: 0 5px 10px 0 rgba($negro,.2);
+          box-sizing: border-box;
+          z-index: 10;
+          .wrapper{
+            max-height: 250px;
+            overflow: auto;
+            .dropOpc{
+              padding: 10px;
+              cursor: pointer;
+              transition: ease all .3s;
+              &:hover{
+                background-color: gainsboro;
               }
             }
           }
-          &.error{
-            color: red;
-            &:after{
-              content: attr(data-msj-error);
-              position: absolute;
-              bottom: 5px;
-              right: 0;
-              padding: 2px 10px;
-              border-radius: 20px;
-              color: $blanco;
-              background-color: red;
-            }
-            label, input{
-              color: red;
-            }
-            input{
-              text-decoration: line-through;
-            }
-          }
-          &.disabled{
-            input{
-              cursor: not-allowed;
-            }
-          }
-          input{
-            width: 100%;
-            margin: 20px 0;
-            padding: 10px 20px;
-            border: 0;
-            font-size: 20px;
-            border-radius: 30px;
-            background-color: $gris;
-            outline: none;
-            box-sizing: border-box;
-            &::placeholder{
-              font-size: 18px;
-            }
-          }
-          label{
-            position: absolute;
-            top: 50%;
-            left: 20px;
-            color: gray;
-            font-size: 18px;
-            transform: translateY(-50%);
-            transition: ease all .3s;
-          }
         }
+      }
+      .buttons{
+        @include flex;
+        width: 100%;
         .button{
           min-width: 48%;
           position: relative;
           overflow: hidden;
           &.guardar{
-            .editLabel{
+            .secondLabel{
               opacity: 0;
               transform: translateY(-50%);
               transition-delay: 0s;
             }
-            .guardarLabel{
+            .mainLabel{
               transform: none;
               transition-delay: .1s;
             }
           }
           &.louder{
-            .editLabel{
+            .secondLabel{
               opacity: 0;
               transform: translateY(-50%);
             }
@@ -238,11 +295,11 @@ body{
             animation: .5s linear infinite rotate;
             pointer-events: none;
           }
-          .editLabel{
+          .secondLabel{
             display: block;
             transition: ease all .3s .1s;
           }
-          .guardarLabel{
+          .mainLabel{
             @include flex;
             position: absolute;
             top: 0;
@@ -255,6 +312,9 @@ body{
         }
       }
     }
+    .datos{
+      width: 100%;
+    }
     .direcciones{
       @include flex(column);
       width: 100%;
@@ -263,7 +323,6 @@ body{
         @include flex($ai: stretch);
         gap: 20px;
         width: 100%;
-        // max-width: 600px;
         margin: 0 auto;
         .direccion{
           width: calc((100% / 3) - 20px);
@@ -272,8 +331,14 @@ body{
           padding: 25px 20px;
           box-sizing: border-box;
           box-shadow: 0 0 10px 0 rgba($negro,.1);
+          position: relative;
+          overflow: hidden;
+          &:hover{
+            .menux{
+              transform: none;
+            }
+          }
           &.predeterminada{
-            position: relative;
             &:before{
               content: "Predeterminada";
               position: absolute;
@@ -298,6 +363,56 @@ body{
             margin-bottom: 5px;
             font-weight: 600;
             color: var(--color-text);
+          }
+          .menux{
+            @include flex(column, nowrap, flex-start);
+            position: absolute;
+            top: 0;
+            right: 0;
+            height: 100%;
+            padding: 20px;
+            background-color: $gris;
+            transform: translateX(100%);
+            box-sizing: border-box;
+            transition: ease all .3s;
+            .menuOption{
+              @include flex;
+              margin: 10px 0;
+              padding: 5px 0;
+              color: var(--color-text);
+              cursor: pointer;
+              &:hover{
+                @include vendorPrefix((text-decoration: underline wavy $primario));
+                text-underline-position: under;
+              }
+              .ico{
+                width: 20px;
+                height: 20px;
+                margin-right: 5px;
+                color: var(--color-text);
+              }
+            }
+          }
+        }
+      }
+      #formDireccion{
+        display: none;
+        margin: 50px auto;
+      }
+    }
+    @include responsivo(600px){
+      form{
+        .field{
+          &.w50, &.w30{
+            width: 100%;
+          }
+        }
+      }
+      .direcciones{
+        .listaDirecciones{
+          .direccion{
+            width: 100%;
+            margin: 10px 0;
           }
         }
       }

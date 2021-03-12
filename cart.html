@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>BakuretsuCompany</title>
-    <link rel="stylesheet" href="./style/css/profile.css">
+    <link rel="stylesheet" href="./style/css/cart.css">
   </head>
   <body>
     <header class="bakuretsu_menu fixed">
@@ -222,235 +222,257 @@
         </div>
       </div>
     </header>
-    <section class="bakuretsu_profileArea">
+    <section class="bakuretsu_cart">
       <div class="bakuretsu_container">
-        <div class="personal">
-          <div class="avatar" style="background-image: url(./img/profileAvatar.jpg);">
-            <div class="changeAvatar bakuretsu_hasTooltip" data-tooltip="Cambiar imagen" data-tooltip-posicion="right">
-              <div class="bakuretsu_icono">
-                <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M58.4 18.77l.941-.941c3.637-3.638 2.7-8.595-.941-12.233s-8.6-4.58-12.234-.94l-.941.941"></path>
-                  <path d="M52.639 24.535l5.766-5.765L45.229 5.596l-5.764 5.764"></path>
-                  <path d="M19.582 57.59l33.057-33.055L39.465 11.36 6.409 44.416 2.352 61.649l17.23-4.059zM6.409 44.416L19.582 57.59"></path>
+        <h1 class="bakuretsu_encabezado">Carrito de compras</h1>
+        <div class="bakuretsu_breadcrumb">
+          <li class="breadLink"><a href="#">Inicio</a></li>
+          <li class="breadLink"><a href="#">Productos</a></li>
+          <li class="breadCurrent">cart</li>
+        </div>
+        <div class="cartWrapper">
+          <div class="cartArea">
+            <div class="cartProduct">
+              <div class="thumb" style="background-image: url(./img/arthur.png);"></div>
+              <div class="txt">
+                <p class="name">Nendoroid Fate/Grand Order: Saber/Arthur Pendragon Ascension</p>
+                <div class="rows">
+                  <div class="cols">
+                    <p class="bolded stock">5 en existencia</p>
+                    <p class="bolded">Precio unitario: <span class="numero">500<b>MXN</b></span></p>
+                  </div>
+                  <div class="bakuretsu_numIncrements">
+                    <div class="botonIncDec resta bakuretsu_icono bakuretsu_hasTooltip disabled" data-tooltip="Quitar un producto" data-tooltip-posicion="top">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+                        <path d="M48 32H16"></path>
+                      </svg>
+                    </div>
+                    <div class="num">1</div>
+                    <div class="botonIncDec suma bakuretsu_icono bakuretsu_hasTooltip" data-tooltip="Agregar otro producto" data-tooltip-posicion="top">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+                        <path d="M32 16v32m16-16H16"></path>
+                      </svg>
+                    </div>
+                  </div>
+                  <p class="numero bolded costo">5000<b>MXN</b></p>
+                </div>
+              </div>
+              <div class="bakuretsu_icono bakuretsu_hasTooltip removeItem" data-tooltip="Quitar del carrito" data-tooltip-posicion="top">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+                  <path d="M54 12v50H10V12m-6 0h56m-40 0V2h24v10"></path>
+                  <path d="M32 22v30M22 22v30m20-30v30"></path>
                 </svg>
               </div>
-              <input type="file" name="changeAvatar" id="changeAvatar">
+            </div>
+            <div class="cartProduct sinStock">
+              <div class="thumb" style="background-image: url(./img/arthur.png);"></div>
+              <div class="txt">
+                <p class="name">Nendoroid Fate/Grand Order: Saber/Arthur Pendragon Ascension</p>
+                <div class="rows">
+                  <div class="cols">
+                    <p class="bolded stock">Sin stock</p>
+                    <p class="bolded">Precio unitario: <span class="numero">500<b>MXN</b></span></p>
+                  </div>
+                </div>
+              </div>
+              <div class="bakuretsu_icono bakuretsu_hasTooltip removeItem" data-tooltip="Quitar del carrito" data-tooltip-posicion="top">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+                  <path d="M54 12v50H10V12m-6 0h56m-40 0V2h24v10"></path>
+                  <path d="M32 22v30M22 22v30m20-30v30"></path>
+                </svg>
+              </div>
+            </div>
+            <div class="cartProduct preventa">
+              <div class="thumb" style="background-image: url(./img/arthur.png);"></div>
+              <div class="txt">
+                <p class="name">Nendoroid Fate/Grand Order: Saber/Arthur Pendragon Ascension</p>
+                <div class="rows">
+                  <div class="cols">
+                    <p class="bolded stock">Articulo en preventa</p>
+                    <p class="bolded">Precio unitario: <span class="numero">500<b>MXN</b></span></p>
+                  </div>
+                  <div class="bakuretsu_numIncrements">
+                    <div class="botonIncDec resta bakuretsu_icono bakuretsu_hasTooltip disabled"  data-tooltip="Quitar un producto" data-tooltip-posicion="top">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+                        <path d="M48 32H16"></path>
+                      </svg>
+                    </div>
+                    <div class="num">1</div>
+                    <div class="botonIncDec suma bakuretsu_icono bakuretsu_hasTooltip" data-tooltip="Agregar otro producto" data-tooltip-posicion="top">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+                        <path d="M32 16v32m16-16H16"></path>
+                      </svg>
+                    </div>
+                  </div>
+                  <p class="numero bolded costo">5000<b>MXN</b></p>
+                </div>
+              </div>
+              <div class="bakuretsu_icono bakuretsu_hasTooltip removeItem" data-tooltip="Quitar del carrito" data-tooltip-posicion="top">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+                  <path d="M54 12v50H10V12m-6 0h56m-40 0V2h24v10"></path>
+                  <path d="M32 22v30M22 22v30m20-30v30"></path>
+                </svg>
+              </div>
+            </div>
+            <div class="cartProduct">
+              <div class="thumb" style="background-image: url(./img/arthur.png);"></div>
+              <div class="txt">
+                <p class="name">Nendoroid Fate/Grand Order: Saber/Arthur Pendragon Ascension</p>
+                <div class="rows">
+                  <div class="cols">
+                    <p class="bolded stock">5 en existencia</p>
+                    <p class="bolded">Precio unitario: <span class="numero">500<b>MXN</b></span></p>
+                  </div>
+                  <div class="bakuretsu_numIncrements">
+                    <div class="botonIncDec resta bakuretsu_icono bakuretsu_hasTooltip disabled" data-tooltip="Quitar un producto"
+                      data-tooltip-posicion="top">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+                        <path d="M48 32H16"></path>
+                      </svg>
+                    </div>
+                    <div class="num">1</div>
+                    <div class="botonIncDec suma bakuretsu_icono bakuretsu_hasTooltip" data-tooltip="Agregar otro producto"
+                      data-tooltip-posicion="top">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+                        <path d="M32 16v32m16-16H16"></path>
+                      </svg>
+                    </div>
+                  </div>
+                  <p class="numero bolded costo">5000<b>MXN</b></p>
+                </div>
+              </div>
+              <div class="bakuretsu_icono bakuretsu_hasTooltip removeItem" data-tooltip="Quitar del carrito"
+                data-tooltip-posicion="top">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+                  <path d="M54 12v50H10V12m-6 0h56m-40 0V2h24v10"></path>
+                  <path d="M32 22v30M22 22v30m20-30v30"></path>
+                </svg>
+              </div>
+            </div>
+            <div class="cartProduct">
+              <div class="thumb" style="background-image: url(./img/arthur.png);"></div>
+              <div class="txt">
+                <p class="name">Nendoroid Fate/Grand Order: Saber/Arthur Pendragon Ascension</p>
+                <div class="rows">
+                  <div class="cols">
+                    <p class="bolded stock">5 en existencia</p>
+                    <p class="bolded">Precio unitario: <span class="numero">500<b>MXN</b></span></p>
+                  </div>
+                  <div class="bakuretsu_numIncrements">
+                    <div class="botonIncDec resta bakuretsu_icono bakuretsu_hasTooltip disabled" data-tooltip="Quitar un producto"
+                      data-tooltip-posicion="top">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+                        <path d="M48 32H16"></path>
+                      </svg>
+                    </div>
+                    <div class="num">1</div>
+                    <div class="botonIncDec suma bakuretsu_icono bakuretsu_hasTooltip" data-tooltip="Agregar otro producto"
+                      data-tooltip-posicion="top">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+                        <path d="M32 16v32m16-16H16"></path>
+                      </svg>
+                    </div>
+                  </div>
+                  <p class="numero bolded costo">5000<b>MXN</b></p>
+                </div>
+              </div>
+              <div class="bakuretsu_icono bakuretsu_hasTooltip removeItem" data-tooltip="Quitar del carrito"
+                data-tooltip-posicion="top">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+                  <path d="M54 12v50H10V12m-6 0h56m-40 0V2h24v10"></path>
+                  <path d="M32 22v30M22 22v30m20-30v30"></path>
+                </svg>
+              </div>
+            </div>
+            <div class="cartProduct">
+              <div class="thumb" style="background-image: url(./img/arthur.png);"></div>
+              <div class="txt">
+                <p class="name">Nendoroid Fate/Grand Order: Saber/Arthur Pendragon Ascension</p>
+                <div class="rows">
+                  <div class="cols">
+                    <p class="bolded stock">5 en existencia</p>
+                    <p class="bolded">Precio unitario: <span class="numero">500<b>MXN</b></span></p>
+                  </div>
+                  <div class="bakuretsu_numIncrements">
+                    <div class="botonIncDec resta bakuretsu_icono bakuretsu_hasTooltip disabled" data-tooltip="Quitar un producto"
+                      data-tooltip-posicion="top">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+                        <path d="M48 32H16"></path>
+                      </svg>
+                    </div>
+                    <div class="num">1</div>
+                    <div class="botonIncDec suma bakuretsu_icono bakuretsu_hasTooltip" data-tooltip="Agregar otro producto"
+                      data-tooltip-posicion="top">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+                        <path d="M32 16v32m16-16H16"></path>
+                      </svg>
+                    </div>
+                  </div>
+                  <p class="numero bolded costo">5000<b>MXN</b></p>
+                </div>
+              </div>
+              <div class="bakuretsu_icono bakuretsu_hasTooltip removeItem" data-tooltip="Quitar del carrito"
+                data-tooltip-posicion="top">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+                  <path d="M54 12v50H10V12m-6 0h56m-40 0V2h24v10"></path>
+                  <path d="M32 22v30M22 22v30m20-30v30"></path>
+                </svg>
+              </div>
+            </div>
+            <div class="cartProduct">
+              <div class="thumb" style="background-image: url(./img/arthur.png);"></div>
+              <div class="txt">
+                <p class="name">Nendoroid Fate/Grand Order: Saber/Arthur Pendragon Ascension</p>
+                <div class="rows">
+                  <div class="cols">
+                    <p class="bolded stock">5 en existencia</p>
+                    <p class="bolded">Precio unitario: <span class="numero">500<b>MXN</b></span></p>
+                  </div>
+                  <div class="bakuretsu_numIncrements">
+                    <div class="botonIncDec resta bakuretsu_icono bakuretsu_hasTooltip disabled" data-tooltip="Quitar un producto"
+                      data-tooltip-posicion="top">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+                        <path d="M48 32H16"></path>
+                      </svg>
+                    </div>
+                    <div class="num">1</div>
+                    <div class="botonIncDec suma bakuretsu_icono bakuretsu_hasTooltip" data-tooltip="Agregar otro producto"
+                      data-tooltip-posicion="top">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+                        <path d="M32 16v32m16-16H16"></path>
+                      </svg>
+                    </div>
+                  </div>
+                  <p class="numero bolded costo">5000<b>MXN</b></p>
+                </div>
+              </div>
+              <div class="bakuretsu_icono bakuretsu_hasTooltip removeItem" data-tooltip="Quitar del carrito"
+                data-tooltip-posicion="top">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+                  <path d="M54 12v50H10V12m-6 0h56m-40 0V2h24v10"></path>
+                  <path d="M32 22v30M22 22v30m20-30v30"></path>
+                </svg>
+              </div>
             </div>
           </div>
-          <p class="name">Jorge Luis Aguilar</p>
-          <p class="date">Miembro desde: <b>30 de Agosto de 2020</b></p>
-        </div>
-        <div class="datos">
-          <form id="formDatos" class="animForm">
-            <div class="field animable focused disabled" data-msj-error="Este campo es obligatorio">
-              <label for="nombre">Nombre(s)</label>
-              <input id="nombre" type="text" name="nombre" value="Jorge Luis" readonly>
-            </div>
-            <div class="field animable w50 focused disabled" data-msj-error="Este campo es obligatorio">
-              <label for="paterno">Apellido paterno</label>
-              <input id="paterno" type="text" name="paterno" value="Aguilar" readonly>
-            </div>
-            <div class="field animable w50 focused disabled" data-msj-error="Este campo es obligatorio">
-              <label for="materno">Apellido materno</label>
-              <input id="materno" type="text" name="materno" value="Rodarte" readonly>
-            </div>
-            <div class="field animable focused disabled" data-msj-error="Este campo es obligatorio">
-              <label for="usuario">Usuario</label>
-              <input id="usuario" type="text" name="usuario" value="JorgeDev" readonly>
-            </div>
-            <div class="field animable focused disabled" data-msj-error="Este campo es obligatorio">
-              <label for="correo">Correo electronico</label>
-              <input id="correo" type="email" name="correo" value="dev.jorge@hotmail.com" readonly>
-            </div>
-            <div class="field animable w50 focused disabled" data-msj-error="Este campo es obligatorio">
-              <label for="password">Contraseña</label>
-              <input id="password" type="password" name="password" value="1234567890" readonly>
-            </div>
-            <div class="field animable w50 focused disabled" data-msj-error="Este campo es obligatorio">
-              <label for="confirmarPassword">Confirmar contraseña</label>
-              <input id="confirmarPassword" type="password" name="confirmarPassword" value="1234567890" readonly>
-            </div>
-            <div class="buttons">
-              <div class="button editar">
-                <span class="secondLabel">Editar datos</span>
-                <span class="mainLabel">Guardar datos</span>
-              </div>
-            </div>
-          </form>
-        </div>
-        <div class="direcciones">
-          <p class="header">Mis direcciones</p>
-          <div class="listaDirecciones">
-            <div class="direccion predeterminada">
+          <div class="infoPago">
+            <div class="wrapper">
               <div class="grupo">
-                <p class="hBold alias">Casa de mi mamá</p>
+                <p>Total a pagar:</p>
+                <p class="cantidad">13,500<b>MXN</b></p>
               </div>
               <div class="grupo">
-                <p class="hBold">Maria del Carmen Torres Gomez</p>
-                <p>Galeana, 142 Victoria, ADOLFO LOPEZ MATEOS VICTORIA, 87025, Mexico, TAMAULIPAS</p>
+                <p>Puedes apartar con:</p>
+                <p class="cantidad">6,800<b>MXN</b></p>
               </div>
-              <div class="grupo">
-                <p class="hBold">Referencias:</p>
-                <p>Casa blanca enfrente de tiendita, Esquina con Francisco Villa</p>
+              <div class="tClone">
+                <p class="info">Los impuestos y costos de envío serán calculados en el checkout!</p>
+                <p class="info">Algunos articulos estan disponibles solo en preventa</p>
+                <p class="info">Por favor revisa tu carrito, algunos articulos no estan disponibles!</p>
               </div>
-              <div class="grupo">
-                <p class="hBold">Teléfono:</p>
-                <p>834 - 255 - 7085</p>
-              </div>
-              <div class="menux">
-                <div class="menuOption editarDireccion">
-                  <div class="bakuretsu_icono ico">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-                      <path d="M56 2.4l-26.1 26-4 9.7 9.7-4.1 26-26L56 2.4z"></path>
-                      <path d="M34.4 11.6h-32v50h50v-32"></path>
-                      <path d="M50.8 7.6l5.6 5.6"></path>
-                    </svg>
-                  </div>
-                  <span>Editar dirección</span>
-                </div>
-              </div>
-            </div>
-            <div class="direccion">
-              <div class="grupo">
-                <p class="hBold alias">Dirección #2</p>
-              </div>
-              <div class="grupo">
-                <p class="hBold">Juan Pablo Zuñiga Ramirez</p>
-                <p>Galeana, 142 Victoria, ADOLFO LOPEZ MATEOS VICTORIA, 87025, Mexico, TAMAULIPAS</p>
-              </div>
-              <div class="grupo">
-                <p class="hBold">Referencias:</p>
-                <p>Casa blanca enfrente de tiendita, Esquina con Francisco Villa</p>
-              </div>
-              <div class="grupo">
-                <p class="hBold">Teléfono:</p>
-                <p>834 - 255 - 7085</p>
-              </div>
-              <div class="menux">
-                <div class="menuOption seleccionarDireccion">
-                  <div class="bakuretsu_icono ico">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-                      <path d="M16 30l12 14L62 2"></path>
-                      <path d="M54 32l.008 30h-52V10H38"></path>
-                    </svg>
-                  </div>
-                  <span>Seleccionar predeterminada</span>
-                </div>
-                <div class="menuOption editarDireccion">
-                  <div class="bakuretsu_icono ico">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-                      <path d="M56 2.4l-26.1 26-4 9.7 9.7-4.1 26-26L56 2.4z"></path>
-                      <path d="M34.4 11.6h-32v50h50v-32"></path>
-                      <path d="M50.8 7.6l5.6 5.6"></path>
-                    </svg>
-                  </div>
-                  <span>Editar dirección</span>
-                </div>
-                <div class="menuOption eliminarDireccion">
-                  <div class="bakuretsu_icono ico">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-                      <path d="M54 12v50H10V12m-6 0h56m-40 0V2h24v10"></path>
-                      <path d="M32 22v30M22 22v30m20-30v30"></path>
-                    </svg>
-                  </div>
-                  <span>Eliminar dirección</span>
-                </div>
-              </div>
+              <div class="button">Ir al checkout</div>
             </div>
           </div>
-          <form id="formDireccion" class="animForm">
-            <p class="formTitle">Datos del destinatario</p>
-            <div class="field animable required" data-msj-error="Este campo es obligatorio">
-              <label for="nombreCorto">Alias de la dirección</label>
-              <input id="nombreCorto" type="text" name="nombreCorto">
-            </div>
-            <div class="field animable required" data-msj-error="Este campo es obligatorio">
-              <label for="nombreDestinatario">Nombre(s)</label>
-              <input id="nombreDestinatario" type="text" name="nombreDestinatario">
-            </div>
-            <div class="field animable w50 required" data-msj-error="Este campo es obligatorio">
-              <label for="paternoDestinatario">Apellido paterno</label>
-              <input id="paternoDestinatario" type="text" name="paternoDestinatario">
-            </div>
-            <div class="field animable w50 required" data-msj-error="Este campo es obligatorio">
-              <label for="maternoDestinatario">Apellido materno</label>
-              <input id="maternoDestinatario" type="text" name="maternoDestinatario">
-            </div>
-            <p class="formTitle">Dirección de envío</p>
-
-            <div class="field animable w50 required formDrop">
-              <label for="pais">País</label>
-              <input id="pais" type="text" name="pais" readonly>
-              <div class="dropContent">
-                <div class="wrapper">
-                  <li class="dropOpc" data-val="México">México</li>
-                  <li class="dropOpc" data-val="Alemania">Alemania</li>
-                  <li class="dropOpc" data-val="Rusia">Rusia</li>
-                  <li class="dropOpc" data-val="Estados Unidos">Estados Unidos</li>
-                  <li class="dropOpc" data-val="China">China</li>
-                </div>
-              </div>
-            </div>
-            <div class="field animable w50 required" data-msj-error="Este campo es obligatorio">
-              <label for="cp">Codigo postal</label>
-              <input id="cp" type="text" name="cp">
-            </div>
-            <div class="field w50 required focused disabled" data-msj-error="Este campo es obligatorio">
-              <label for="estado">Estado</label>
-              <input id="estado" type="text" name="estado">
-            </div>
-            <div class="field w50 required focused disabled" data-msj-error="Este campo es obligatorio">
-              <label for="ciudad">Ciudad</label>
-              <input id="ciudad" type="text" name="ciudad">
-            </div>
-            <div class="field w50 required focused disabled" data-msj-error="Este campo es obligatorio">
-              <label for="municipio">Municipio</label>
-              <input id="municipio" type="text" name="municipio">
-            </div>
-            <div class="field w50 required focused disabled" data-msj-error="Este campo es obligatorio">
-              <label for="colonia">Colonia</label>
-              <input id="colonia" type="text" name="colonia">
-            </div>
-            <div class="field animable required" data-msj-error="Este campo es obligatorio">
-              <label for="calle">Calle</label>
-              <input id="calle" type="text" name="calle">
-            </div>
-            <div class="field animable w30 required" data-msj-error="Este campo es obligatorio">
-              <label for="numInterior">Número exterior</label>
-              <input id="numInterior" type="text" name="numInterior">
-            </div>
-            <div class="field animable w30" data-msj-error="Este campo es obligatorio">
-              <label for="numExterior">Número interior</label>
-              <input id="numExterior" type="text" name="numExterior">
-            </div>
-            <div class="field animable w30" data-msj-error="Este campo es obligatorio">
-              <label for="edificio">Edificio</label>
-              <input id="edificio" type="text" name="edificio">
-            </div>
-            <div class="field animable w50" data-msj-error="Este campo es obligatorio">
-              <label for="calle1">Entre calle</label>
-              <input id="calle1" type="text" name="calle1">
-            </div>
-            <div class="field animable w50" data-msj-error="Este campo es obligatorio">
-              <label for="calle2">y calle</label>
-              <input id="calle2" type="text" name="calle2">
-            </div>
-            <p class="formTitle">Contacto</p>
-            <div class="field animable w50 required" data-msj-error="Este campo es obligatorio">
-              <label for="telefono">Telefono / celular</label>
-              <input id="telefono" type="tel" name="telefono">
-            </div>
-            <div class="field animable w50" data-msj-error="Este campo es obligatorio">
-              <label for="telefonoAlternativo">Telefono / celular alternativo</label>
-              <input id="telefonoAlternativo" type="tel" name="telefonoAlternativo">
-            </div>
-            <div class="buttons">
-              <div class="button guardarDireccion">
-                <span class="secondLabel">Guardar datos</span>
-              </div>
-            </div>
-          </form>
-          <div class="button addDireccion">Agregar nueva direcion</div>
         </div>
       </div>
     </section>
@@ -507,7 +529,6 @@
     </section>
     <script type="text/javascript" src="./js/jquery-3.5.1.min.js"></script>
     <script type="text/javascript" src="./js/compartido.js"></script>
-    <script type="text/javascript" src="./js/profile.js"></script>
+    <script type="text/javascript" src="./js/cart.js"></script>
   </body>
 </html>
-

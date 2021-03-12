@@ -979,6 +979,36 @@ body{
     pointer-events: none;
     transition: ease all .3s;
   }
+  @include responsivo(600px){
+    &:after{
+      display: none;
+    }
+  }
+}
+.#{$pfx}breadcrumb{
+  @include flex($jc: flex-start);
+  width: 100%;
+  margin-bottom: 30px;
+  .breadLink{
+    font-weight: 600;
+    color: var(--color-text);
+    &:hover{
+      @include vendorPrefix((text-decoration: underline wavy));
+      text-underline-position: below;
+    }
+    &:after{
+      content: "/";
+      margin: 0 5px;
+    }
+    a{
+      color: var(--color-text);
+    }
+  }
+  .breadCurrent{
+    font-weight: 600;
+    color: var(--color-text);
+    cursor: not-allowed;
+  }
 }
 
 //Secciones
