@@ -1,0 +1,72 @@
+@import "./parciales/vars";
+@import "./parciales/mixins";
+@import "./parciales/general";
+@import "./parciales/compartido";
+
+.#{$pfx}misPedidos{
+  .#{$pfx}container{
+    @include container;
+    padding: 50px 0;
+    .listaPedidos{
+      width: 100%;
+      .pedido{
+        width: 100%;
+        padding: 50px;
+        color: var(--color-text);
+        background-color: $gris;
+        box-sizing: border-box;
+        .bold{
+          font-family: 'Roboto', sans-serif;
+          font-weight: 600;
+        }
+        .cols{
+          @include flex($jc: space-between);
+        }
+        .pedidoHeader{
+          margin-bottom: 50px;
+          padding-bottom: 20px;
+          border-bottom: 1px solid $blanco;
+          .name{
+            text-transform: uppercase;
+          }
+          .order{
+            margin: 10px 0;
+            span{
+              @include vendorPrefix((text-decoration: underline wavy));
+              text-underline-position: below;
+            }
+          }
+        }
+        .pedidoContenido{
+          .#{$pfx}productList{
+            align-items: flex-start;
+            padding: 0 0 10px 0;
+            color: var(--color-text);
+            border-bottom: 1px dashed rgba($negro,.2);
+            &:hover{
+              background-color: inherit;
+            }
+            &:not(:last-child){
+              margin-bottom: 20px;
+            }
+            .txt{
+              flex-grow: 1;
+              .name{
+                font-weight: 600;
+              }
+              .bigT{
+                font-size: 20px;
+              }
+              .preventaTxt{
+                color: $primario;
+                font-weight: 600;
+                @include vendorPrefix((text-decoration: underline));
+                text-underline-position: under;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

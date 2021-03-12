@@ -5,7 +5,7 @@
 
 body{
   &.darken{
-    .#{$pfx}cart{
+    .#{$pfx}cart, .#{$pfx}wishlist{
       .#{$pfx}container{
         .cartWrapper{
           .aClone{
@@ -33,7 +33,7 @@ body{
   }
 }
 
-.#{$pfx}cart{
+.#{$pfx}cart, .#{$pfx}wishlist{
   .#{$pfx}container{
     @include container;
     padding: 50px 0;
