@@ -1,0 +1,13 @@
+@import "./parciales/vars";
+@import "./parciales/mixins";
+@import "./parciales/general";
+@import "./parciales/compartido";
+
+.#{$pfx}checkout{
+  .#{$pfx}container{
+    border: 1px solid red;
+    @include container;
+    padding: 50px 0;
+    min-height: 100vh;
+  }
+}
