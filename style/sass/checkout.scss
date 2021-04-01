@@ -5,9 +5,85 @@
 
 .#{$pfx}checkout{
   .#{$pfx}container{
-    border: 1px solid red;
-    @include container;
-    padding: 50px 0;
-    min-height: 100vh;
+    @include container(100%);
+    @include flex($wrap: nowrap, $ai: stretch);
+    .areaTabs{
+      width: calc(100% - 300px);
+      box-shadow: 0 0 0 1px red;
+      .wrapper{
+        @include container;
+        .tabsTitles{
+          @include flex;
+          border-bottom: 1px solid $gris;
+          .tabTitleOption{
+            @include flex;
+            font-family: "Roboto",sans-serif;
+            padding: 10px 20px;
+            position: relative;
+            cursor: pointer;
+            color: #ababab;
+            &.movL{
+              &.active{
+                &:after{
+                  right: 0;
+                  left: auto;
+                }
+              }
+            }
+            &.movR{
+              &:after{
+                left: auto;
+                right: 0;
+              }
+              &.active{
+                &:after{
+                  left: 0;
+                  right: auto;
+                }
+              }
+            }
+            &:after{
+              content: "";
+              position: absolute;
+              bottom: 0;
+              left: 0;
+              width: 0;
+              height: 2px;
+              background-color: currentColor;
+              transition: ease all .3s;
+            }
+            &.active{
+              color: $dimBlue;
+              &:after{
+                width: 100%;
+              }
+              .counter{
+                background-color: $dimBlue;
+              }
+            }
+            .counter{
+              @include flex;
+              width: 17px;
+              height: 17px;
+              margin-right: 5px;
+              border-radius: 50%;
+              color: $blanco;
+              font-size: 12px;
+              background-color: #ababab;
+            }
+          }
+        }
+        .tabsContent{
+          .tabContentOption{
+            display: none;
+            padding: 20px 0;
+          }
+        }
+      }
+    }
+    .orderSummary{
+      width: 300px;
+      background-color: $gris;
+    }
   }
 }
