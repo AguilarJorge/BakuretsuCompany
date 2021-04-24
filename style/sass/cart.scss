@@ -156,6 +156,7 @@ body{
         }
       }
       .infoPago{
+        position: -webkit-sticky;
         position: sticky;
         top: 150px;
         width: 400px;
