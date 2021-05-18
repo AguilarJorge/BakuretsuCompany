@@ -222,6 +222,7 @@ body{
   .#{$pfx}container{
     @include container;
     padding: 50px 0;
+    text-align: center;
     .#{$pfx}encabezadoDoble{
       align-items: flex-end;
       text-align: right;

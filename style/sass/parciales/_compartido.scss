@@ -1512,10 +1512,14 @@ body{
             justify-content: space-between;
             .logo{
               height: 50px;
+              order: 0;
+              margin: 0;
             }
             .launcherMenuResponsive{
               width: 30px;
               height: 30px;
+              order: 2;
+              margin-left: 60px;
             }
             .linksArea{
               .socialsResponsive{
@@ -1615,5 +1619,37 @@ body{
         }
       }
     }
+  }
+}
+
+//Customs
+#hotSaleLogo{
+  @include imagen($size: contain);
+  width: 100px;
+  height: 50px;
+  @include desktop{
+    margin-left: 20px;
+  }
+  @include mobile{
+    order: 1;
+    margin: 0;
+    width: 70px;
+  }
+}
+.#{$pfx}customButton{
+  display: inline-block;
+  margin: 20px auto 0 auto;
+  padding: 10px 30px;
+  color: $blanco;
+  font-size: 20px;
+  text-align: center;
+  border-radius: 50px;
+  background-color: $primario;
+  box-sizing: border-box;
+  cursor: pointer;
+  transition: ease all .3s;
+  &:hover{
+    transform: translateY(-5px);
+    box-shadow: 0 10px 10px 0 rgb(29 29 29 / 20%);
   }
 }
