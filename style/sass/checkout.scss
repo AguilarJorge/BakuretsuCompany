@@ -5,9 +5,146 @@
 
 .#{$pfx}checkout{
   .#{$pfx}container{
-    border: 1px solid red;
-    @include container;
-    padding: 50px 0;
-    min-height: 100vh;
+    @include container(100%);
+    @include flex($wrap: nowrap, $ai: stretch);
+    .areaTabs{
+      width: calc(100% - 300px);
+      box-shadow: 0 0 0 1px red;
+      .wrapper{
+        @include container;
+        .tabsTitles{
+          @include flex;
+          border-bottom: 1px solid $gris;
+          .tabTitleOption{
+            @include flex;
+            font-family: "Roboto",sans-serif;
+            padding: 20px;
+            position: relative;
+            cursor: pointer;
+            color: #ababab;
+            &.movL{
+              &.active{
+                &:after{
+                  right: 0;
+                  left: auto;
+                }
+              }
+            }
+            &.movR{
+              &:after{
+                left: auto;
+                right: 0;
+              }
+              &.active{
+                &:after{
+                  left: 0;
+                  right: auto;
+                }
+              }
+            }
+            &:after{
+              content: "";
+              position: absolute;
+              bottom: 0;
+              left: 0;
+              width: 0;
+              height: 2px;
+              background-color: currentColor;
+              transition: ease all .3s;
+            }
+            &.active{
+              color: $dimBlue;
+              &:after{
+                width: 100%;
+              }
+              .counter{
+                background-color: $dimBlue;
+              }
+            }
+            .counter{
+              @include flex;
+              width: 17px;
+              height: 17px;
+              margin-right: 5px;
+              border-radius: 50%;
+              color: $blanco;
+              font-size: 12px;
+              background-color: #ababab;
+            }
+          }
+        }
+        .tabsContent{
+          .tabContentOption{
+            display: none;
+            padding: 20px 0;
+          }
+        }
+      }
+    }
+    .orderSummary{
+      @include flex(column, $jc: flex-start);
+      width: 300px;
+      background-color: #f4f4f4;
+      box-sizing: border-box;
+      box-shadow: 0 0 10px 0 rgba($negro,.2);
+      >*{
+        width: 100%;
+        box-sizing: border-box;
+      }
+      .orderHeader, .orderFooter{
+        width: calc(100% - 40px);
+        margin: 0 auto;
+        padding: 20px 0;
+      }
+      .orderHeader{
+        font-weight: 600;
+        text-align: center;
+        color: var(--color-text);
+        border-bottom: 1px solid $gris;
+      }
+      .orderContent{
+        .#{$pfx}productList{
+          color: var(--color-text);
+          &:hover{
+            background-color: rgba($negro,.2);
+          }
+        }
+      }
+      .orderFooter{
+        margin-top: auto;
+        padding: 0;
+        .grupo{
+          padding: 20px 0;
+          text-align: center;
+          border-top: 1px solid $gris;
+          input{
+            font-family: "Roboto",sans-serif;
+            width: 100%;
+            margin: 5px auto 0 auto;
+            padding: 8px 20px;
+            font-size: 16px;
+            text-align: center;
+            border-radius: 20px;
+            border: 1px solid rgba($negro,.2);
+            outline: none;
+            box-sizing: border-box;
+            transition: ease all .3s;
+            &:focus{
+              border-color: $dimBlue;
+            }
+          }
+        }
+        .rows{
+          @include flex($jc: space-between);
+        }
+        .money{
+          color: $negro;
+          font-weight: 600;
+          &:before{
+            content: var(--currency-prefix);
+          }
+        }
+      }
+    }
   }
 }
