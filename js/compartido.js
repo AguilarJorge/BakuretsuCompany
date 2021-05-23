@@ -139,6 +139,10 @@ $(function(){
       localStorage.removeItem('theme');
     }
   })
+  $('.inDropThemeToggle').click(function (e) {
+    e.stopPropagation();
+    $(this).toggleClass('isDarkActive');
+  })
   //Si existe el menu agregamos sus eventos
   if ($('.bakuretsu_menu').length) {
     //Calcular altura del menu fixed para compensar margen del body
@@ -330,6 +334,25 @@ $(function(){
       } else {
         $(slide).css('transition', 'none')
       }
+      //Touches en el slider
+      $(slider).on('touchstart', function (tsev) {
+        const initTouch = tsev.changedTouches[0].pageX;
+        $(this).on('touchend', function (teev) {
+          $(this).off('touchend');
+          const finalTouch = teev.changedTouches[0].pageX;
+          if (finalTouch > initTouch) {
+            autoSlider($(slider), totales, sliderControls, false)
+          } else if (finalTouch < initTouch) {
+            autoSlider($(slider), totales, sliderControls, true)
+          }
+          if (automatico) {
+            clearInterval(automatico);
+            automatico = setInterval(function () {
+              autoSlider($(slider), totales, sliderControls)
+            }, sliderDuracion || 5000);
+          }
+        })
+      })
     })
   }
   //Drops Slidables

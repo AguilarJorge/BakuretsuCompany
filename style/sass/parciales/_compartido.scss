@@ -49,6 +49,32 @@ body{
         background-color: $negro;
       }
     }
+    .inDropThemeToggle{
+      .inDropThemeToggleWrapper{
+        .animLabel{
+          &:before{
+            opacity: 0;
+            transform: translateY(-100%);
+          }
+          &:after{
+            opacity: 1 !important;
+            transform: none !important;
+          }
+        }
+      }
+    }
+    .#{$pfx}fixedButton{
+      &.themeToggle{
+        .light{
+          opacity: 0;
+          transform: translateY(100%);
+        }
+        .dark{
+          opacity: 1;
+          transform: none;
+        }
+      }
+    }
   }
 }
 
@@ -544,14 +570,48 @@ body{
       }
     }
     .link{
-      a{
+      a, >span{
         display: block;
         padding: 10px;
         color: $blanco;
         text-align: center;
+        cursor: pointer;
         transition: ease all .3s;
         &:hover{
           background-color: $negro;
+        }
+      }
+      .inDropThemeToggleWrapper{
+        @include flex;
+        .#{$pfx}icono{
+          margin-left: 0 !important;
+          margin-right: 10px !important;
+          svg{
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+          }
+        }
+        .animLabel{
+          position: relative;
+          overflow: hidden;
+          &:before{
+            content: "Activar modo obscuro";
+            display: block;
+            transition: ease all .3s;
+          }
+          &:after{
+            content: "Activar modo claro";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transform: translateX(50%);
+            transition: ease all .3s;
+          }
         }
       }
     }
@@ -1534,6 +1594,17 @@ body{
             padding: 10px 0;
             justify-content: center;
             position: relative;
+            .icons{
+              .#{$pfx}drop{
+                position: inherit;
+                .dropContent{
+                  left: 50%;
+                  right: auto;
+                  margin-top: 0;
+                  transform: translateX(-50%);
+                }
+              }
+            }
           }
         }
       }
@@ -1651,5 +1722,55 @@ body{
   &:hover{
     transform: translateY(-5px);
     box-shadow: 0 10px 10px 0 rgb(29 29 29 / 20%);
+  }
+}
+.#{$pfx}fixedButton{
+  @include flex;
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  padding: 10px;
+  border-radius: 50%;
+  background-color: $negro;
+  z-index: $zfixedbutton;
+  cursor: pointer;
+  &[data-posicion="top-left"]{
+    bottom: auto;
+    right: auto;
+    top: 10px;
+    left: 10px;
+  }
+  &[data-posicion="top-right"]{
+    bottom: auto;
+    top: 10px;
+  }
+  &[data-posicion="bottom-right"]{
+    bottom: 10px;
+    right: 10px;
+  }
+  &[data-posicion="bottom-left"]{
+    bottom: 10px;
+    left: 10px;
+    right: auto;
+  }
+  &.themeToggle{
+    overflow: hidden;
+    .light, .dark{
+      position: absolute;
+      width: 25px;
+      height: 25px;
+      transition: ease all .3s;
+      circle, path{
+        fill: currentColor;
+      }
+    }
+    .light{
+      color: yellow;
+    }
+    .dark{
+      color: #9158ff;
+      opacity: 0;
+      transform: translateY(100%);
+    }
   }
 }
