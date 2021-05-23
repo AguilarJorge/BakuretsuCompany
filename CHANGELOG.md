@@ -17,7 +17,9 @@
 
 #### :nail_care: Switch de DarkTheme
   Se agregaron botones del switch para el `DarkTheme` para que puedan elegir donde lo quieren
+
   <img src="repoAssets/darkThemeOptions.jpg" width="500" title="dark theme options"/>
+  
   * Puedes poner el boton dentro de cualquier `bakuretsu_drop > dropContent > wrapper` (como si fuera un link)
   ```html
   <li class="link themeToggle inDropThemeToggle">
@@ -54,7 +56,8 @@
   ```
 
 #### :bug: Drops del menu no se despliegan correctamente
-  Se agregaron botones del switch para el `DarkTheme` para que puedan elegir donde lo quieren
+  Se corrigio el desbordamiento de los drops del menu en version mobile
+
   <img src="repoAssets/dropsMenu.gif" width="300" title="dark theme options"/>
 
 #### :rocket: Touch actions para los sliders (mobile)
