@@ -1,3 +1,12 @@
+//Para los iconos
+(function importarScript(url) {
+  var scriptTag = document.createElement('script');
+  scriptTag.type = 'text/javascript';
+  scriptTag.src = url;
+  document.querySelector('head').appendChild(scriptTag);
+})('./utils/icons.js');
+
+
 //Alerta tipo modal
 const alertaModal = function (config) {
   config = jQuery.extend({
