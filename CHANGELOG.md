@@ -153,3 +153,24 @@
 
 #### :bug: Fix: Signo de precio desaparecido
   Se corrigio el error que hizo que desapareciera el signo de pesos en las tarjetas del producto.
+
+#### :eyeglasses: Boton para abonar a orden de preventa
+  Se agrego el boton para poder abonar a ordenes de tipo preventa. Para esto es necesario agregar el sigiente `html` en en `div` del pedido:
+  ```html
+    <div class="pedido">
+      <div class="pedidoHeader">...</div>
+      <div class="pedidoContenido">...</div>
+      <div class="pedidoFooter">
+        <div class="cols">...</div>
+        <div class="abonosArea">...</div>
+  ++    <div class="abonosButtons">
+  ++      <div class="bakuretsu_customButton botonAbonar">Abonar a esta orden</div>
+  ++    </div>
+      </div>
+    </div>
+  ```
+
+#### :eyeglasses: Modal de confirmación al editar datos
+  En la vista del `perfil`, se añadio la modal de confirmación para guardar los datos
+
+  <img src="repoAssets/datosPerfil.gif" width="600" title="Modal de edicion de datos"/>
