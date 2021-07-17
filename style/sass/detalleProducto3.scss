@@ -68,7 +68,7 @@
               }
             }
             &:before{
-              content: var(--currencyPrefix);
+              content: var(--currency-prefix);
               font-size: 40px;
             }
           }

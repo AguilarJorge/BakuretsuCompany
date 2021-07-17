@@ -150,3 +150,6 @@
   Se evaluó la opción de agregar el botón del checkout arriba y abajo de los artículos y se tomo la desición (en base a analisis de UX) de poner el **call to action** en ambas posiciones (arriba y abajo) para no perder una compra potencial al momento de deslizar hacia abajo o arriba. Todo esto solo aplica en vista movil.
 
   <img src="repoAssets/checkoutCallToAction.gif" width="250" title="Call to action - Checkout"/>
+
+#### :bug: Fix: Signo de precio desaparecido
+  Se corrigio el error que hizo que desapareciera el signo de pesos en las tarjetas del producto.
