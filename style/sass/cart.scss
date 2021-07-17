@@ -165,6 +165,9 @@ body{
         background-color: $blanco;
         box-shadow: 0 0 10px 0 rgba($negro,.2);
         box-sizing: border-box;
+        &.infoPagoBottom{
+          display: none;
+        }
         .wrapper{
           padding: 30px;
           text-align: center;
@@ -292,6 +295,11 @@ body{
         .infoPago{
           position: relative;
           margin: 0 0 50px 0;
+          &.infoPagoBottom{
+            display: block;
+            order: -1;
+            margin: 50px 0 0 0;
+          }
           .wrapper{
             .grupo{
               width: 100%;

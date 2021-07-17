@@ -138,3 +138,15 @@
     </div>
   </div>
   ```
+
+
+
+#### :bug: Fix: Decoración ondulada
+  Se corrigio la decoración ondulada que no se mostraba bien en el boton de "registrarme" (dentro de la vista: auth).
+
+  <img src="repoAssets/authBug.jpg" width="600" title="Barra ondulada"/>
+
+#### :nail_care: Call to action al checkout
+  Se evaluó la opción de agregar el botón del checkout arriba y abajo de los artículos y se tomo la desición (en base a analisis de UX) de poner el **call to action** en ambas posiciones (arriba y abajo) para no perder una compra potencial al momento de deslizar hacia abajo o arriba. Todo esto solo aplica en vista movil.
+
+  <img src="repoAssets/checkoutCallToAction.gif" width="250" title="Call to action - Checkout"/>
