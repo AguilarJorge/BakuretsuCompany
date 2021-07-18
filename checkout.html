@@ -228,17 +228,162 @@
           <div class="wrapper bakuretsu_tabs">
             <div class="tabsTitles">
               <div class="tabTitleOption"><span class="counter">1</span>Detalles personales</div>
-              <div class="tabTitleOption"><span class="counter">2</span>Envío</div>
-              <div class="tabTitleOption"><span class="counter">3</span>Pago</div>
+              <div class="tabTitleOption disabled"><span class="counter">2</span>Envío</div>
+              <div class="tabTitleOption disabled"><span class="counter">3</span>Pago</div>
             </div>
             <div class="tabsContent">
               <div class="tabContentOption">
-                <p>Tabcontent 1</p>
-                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Accusamus accusantium quo qui dignissimos, laboriosam placeat repellat eveniet culpa corrupti dolore illum id aliquid iure laudantium earum nemo dolorem. Ad, nihil?</p>
+                <p class="message">Solicitamos únicamente la información esencial para la finalización de la compra.</p>
+                <div class="datos">
+                  <form id="formDatos" class="animForm">
+                    <div class="field animable focused disabled" data-msj-error="Este campo es obligatorio">
+                      <label for="nombre">Nombre(s)</label>
+                      <input id="nombre" type="text" name="nombre" value="Jorge Luis" readonly>
+                    </div>
+                    <div class="field animable w50 focused disabled" data-msj-error="Este campo es obligatorio">
+                      <label for="paterno">Apellido paterno</label>
+                      <input id="paterno" type="text" name="paterno" value="Aguilar" readonly>
+                    </div>
+                    <div class="field animable w50 focused disabled" data-msj-error="Este campo es obligatorio">
+                      <label for="materno">Apellido materno</label>
+                      <input id="materno" type="text" name="materno" value="Rodarte" readonly>
+                    </div>
+                    <div class="field animable focused disabled" data-msj-error="Este campo es obligatorio">
+                      <label for="usuario">Usuario</label>
+                      <input id="usuario" type="text" name="usuario" value="JorgeDev" readonly>
+                    </div>
+                    <div class="field animable focused disabled" data-msj-error="Este campo es obligatorio">
+                      <label for="correo">Correo electronico</label>
+                      <input id="correo" type="email" name="correo" value="dev.jorge@hotmail.com" readonly>
+                    </div>
+                  </form>
+                  <p class="message normal changeData">Si no reconoces estos datos, puedes cambiarlos dando <span class="unlockForm">click aquí</span></p>
+                </div>
+                <div class="buttonsArea">
+                  <div class="bakuretsu_customButton aEnvio">Continuar para el envío</div>
+                </div>
               </div>
               <div class="tabContentOption">
-                <p>Tabcontent 2</p>
-                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Accusamus accusantium quo qui dignissimos, laboriosam placeat repellat eveniet culpa corrupti dolore illum id aliquid iure laudantium earum nemo dolorem. Ad, nihil?</p>
+                <p class="message">Tu pedido se enviará a la dirección seleccionada</p>
+                <div class="listaDeirecciones">
+                  <div class="direccion predeterminada">
+                    <div class="grupo">
+                      <p class="hBold alias">Casa de mi mamá</p>
+                    </div>
+                    <div class="grupo">
+                      <p class="hBold">Maria del Carmen Torres Gomez</p>
+                      <p>Galeana, 142 Victoria, ADOLFO LOPEZ MATEOS VICTORIA, 87025, Mexico, TAMAULIPAS</p>
+                    </div>
+                    <div class="grupo">
+                      <p class="hBold">Referencias:</p>
+                      <p>Casa blanca enfrente de tiendita, Esquina con Francisco Villa</p>
+                    </div>
+                    <div class="grupo">
+                      <p class="hBold">Teléfono:</p>
+                      <p>834 - 255 - 7085</p>
+                    </div>
+                  </div>
+                  <div class="direccion addNueva">
+                    <div class="icono"></div>
+                    <p>Agregar nueva dirección</p>
+                  </div>
+                </div>
+                <div class="listaCouriers">
+                  <div class="courier">
+                    <div class="courierHeader">
+                      <div class="icon">
+                        <i class="baku-icon" data-baku-icon="shop"></i>
+                      </div>
+                      <p class="name">Recoger en tienda</p>
+                      <p class="price">Gratis</p>
+                    </div>
+                    <div class="courierBody">
+                      <div class="info">
+                        <p>Calle Galeana #142. Cd. Victoria, Tamaulipas, México.</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="courier">
+                    <div class="courierHeader">
+                      <div class="icon">
+                        <i class="baku-icon" data-baku-icon="truck"></i>
+                      </div>
+                      <p class="name">Envío express</p>
+                      <p class="price">$100</p>
+                    </div>
+                    <div class="courierBody">
+                      <div class="courierAvatar" style="background-image: url(./img/logoDHL.png);"></div>
+                      <div class="info">
+                        <p>DHL envío express</p>
+                        <p class="minitext">1 - 6 días habiles</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="courier">
+                    <div class="courierHeader">
+                      <div class="icon">
+                        <i class="baku-icon" data-baku-icon="truck"></i>
+                      </div>
+                      <p class="name">Envío estandard</p>
+                      <p class="price">$80</p>
+                    </div>
+                    <div class="courierBody">
+                      <div class="courierAvatar" style="background-image: url(./img/logoEstafeta.png);"></div>
+                      <div class="info">
+                        <p>Estafeta envío estandard</p>
+                        <p class="minitext">1 - 10 días habiles</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="courier">
+                    <div class="courierHeader">
+                      <div class="icon">
+                        <i class="baku-icon" data-baku-icon="truck"></i>
+                      </div>
+                      <p class="name">Envío estandard</p>
+                      <p class="price">$280</p>
+                    </div>
+                    <div class="courierBody">
+                      <div class="courierAvatar" style="background-image: url(./img/logoFedex.jpg);"></div>
+                      <div class="info">
+                        <p>Fedex envío regular</p>
+                        <p class="minitext">1 - 3 días habiles</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="courier">
+                    <div class="courierHeader">
+                      <div class="icon">
+                        <i class="baku-icon" data-baku-icon="truck"></i>
+                      </div>
+                      <p class="name">Envío express</p>
+                      <p class="price">$350</p>
+                    </div>
+                    <div class="courierBody">
+                      <div class="courierAvatar" style="background-image: url(./img/logoPaquetexpress.png);"></div>
+                      <div class="info">
+                        <p>Paquete express envío rapido</p>
+                        <p class="minitext">1 día habil</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="courier">
+                    <div class="courierHeader">
+                      <div class="icon">
+                        <i class="baku-icon" data-baku-icon="truck"></i>
+                      </div>
+                      <p class="name">Envío comercial</p>
+                      <p class="price">$50</p>
+                    </div>
+                    <div class="courierBody">
+                      <div class="courierAvatar" style="background-image: url(./img/logoCorreosMexico.jpg);"></div>
+                      <div class="info">
+                        <p>Correos de México - envío comercial</p>
+                        <p class="minitext">1 - 3 semanas</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
               <div class="tabContentOption">
                 <p>Tabcontent 3</p>

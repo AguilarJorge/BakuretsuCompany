@@ -114,6 +114,14 @@ const icons = [
   {
     "nombre": "face",
     "codigo": "<circle cx='32' cy='32' r='30'></circle><path d='M45.9 48.2a18.5 18.5 0 0 0-27.7 0'></path><circle cx='22' cy='26' r='2'></circle><circle cx='42' cy='26' r='2'></circle>"
+  },
+  {
+    "nombre": "shop",
+    "codigo": "<path d='M36 36h12v22H36z'></path><path d='M56 30v28H8V30'></path><path d='M16 36h14v12H16z'></path><path d='M52.6 6H11.4L2 22.5a7.5 7.5 0 0 0 15 0 7.5 7.5 0 0 0 15 0 7.5 7.5 0 0 0 15 0 7.5 7.5 0 0 0 15 0zM2 22h60M32 6v16.5m-15 0L22 6m25 16.5L42 6'></path>"
+  },
+  {
+    "nombre": "truck",
+    "codigo": "<path d='M43.3 49H18.7M61 49h-6.3m-10.2-6H39m0-20h11.9l4.4 8h3.9c.8 0 1.8.2 1.8 1.4V43h-7.5m1.8-12H39M8.5 43H3V15h36v28H17.5'></path><circle cx='13' cy='47' r='6'></circle><circle cx='49' cy='47' r='6'></circle>"
   }
 ]
 
@@ -124,9 +132,9 @@ $('.baku-icon').each(function(i, e){
   if (icono) {
     if (bakuExtraclass) bakuExtraclass = bakuExtraclass.replaceAll(',', ' ');
     if (bakuLink) {
-      $(e).replaceWith(`<a class="bakuretsu_icono ${bakuExtraclass}" href="${bakuLink}"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">${icono.codigo}</svg></a>`);
+      $(e).replaceWith(`<a class="bakuretsu_icono ${bakuExtraclass || ''}" href="${bakuLink}"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">${icono.codigo}</svg></a>`);
     } else {
-      $(e).replaceWith(`<div class="bakuretsu_icono ${bakuExtraclass}"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">${icono.codigo}</svg></div>`);
+      $(e).replaceWith(`<div class="bakuretsu_icono ${bakuExtraclass || ''}"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">${icono.codigo}</svg></div>`);
     }
   } else {
     console.warn(`El icono '${bakuIcon}' no existe! Por favor revisa que el nombre este bien escrito e intentalo de nuevo.`);
