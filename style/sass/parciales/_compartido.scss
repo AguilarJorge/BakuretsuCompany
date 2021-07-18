@@ -11,6 +11,14 @@
     opacity: 0;
   }
 }
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
 
 body{
   &.darken{
@@ -1771,6 +1779,13 @@ body{
       color: #9158ff;
       opacity: 0;
       transform: translateY(100%);
+    }
+  }
+}
+.animForm{
+  .formDrop{
+    label{
+      pointer-events: none;
     }
   }
 }

@@ -127,7 +127,6 @@ const icons = [
 
 $('.baku-icon').each(function(i, e){
   let { bakuIcon, bakuLink, bakuExtraclass } = $(e).data();
-  console.log(bakuIcon, bakuLink, bakuExtraclass);
   let icono = icons.find(ico => ico.nombre === bakuIcon);
   if (icono) {
     if (bakuExtraclass) bakuExtraclass = bakuExtraclass.replaceAll(',', ' ');

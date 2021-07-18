@@ -372,24 +372,24 @@ $(function(){
     $(this).siblings('.slidableContent').slideToggle('fast');
   })
   //Animar inputs
-  $('.animForm .field.animable input').focusin(function () {
+  $('body').on('focusin', '.animForm .field.animable input', function () {
     if ($(this).val().length <= 0) {
       $(this).parent().addClass('focused');
     }
   });
-  $('.animForm .field.animable input').focusout(function () {
+  $('body').on('focusout', '.animForm .field.animable input', function () {
     if ($(this).val().length <= 0) {
       $(this).parent().removeClass('focused');
     }
   });
-  $('.formDrop').click(function(e){
+  $('body').on('click', '.formDrop', function(e){
     e.stopPropagation();
     $('.formDrop.activo').not($(this)).find('.dropContent').slideUp('fast');
     $('.formDrop.activo').not($(this)).removeClass('activo');
     $(this).toggleClass('activo');
     $(this).find('.dropContent').slideToggle('fast');
   })
-  $('.formDrop .dropContent .dropOpc').click(function () {
+  $('body').on('click', '.formDrop .dropContent .dropOpc', function () {
     const drop = $(this).parents('.formDrop');
     drop.find('input').val($(this).data('val'));
     if (drop.find('input').val().length > 0) {
