@@ -20,17 +20,27 @@ $(function(){
         $(field).children('input')[0].setAttribute('readonly', '');
       });
       $(this).addClass('louder');
-      setTimeout(() => {
-        console.warn('Simulacion de llamada a la API');
-        boton.removeClass('louder');
-        alertaModal({
-          acciones: '',
-          closable: true,
-          tipo: 'exito', // exito || error
-          encabezado: 'Datos actualizados con exito',
-          mensaje: 'Los datos del usuario se han editado con exito!'
-        });
-      }, 3000);
+      // Llamada a la modal para confirmar el guardado de los datos
+      alertaModal({
+        encabezado: 'Estas seguro de guardar los datos?',
+        mensaje: 'Antes de proceder con el guardado, se recomienda que verifiques que todos los datos sean correctos.',
+        onAprov: () => {
+          // Disclamer: Este 'setTimeout' se debe reemplazar por tu llamada a la api
+          setTimeout(() => {
+            console.warn('Simulacion de llamada a la API');
+            boton.removeClass('louder');
+            alertaModal({
+              acciones: '',
+              closable: true,
+              tipo: 'exito', // exito || error
+              encabezado: 'Datos actualizados con exito',
+              mensaje: 'Los datos del usuario se han editado con exito!'
+            });
+          }, 3000);
+        },
+        onCancel: () => boton.removeClass('louder')
+      });
+
     }
     $(this).toggleClass('editar guardar');
   })

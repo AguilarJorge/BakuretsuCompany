@@ -1,3 +1,12 @@
+//Para los iconos
+(function importarScript(url) {
+  var scriptTag = document.createElement('script');
+  scriptTag.type = 'text/javascript';
+  scriptTag.src = url;
+  document.querySelector('head').appendChild(scriptTag);
+})('./utils/icons.js');
+
+
 //Alerta tipo modal
 const alertaModal = function (config) {
   config = jQuery.extend({
@@ -138,6 +147,10 @@ $(function(){
     } else {
       localStorage.removeItem('theme');
     }
+  })
+  $('.inDropThemeToggle').click(function (e) {
+    e.stopPropagation();
+    $(this).toggleClass('isDarkActive');
   })
   //Si existe el menu agregamos sus eventos
   if ($('.bakuretsu_menu').length) {
@@ -330,6 +343,25 @@ $(function(){
       } else {
         $(slide).css('transition', 'none')
       }
+      //Touches en el slider
+      $(slider).on('touchstart', function (tsev) {
+        const initTouch = tsev.changedTouches[0].pageX;
+        $(this).on('touchend', function (teev) {
+          $(this).off('touchend');
+          const finalTouch = teev.changedTouches[0].pageX;
+          if (finalTouch > initTouch) {
+            autoSlider($(slider), totales, sliderControls, false)
+          } else if (finalTouch < initTouch) {
+            autoSlider($(slider), totales, sliderControls, true)
+          }
+          if (automatico) {
+            clearInterval(automatico);
+            automatico = setInterval(function () {
+              autoSlider($(slider), totales, sliderControls)
+            }, sliderDuracion || 5000);
+          }
+        })
+      })
     })
   }
   //Drops Slidables
@@ -340,24 +372,24 @@ $(function(){
     $(this).siblings('.slidableContent').slideToggle('fast');
   })
   //Animar inputs
-  $('.animForm .field.animable input').focusin(function () {
+  $('body').on('focusin', '.animForm .field.animable input', function () {
     if ($(this).val().length <= 0) {
       $(this).parent().addClass('focused');
     }
   });
-  $('.animForm .field.animable input').focusout(function () {
+  $('body').on('focusout', '.animForm .field.animable input', function () {
     if ($(this).val().length <= 0) {
       $(this).parent().removeClass('focused');
     }
   });
-  $('.formDrop').click(function(e){
+  $('body').on('click', '.formDrop', function(e){
     e.stopPropagation();
     $('.formDrop.activo').not($(this)).find('.dropContent').slideUp('fast');
     $('.formDrop.activo').not($(this)).removeClass('activo');
     $(this).toggleClass('activo');
     $(this).find('.dropContent').slideToggle('fast');
   })
-  $('.formDrop .dropContent .dropOpc').click(function () {
+  $('body').on('click', '.formDrop .dropContent .dropOpc', function () {
     const drop = $(this).parents('.formDrop');
     drop.find('input').val($(this).data('val'));
     if (drop.find('input').val().length > 0) {

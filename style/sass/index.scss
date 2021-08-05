@@ -230,7 +230,7 @@ body{
     .contenedorCards{
       @include flex($ai: stretch);
       .card{
-        @include flex($wrap: nowrap, $ai: flex-end);
+        @include flex(column, nowrap, $jc: flex-end);
         @include imagen;
         background-blend-mode: soft-light;
         width: calc((100% / 3) - 20px);
@@ -239,12 +239,68 @@ body{
         flex-grow: 1;
         margin: 10px;
         transition: ease all .3s;
+        &.#{$pfx}girl{
+          overflow: hidden;
+          &:hover{
+            background-color: rgba(#000,.9);
+            .socials{
+              &:hover{
+                .socialIcon{
+                  transition-delay: 0s !important;
+                }
+              }
+              .socialIcon{
+                opacity: 1;
+                transform: none;
+                &:hover{
+                  color: $secundario;
+                }
+                @for $i from 1 through 10 {
+                  &:nth-child(#{$i}) {
+                    transition-delay: #{($i - 1) / 10}s;
+                  }
+                }
+              }
+            }
+            .texto{
+              transform: none;
+            }
+          }
+        }
         &:hover{
           background-color: $negro;
           .texto{
             color: $blanco;
             background-color: $secundario;
             transform: translateY(-100%);
+          }
+        }
+        .socials{
+          @include flex;
+          margin: auto;
+          &.vertical{
+            flex-direction: column;
+            flex-wrap: nowrap;
+            align-items: flex-start;
+            margin-left: 5%;
+            .socialIcon{
+              @include flex($wrap: nowrap);
+              text-align: left;
+              .#{$pfx}icono{
+                min-width: 35px;
+                margin-right: 10px;
+              }
+            }
+          }
+          .socialIcon{
+            padding: 10px;
+            color: $blanco;
+            opacity: 0;
+            transform: translateY(100%);
+            transition: ease all .3s;
+            .#{$pfx}icono{
+              color: currentColor;
+            }
           }
         }
         .texto{

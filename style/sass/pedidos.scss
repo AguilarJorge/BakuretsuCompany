@@ -118,6 +118,9 @@ body{
         .pedidoFooter{
           font-size: 20px;
           text-align: right;
+          .order{
+            line-height: 2;
+          }
           .aPagar, .debe{
             @include flex($jc: flex-end);
             .total{

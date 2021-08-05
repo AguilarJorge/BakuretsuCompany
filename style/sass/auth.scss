@@ -57,7 +57,7 @@ body{
       }
       .toggleForm{
         @include flex;
-        padding-bottom: 10px;
+        padding-bottom: 15px;
         cursor: pointer;
         overflow: hidden;
         &.loginShow{
